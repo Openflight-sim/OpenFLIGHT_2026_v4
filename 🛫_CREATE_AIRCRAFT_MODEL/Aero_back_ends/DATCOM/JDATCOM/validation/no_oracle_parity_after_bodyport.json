@@ -1,0 +1,1147 @@
+{
+    "summary": {
+        "comparable_blocks": 28,
+        "failed_blocks": 28,
+        "total_blocks": 70,
+        "skipped_blocks": 42,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 5,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 5,
+                    "total_blocks": 6,
+                    "skipped_blocks": 1,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0005560893691210287,
+                                "mean_rel": 0.019734623947536546,
+                                "max_abs": 0.0009330068844547769,
+                                "max_rel": 0.03217265118809575
+                            },
+                            "cl": {
+                                "mean_abs": 0.00024254001545760432,
+                                "mean_rel": 0.00838228935136338,
+                                "max_abs": 0.00046564786397308017,
+                                "max_rel": 0.01908400485810439
+                            },
+                            "cm": {
+                                "mean_abs": 0.0001054983938907861,
+                                "mean_rel": 0.003041652580701745,
+                                "max_abs": 0.0002515466937466071,
+                                "max_rel": 0.0054295557812217635
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00230801237379115,
+                                "mean_rel": 0.05297716577668496,
+                                "max_abs": 0.015118780809467665,
+                                "max_rel": 0.2159825829923952
+                            },
+                            "cl": {
+                                "mean_abs": 0.006041984304897466,
+                                "mean_rel": 0.20472346656032972,
+                                "max_abs": 0.010603056408080763,
+                                "max_rel": 0.42996179489899045
+                            },
+                            "cm": {
+                                "mean_abs": 0.00482177433338194,
+                                "mean_rel": 0.1298956665530904,
+                                "max_abs": 0.014548453306253387,
+                                "max_rel": 0.1945704442187783
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0003105852078343737,
+                                "mean_rel": 0.00664758816742092,
+                                "max_abs": 0.00042838591240888096,
+                                "max_rel": 0.011273313484444237
+                            },
+                            "cl": {
+                                "mean_abs": 0.0002990347734647652,
+                                "mean_rel": 0.007686395183352598,
+                                "max_abs": 0.0004918283709468563,
+                                "max_rel": 0.01582211909194756
+                            },
+                            "cm": {
+                                "mean_abs": 1.2273888138382742e-5,
+                                "mean_rel": 0.00039486437678253305,
+                                "max_abs": 3.787397585494623e-5,
+                                "max_rel": 0.0011352023639348355
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.4,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0002519116187953106,
+                                "mean_rel": 0.00787536101788119,
+                                "max_abs": 0.0003961660804140295,
+                                "max_rel": 0.01650692001725123
+                            },
+                            "cl": {
+                                "mean_abs": 0.00014378040503042452,
+                                "mean_rel": 0.0036844543407334065,
+                                "max_abs": 0.000494487461092992,
+                                "max_rel": 0.008830133233803428
+                            },
+                            "cm": {
+                                "mean_abs": 2.7824213463376552e-5,
+                                "mean_rel": 0.0014588190798037505,
+                                "max_abs": 4.8845969441423456e-5,
+                                "max_rel": 0.004884596944142346
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00031666897564808813,
+                                "mean_rel": 0.011240285974898628,
+                                "max_abs": 0.0009274831027971109,
+                                "max_rel": 0.01730503517421167
+                            },
+                            "cl": {
+                                "mean_abs": 0.0011462244852125593,
+                                "mean_rel": 0.03242374466820234,
+                                "max_abs": 0.0023170906757220833,
+                                "max_rel": 0.06471608338607884
+                            },
+                            "cm": {
+                                "mean_abs": 0.0006450053161598869,
+                                "mean_rel": 0.015904294139499956,
+                                "max_abs": 0.0015176286390389954,
+                                "max_rel": 0.028710617203033147
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 4,
+                        "npoints": 11
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex1.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 7,
+                    "total_blocks": 12,
+                    "skipped_blocks": 5,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.01055063813527304,
+                                "mean_rel": 0.20864850236949478,
+                                "max_abs": 0.0315487708344427,
+                                "max_rel": 0.28722607229974906
+                            },
+                            "cl": {
+                                "mean_abs": 0.006225544756176202,
+                                "mean_rel": 0.057608953537441415,
+                                "max_abs": 0.021733050741421622,
+                                "max_rel": 0.3025384889346423
+                            },
+                            "cm": {
+                                "mean_abs": 0.008204163374191087,
+                                "mean_rel": 0.0784399376523748,
+                                "max_abs": 0.025438778376299154,
+                                "max_rel": 0.2015133885944144
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 1,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.002162485416755029,
+                                "mean_rel": 0.07455380125412063,
+                                "max_abs": 0.008184978304744087,
+                                "max_rel": 0.1604897706812566
+                            },
+                            "cl": {
+                                "mean_abs": 0.004492234165667152,
+                                "mean_rel": 0.04968761964926572,
+                                "max_abs": 0.006524065534215029,
+                                "max_rel": 0.08349377022810009
+                            },
+                            "cm": {
+                                "mean_abs": 0.0020688563060750477,
+                                "mean_rel": 0.06046761629498909,
+                                "max_abs": 0.0037550275890783358,
+                                "max_rel": 0.15692499999999976
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.004622401989915552,
+                                "mean_rel": 0.24730285316252884,
+                                "max_abs": 0.00583474841906538,
+                                "max_rel": 0.3114457021790323
+                            },
+                            "cl": {
+                                "mean_abs": 0.0015638457262973063,
+                                "mean_rel": 0.03254296870613748,
+                                "max_abs": 0.002135274297725878,
+                                "max_rel": 0.06892123829543134
+                            },
+                            "cm": {
+                                "mean_abs": 0.00010620160644955299,
+                                "mean_rel": 0.0059017788457752214,
+                                "max_abs": 0.00014859718871327449,
+                                "max_rel": 0.013979999999999895
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.011534925615923175,
+                                "mean_rel": 0.25209852954956186,
+                                "max_abs": 0.03827477192826462,
+                                "max_rel": 0.5505988400927484
+                            },
+                            "cl": {
+                                "mean_abs": 0.018756341878426838,
+                                "mean_rel": 0.06960506207631575,
+                                "max_abs": 0.05827726512983389,
+                                "max_rel": 0.1943968971952769
+                            },
+                            "cm": {
+                                "mean_abs": 0.02016605377033884,
+                                "mean_rel": 0.16337070177809485,
+                                "max_abs": 0.04813590304919235,
+                                "max_rel": 0.3662977742727468
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.013035773410456341,
+                                "mean_rel": 0.19010621181250215,
+                                "max_abs": 0.04223485823798623,
+                                "max_rel": 0.34207659843156246
+                            },
+                            "cl": {
+                                "mean_abs": 0.018756341878426838,
+                                "mean_rel": 0.06960506207631575,
+                                "max_abs": 0.05827726512983389,
+                                "max_rel": 0.1943968971952769
+                            },
+                            "cm": {
+                                "mean_abs": 0.02016605377033884,
+                                "mean_rel": 0.16337070177809485,
+                                "max_abs": 0.04813590304919235,
+                                "max_rel": 0.3662977742727468
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.015136803781974252,
+                                "mean_rel": 0.2023393684426404,
+                                "max_abs": 0.0423204147272534,
+                                "max_rel": 0.5497394670489595
+                            },
+                            "cl": {
+                                "mean_abs": 0.027447576813516002,
+                                "mean_rel": 0.11214342778683067,
+                                "max_abs": 0.065185069865625,
+                                "max_rel": 0.17968672337994968
+                            },
+                            "cm": {
+                                "mean_abs": 0.03243101088687197,
+                                "mean_rel": 0.20056412951690852,
+                                "max_abs": 0.07590925541355226,
+                                "max_rel": 0.31355337994285654
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.014864914359969077,
+                                "mean_rel": 0.16138797904281954,
+                                "max_abs": 0.04165682017990108,
+                                "max_rel": 0.3412291882597139
+                            },
+                            "cl": {
+                                "mean_abs": 0.027447576813516002,
+                                "mean_rel": 0.11214342778683067,
+                                "max_abs": 0.065185069865625,
+                                "max_rel": 0.17968672337994968
+                            },
+                            "cm": {
+                                "mean_abs": 0.03243101088687197,
+                                "mean_rel": 0.20056412951690852,
+                                "max_abs": 0.07590925541355226,
+                                "max_rel": 0.31355337994285654
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex2.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 8,
+                    "total_blocks": 38,
+                    "skipped_blocks": 30,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.04618096051347014,
+                                "mean_rel": 2.6140843631421706,
+                                "max_abs": 0.12143017213721366,
+                                "max_rel": 5.089323605561291
+                            },
+                            "cl": {
+                                "mean_abs": 0.5292610035697791,
+                                "mean_rel": 16.837723813290417,
+                                "max_abs": 1.1525314922272774,
+                                "max_rel": 30.199055181865354
+                            },
+                            "cm": {
+                                "mean_abs": 0.17931808777245814,
+                                "mean_rel": 3.6584256047227575,
+                                "max_abs": 0.426987105921645,
+                                "max_rel": 4.58632766833131
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.25333039765783394,
+                                "mean_rel": 5.230240502164354,
+                                "max_abs": 0.8849276033544049,
+                                "max_rel": 10.662483595208297
+                            },
+                            "cl": {
+                                "mean_abs": 0.8201414756381603,
+                                "mean_rel": 13.133488538069674,
+                                "max_abs": 1.9613472583845755,
+                                "max_rel": 25.559842696105864
+                            },
+                            "cm": {
+                                "mean_abs": 0.2000472624592885,
+                                "mean_rel": 3.8130413065413222,
+                                "max_abs": 0.49707964421825357,
+                                "max_rel": 4.635642044491846
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.5022634839309743,
+                                "mean_rel": 0.6848989115867335,
+                                "max_abs": 0.9768055471046226,
+                                "max_rel": 0.9859908353802151
+                            },
+                            "cl": {
+                                "mean_abs": 1.8539982987139583,
+                                "mean_rel": 0.4322184116637394,
+                                "max_abs": 6.522923731870054,
+                                "max_rel": 0.9154451667793178
+                            },
+                            "cm": {
+                                "mean_abs": 0.2526111479633994,
+                                "mean_rel": 0.7980871724856483,
+                                "max_abs": 0.6316322922541314,
+                                "max_rel": 3.3601969569682275
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 18
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.9003998817788249,
+                                "mean_rel": 0.9851202207645786,
+                                "max_abs": 0.9003998817788249,
+                                "max_rel": 0.9851202207645786
+                            },
+                            "cl": {
+                                "mean_abs": 0.13912088559242933,
+                                "mean_rel": 6.956044279621466,
+                                "max_abs": 0.13912088559242933,
+                                "max_rel": 6.956044279621466
+                            },
+                            "cm": {
+                                "mean_abs": 0.6142706941944074,
+                                "mean_rel": 0.9612999909145655,
+                                "max_abs": 0.6142706941944074,
+                                "max_rel": 0.9612999909145655
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "npoints": 1
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.4719781567290834,
+                                "mean_rel": 0.6796106696512711,
+                                "max_abs": 0.9616405434344518,
+                                "max_rel": 0.9875718084931981
+                            },
+                            "cl": {
+                                "mean_abs": 0.48259999999999986,
+                                "mean_rel": 0.5395949651074218,
+                                "max_abs": 2.1408842472051415,
+                                "max_rel": 0.750481644817377
+                            },
+                            "cm": {
+                                "mean_abs": 0.21234033926302912,
+                                "mean_rel": 0.6999935265379909,
+                                "max_abs": 0.4777932147394178,
+                                "max_rel": 1.3573670873278916
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 2,
+                        "npoints": 10
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "reason": "no analytic block matched this mach"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.5022634839309743,
+                                "mean_rel": 0.6848989115867335,
+                                "max_abs": 0.9768055471046226,
+                                "max_rel": 0.9859908353802151
+                            },
+                            "cl": {
+                                "mean_abs": 1.8539982987139583,
+                                "mean_rel": 0.4322184116637394,
+                                "max_abs": 6.522923731870054,
+                                "max_rel": 0.9154451667793178
+                            },
+                            "cm": {
+                                "mean_abs": 0.2526111479633994,
+                                "mean_rel": 0.7980871724856483,
+                                "max_abs": 0.6316322922541314,
+                                "max_rel": 3.3601969569682275
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 18
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.9003998817788249,
+                                "mean_rel": 0.9851202207645786,
+                                "max_abs": 0.9003998817788249,
+                                "max_rel": 0.9851202207645786
+                            },
+                            "cl": {
+                                "mean_abs": 0.13912088559242933,
+                                "mean_rel": 6.956044279621466,
+                                "max_abs": 0.13912088559242933,
+                                "max_rel": 6.956044279621466
+                            },
+                            "cm": {
+                                "mean_abs": 0.6142706941944074,
+                                "mean_rel": 0.9612999909145655,
+                                "max_abs": 0.6142706941944074,
+                                "max_rel": 0.9612999909145655
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "npoints": 1
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.4719781567290834,
+                                "mean_rel": 0.6796106696512711,
+                                "max_abs": 0.9616405434344518,
+                                "max_rel": 0.9875718084931981
+                            },
+                            "cl": {
+                                "mean_abs": 0.48259999999999986,
+                                "mean_rel": 0.5395949651074218,
+                                "max_abs": 2.1408842472051415,
+                                "max_rel": 0.750481644817377
+                            },
+                            "cm": {
+                                "mean_abs": 0.21234033926302912,
+                                "mean_rel": 0.6999935265379909,
+                                "max_abs": 0.4777932147394178,
+                                "max_rel": 1.3573670873278916
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 3,
+                        "npoints": 10
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex3.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 2,
+                    "total_blocks": 2,
+                    "skipped_blocks": 0,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.024367340735330756,
+                                "mean_rel": 0.4135888591986266,
+                                "max_abs": 0.04596214681820075,
+                                "max_rel": 0.5327506073484112
+                            },
+                            "cl": {
+                                "mean_abs": 0.19759058276124303,
+                                "mean_rel": 0.3306426524128524,
+                                "max_abs": 0.3239886702679396,
+                                "max_rel": 0.4882756531015414
+                            },
+                            "cm": {
+                                "mean_abs": 0.4260133282417368,
+                                "mean_rel": 19.857025302809653,
+                                "max_abs": 0.774399181826587,
+                                "max_rel": 60.499936080202104
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 1.736552618776763e8,
+                                "mean_rel": 7.771438972105156e8,
+                                "max_abs": 4.6308069832155436e8,
+                                "max_rel": 1.0336622731061895e9
+                            },
+                            "cl": {
+                                "mean_abs": 14366.404785777431,
+                                "mean_rel": 26389.13960085922,
+                                "max_abs": 28732.767971554862,
+                                "max_rel": 34869.99511111027
+                            },
+                            "cm": {
+                                "mean_abs": 19160.184932693275,
+                                "mean_rel": 58716.55855132893,
+                                "max_abs": 38320.43164538655,
+                                "max_rel": 82658.06804440584
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2,
+                        "case_index": 2,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex4.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 6,
+                    "total_blocks": 12,
+                    "skipped_blocks": 6,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0003725760612118173,
+                                "mean_rel": 0.0343697647912255,
+                                "max_abs": 0.0006827468465274138,
+                                "max_rel": 0.056895570543951154
+                            },
+                            "cl": {
+                                "mean_abs": 0.0006789295587561506,
+                                "mean_rel": 0.03394647793780752,
+                                "max_abs": 0.0014498129051243765,
+                                "max_rel": 0.07249064525621882
+                            },
+                            "cm": {
+                                "mean_abs": 0.0006180275686159087,
+                                "mean_rel": 0.03734468650814792,
+                                "max_abs": 0.0016302365019285128,
+                                "max_rel": 0.056245882489797845
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00034507479444804555,
+                                "mean_rel": 0.028330507252233066,
+                                "max_abs": 0.0008006105819872069,
+                                "max_rel": 0.07278278018065518
+                            },
+                            "cl": {
+                                "mean_abs": 0.00033910061419614924,
+                                "mean_rel": 0.016211834315200215,
+                                "max_abs": 0.00046181117149472414,
+                                "max_rel": 0.023090558574736207
+                            },
+                            "cm": {
+                                "mean_abs": 0.00014698430486721956,
+                                "mean_rel": 0.003827544043534788,
+                                "max_abs": 0.00023933399018213897,
+                                "max_rel": 0.005778388855619567
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 2,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0004298423929440498,
+                                "mean_rel": 0.037723185742373024,
+                                "max_abs": 0.0008020597362315869,
+                                "max_rel": 0.07291452147559882
+                            },
+                            "cl": {
+                                "mean_abs": 0.0006194296245779898,
+                                "mean_rel": 0.030971481228899488,
+                                "max_abs": 0.0017802567600341684,
+                                "max_rel": 0.08901283800170842
+                            },
+                            "cm": {
+                                "mean_abs": 0.0008098693396188341,
+                                "mean_rel": 0.040262154284446516,
+                                "max_abs": 0.0021227418923593297,
+                                "max_rel": 0.05586462884886639
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 3,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00027072281833561356,
+                                "mean_rel": 0.03298120653248147,
+                                "max_abs": 0.0006711234034475298,
+                                "max_rel": 0.08389042543094122
+                            },
+                            "cl": {
+                                "mean_abs": 0.0001599995920510894,
+                                "mean_rel": 0.00799997960255447,
+                                "max_abs": 0.00040324885250446994,
+                                "max_rel": 0.020162442625223497
+                            },
+                            "cm": {
+                                "mean_abs": 0.0001940001842050448,
+                                "mean_rel": 0.007845231959751713,
+                                "max_abs": 0.0005642895573508208,
+                                "max_rel": 0.011331115609454235
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 4,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 4,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0003476963586591453,
+                                "mean_rel": 0.04003454545290064,
+                                "max_abs": 0.0005992096069029913,
+                                "max_rel": 0.07490120086287391
+                            },
+                            "cl": {
+                                "mean_abs": 0.00026027726785522373,
+                                "mean_rel": 0.012939554602429234,
+                                "max_abs": 0.0004007807628761753,
+                                "max_rel": 0.020039038143808766
+                            },
+                            "cm": {
+                                "mean_abs": 5.918319147217478e-5,
+                                "mean_rel": 0.002268921802646349,
+                                "max_abs": 0.00014530550893283867,
+                                "max_rel": 0.004320442120600529
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 5,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 5,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00016373275505595354,
+                                "mean_rel": 0.017591441562346384,
+                                "max_abs": 0.00035109869216484735,
+                                "max_rel": 0.03901096579609415
+                            },
+                            "cl": {
+                                "mean_abs": 0.00014148452774029305,
+                                "mean_rel": 0.006469805736472882,
+                                "max_abs": 0.0004230944553792401,
+                                "max_rel": 0.016923778215169605
+                            },
+                            "cm": {
+                                "mean_abs": 0.00019521804783597375,
+                                "mean_rel": 0.008003202610425269,
+                                "max_abs": 0.00047938476265729085,
+                                "max_rel": 0.009733690254190838
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 6,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 6,
+                        "reason": "no finite legacy reference points"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "JDATCOM/validation/cases/generated_suite.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T22:02:38.992"
+}

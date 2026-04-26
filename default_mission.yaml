@@ -1,0 +1,58 @@
+###########################################
+# FILE: F:\UEM\DEV\JS\Flight_Simulator\▶OpenFlight_Git_folder\✈_OPENFLIGHT\default_mission.yaml
+###########################################
+
+# AIRCRAFT PARAMETERS
+aircraft_name: "SF25B"  # Aircraft folder name in 🏭_HANGAR (contains .yaml aero data and optionally .glb 3D model)
+
+# AERODYNAMIC MODEL MODE
+# "linear" → scalar stability & control derivatives model
+#            (0.3_🧮_linear_aerodynamic_model.jl).  Simple fallback used when a
+#            full table database is absent or still being debugged.
+# "table"  → full aerodynamic look-up tables from the .aero_prop.yaml file.
+#            Preferred when the aircraft ships a validated tabular model.
+aerodynamic_model_mode: "linear"
+
+# FLIGHT TEST PARAMETERS
+initial_velocity: 60  # Initial velocity in m/s; PC-21 model QC estimates >=57.7 m/s for a clean safe launch
+initial_altitude: 2000  # Initial altitude in m
+
+# CONTROL FEEL
+# Server-side actuator slew rate for aileron/elevator/rudder (normalized
+# units per second).  A pilot input of 1.0 held for `1/control_actuator_speed`
+# seconds will drive the surface to full deflection.
+#   4.0  → 250 ms to full deflection (default, realistic trainer)
+#   6.0  → 170 ms (snappy; good with keyboard input)
+#   2.0  → 500 ms (heavier, airliner-like)
+# If this key is absent, the aircraft YAML's `control_actuator_speed` is used
+# (or 4.0 as a final fallback).  Commented out by default so the aircraft
+# value wins unless the pilot wants to override for this session.
+# control_actuator_speed: 4.0
+
+# AUTO PITCH TRIM
+# "off"        → no auto trim. Pilot flies raw — any initial pitching-moment
+#                bias shows up as a held stick pressure the pilot must carry.
+# "initial"    → compute the trim bias ONCE at the initial condition so the
+#                aircraft launches in trim, then HOLD that bias forever. Good
+#                for quick-start but the bias does not track speed/altitude
+#                changes during flight.
+# "continuous" → compute the initial trim as a starting point, then run a
+#                slow integrator each frame that absorbs any sustained pilot
+#                stick pressure into the trim bias (time constant ≈ 1/rate
+#                seconds, see `auto_pitch_trim_rate`). Equivalent to electric
+#                trim follow-up: pilot can hold a new attitude until the
+#                trim catches up, then release the stick.
+# `auto_pitch_trim_max_bias` limits how much hidden stick-equivalent bias the
+# trim system may accumulate in continuous mode.
+auto_pitch_trim_mode: "initial"
+auto_pitch_trim_rate: 0.1   # Absorption rate [1/s] for "continuous" mode. 0.1 → ~10 s time constant.
+auto_pitch_trim_max_bias: 0.25
+
+# FLIGHT RECORDING PARAMETERS
+start_flight_data_recording_at:  3    # start recording in seconds after start of flight
+finish_flight_data_recording_at: 145    # finish recording in seconds
+
+# VISUALIZATION PARAMETERS
+scenery_complexity: 0  # 0 = four checkered quadrants, 1 = low, 2 = medium, 3 = high detail, 4 = ultra shadows/glow
+game_environment: "fog"  # "fog", "dusk", "night", "fog"
+telemetry_screen: false  # If true, a telemetry overlay screen is rendered in the cockpit view showing live flight data (airspeed, altitude, etc.)

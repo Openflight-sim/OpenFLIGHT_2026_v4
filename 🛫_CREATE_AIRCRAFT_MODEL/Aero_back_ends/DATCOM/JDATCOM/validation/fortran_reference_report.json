@@ -1,0 +1,320 @@
+{
+    "reports": [
+        {
+            "name": "EX1 Case 1 (Body Alone)",
+            "points": [
+                {
+                    "cm_ref": 0,
+                    "cl_julia": 0,
+                    "cl_ref": 0,
+                    "cd_julia": 0.021,
+                    "dcm": 0,
+                    "alpha": 0,
+                    "cm_julia": 0,
+                    "cd_ref": 0.021,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0.0137,
+                    "cl_julia": 0.014,
+                    "cl_ref": 0.014,
+                    "cd_julia": 0.022,
+                    "dcm": 0,
+                    "alpha": 4,
+                    "cm_julia": 0.0137,
+                    "cd_ref": 0.022,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0.0273,
+                    "cl_julia": 0.027,
+                    "cl_ref": 0.027,
+                    "cd_julia": 0.025,
+                    "dcm": 0,
+                    "alpha": 8,
+                    "cm_julia": 0.0273,
+                    "cd_ref": 0.025,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0.041,
+                    "cl_julia": 0.041,
+                    "cl_ref": 0.041,
+                    "cd_julia": 0.029,
+                    "dcm": 0,
+                    "alpha": 12,
+                    "cm_julia": 0.041,
+                    "cd_ref": 0.029,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0.0546,
+                    "cl_julia": 0.055,
+                    "cl_ref": 0.055,
+                    "cd_julia": 0.036,
+                    "dcm": 0,
+                    "alpha": 16,
+                    "cm_julia": 0.0546,
+                    "cd_ref": 0.036,
+                    "dcl": 0,
+                    "dcd": 0
+                }
+            ],
+            "mach": 0.6,
+            "max_abs": {
+                "cd": 0,
+                "cl": 0,
+                "cm": 0
+            },
+            "input": "tests/fixtures/ex1.inp",
+            "case_idx": 1
+        },
+        {
+            "name": "EX2 Case 1 (Wing)",
+            "points": [
+                {
+                    "cm_ref": 0.0264,
+                    "cl_julia": -0.087,
+                    "cl_ref": -0.087,
+                    "cd_julia": 0.007,
+                    "dcm": 0,
+                    "alpha": -6,
+                    "cm_julia": 0.0264,
+                    "cd_ref": 0.007,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0344,
+                    "cl_julia": 0.077,
+                    "cl_ref": 0.077,
+                    "cd_julia": 0.006,
+                    "dcm": 0,
+                    "alpha": 0,
+                    "cm_julia": -0.0344,
+                    "cd_ref": 0.006,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0862,
+                    "cl_julia": 0.196,
+                    "cl_ref": 0.196,
+                    "cd_julia": 0.016,
+                    "dcm": 0,
+                    "alpha": 4,
+                    "cm_julia": -0.0862,
+                    "cd_ref": 0.016,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.1419,
+                    "cl_julia": 0.323,
+                    "cl_ref": 0.323,
+                    "cd_julia": 0.036,
+                    "dcm": 0,
+                    "alpha": 8,
+                    "cm_julia": -0.1419,
+                    "cd_ref": 0.036,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.1985,
+                    "cl_julia": 0.44,
+                    "cl_ref": 0.44,
+                    "cd_julia": 0.062,
+                    "dcm": 0,
+                    "alpha": 12,
+                    "cm_julia": -0.1985,
+                    "cd_ref": 0.062,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.2508,
+                    "cl_julia": 0.531,
+                    "cl_ref": 0.531,
+                    "cd_julia": 0.088,
+                    "dcm": 0,
+                    "alpha": 16,
+                    "cm_julia": -0.2508,
+                    "cd_ref": 0.088,
+                    "dcl": 0,
+                    "dcd": 0
+                }
+            ],
+            "mach": 0.6,
+            "max_abs": {
+                "cd": 0,
+                "cl": 0,
+                "cm": 0
+            },
+            "input": "tests/fixtures/ex2.inp",
+            "case_idx": 1
+        },
+        {
+            "name": "EX3 Case 1 (Full Config)",
+            "points": [
+                {
+                    "cm_ref": 0.0228,
+                    "cl_julia": -0.134,
+                    "cl_ref": -0.134,
+                    "cd_julia": 0.018,
+                    "dcm": 0,
+                    "alpha": -2,
+                    "cm_julia": 0.0228,
+                    "cd_ref": 0.018,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0,
+                    "cl_julia": 0,
+                    "cl_ref": 0,
+                    "cd_julia": 0.016,
+                    "dcm": 0,
+                    "alpha": 0,
+                    "cm_julia": 0,
+                    "cd_ref": 0.016,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0239,
+                    "cl_julia": 0.134,
+                    "cl_ref": 0.134,
+                    "cd_julia": 0.018,
+                    "dcm": 0,
+                    "alpha": 2,
+                    "cm_julia": -0.0239,
+                    "cd_ref": 0.018,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0535,
+                    "cl_julia": 0.27,
+                    "cl_ref": 0.27,
+                    "cd_julia": 0.026,
+                    "dcm": 0,
+                    "alpha": 4,
+                    "cm_julia": -0.0535,
+                    "cd_ref": 0.026,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.1228,
+                    "cl_julia": 0.542,
+                    "cl_ref": 0.542,
+                    "cd_julia": 0.073,
+                    "dcm": 0,
+                    "alpha": 8,
+                    "cm_julia": -0.1228,
+                    "cd_ref": 0.073,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.1985,
+                    "cl_julia": 0.804,
+                    "cl_ref": 0.804,
+                    "cd_julia": 0.16,
+                    "dcm": 0,
+                    "alpha": 12,
+                    "cm_julia": -0.1985,
+                    "cd_ref": 0.16,
+                    "dcl": 0,
+                    "dcd": 0
+                }
+            ],
+            "mach": 0.6,
+            "max_abs": {
+                "cd": 0,
+                "cl": 0,
+                "cm": 0
+            },
+            "input": "tests/fixtures/ex3.inp",
+            "case_idx": 1
+        },
+        {
+            "name": "EX4 Case 1 (Canard)",
+            "points": [
+                {
+                    "cm_ref": 0,
+                    "cl_julia": 0,
+                    "cl_ref": 0,
+                    "cd_julia": 0.007,
+                    "dcm": 0,
+                    "alpha": 0,
+                    "cm_julia": 0,
+                    "cd_ref": 0.007,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0245,
+                    "cl_julia": 0.306,
+                    "cl_ref": 0.306,
+                    "cd_julia": 0.02,
+                    "dcm": 0,
+                    "alpha": 5,
+                    "cm_julia": -0.0245,
+                    "cd_ref": 0.02,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.044,
+                    "cl_julia": 0.603,
+                    "cl_ref": 0.603,
+                    "cd_julia": 0.054,
+                    "dcm": 0,
+                    "alpha": 10,
+                    "cm_julia": -0.044,
+                    "cd_ref": 0.054,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": -0.0352,
+                    "cl_julia": 0.793,
+                    "cl_ref": 0.793,
+                    "cd_julia": 0.091,
+                    "dcm": 0,
+                    "alpha": 15,
+                    "cm_julia": -0.0352,
+                    "cd_ref": 0.091,
+                    "dcl": 0,
+                    "dcd": 0
+                },
+                {
+                    "cm_ref": 0.0128,
+                    "cl_julia": 0.815,
+                    "cl_ref": 0.815,
+                    "cd_julia": 0.104,
+                    "dcm": 0,
+                    "alpha": 20,
+                    "cm_julia": 0.0128,
+                    "cd_ref": 0.104,
+                    "dcl": 0,
+                    "dcd": 0
+                }
+            ],
+            "mach": 0.6,
+            "max_abs": {
+                "cd": 0,
+                "cl": 0,
+                "cm": 0
+            },
+            "input": "tests/fixtures/ex4.inp",
+            "case_idx": 1
+        }
+    ]
+}

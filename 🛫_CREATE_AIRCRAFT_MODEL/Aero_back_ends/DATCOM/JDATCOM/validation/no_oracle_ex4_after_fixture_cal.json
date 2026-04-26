@@ -1,0 +1,87 @@
+{
+    "summary": {
+        "comparable_blocks": 2,
+        "failed_blocks": 1,
+        "total_blocks": 2,
+        "skipped_blocks": 0,
+        "pass_rate": 0.5,
+        "target_rel_tolerance": 0.01,
+        "passed_blocks": 1,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0.5
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 1,
+                    "total_blocks": 2,
+                    "skipped_blocks": 0,
+                    "pass_rate": 0.5,
+                    "rel_tolerance": 0.01,
+                    "passed_blocks": 1
+                },
+                "blocks": [
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0.007080000000000008,
+                                "mean_rel": 0.023059203697636223,
+                                "max_abs": 0.017800000000000038,
+                                "max_rel": 0.07139959432048683
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2,
+                        "case_index": 2,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex4.inp"
+        }
+    ],
+    "generated_at": "2026-02-26T08:37:34.479"
+}

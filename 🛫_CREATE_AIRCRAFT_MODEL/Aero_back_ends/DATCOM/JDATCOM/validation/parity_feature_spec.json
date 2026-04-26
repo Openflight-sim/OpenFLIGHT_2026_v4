@@ -1,0 +1,52 @@
+{
+  "required_features": [
+    {
+      "id": "body_only_cases",
+      "description": "At least one body-only case is present in qualification inputs."
+    },
+    {
+      "id": "wing_only_cases",
+      "description": "At least one wing-only case is present in qualification inputs."
+    },
+    {
+      "id": "full_config_cases",
+      "description": "At least one body+wing+horizontal+vertical configuration is present."
+    },
+    {
+      "id": "canard_cases",
+      "description": "At least one forward horizontal-surface (canard) case is present."
+    },
+    {
+      "id": "wing_type_1",
+      "description": "At least one TYPE=1 wing case is present."
+    },
+    {
+      "id": "wing_type_2",
+      "description": "At least one TYPE=2 wing case is present."
+    },
+    {
+      "id": "wing_type_3",
+      "description": "At least one TYPE=3 wing case is present."
+    },
+    {
+      "id": "expr_cases",
+      "description": "At least one case with EXPR inputs is present."
+    },
+    {
+      "id": "subsonic_regime",
+      "description": "At least one subsonic Mach point (<0.9) is present."
+    },
+    {
+      "id": "transonic_regime",
+      "description": "At least one transonic Mach point (0.9-1.2) is present."
+    },
+    {
+      "id": "supersonic_regime",
+      "description": "At least one supersonic Mach point (1.2-5.0) is present."
+    },
+    {
+      "id": "hypersonic_flag",
+      "description": "At least one case explicitly sets HYPERS true."
+    }
+  ]
+}

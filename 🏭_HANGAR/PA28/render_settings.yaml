@@ -1,0 +1,26 @@
+# Per-aircraft render overrides for the Piper PA-18.
+# See 4.3_🔼_import_parameters_for_glb_aircraft.js (GLB transform +
+# lights + propeller) and 6.4_🎦_create_cameras.js (camera_positions)
+# for what each key does.  Omit any key to fall back to the built-in
+# default.
+#
+# Body-frame convention: x toward the tail from CoG, y up from CoG,
+# z toward the right wing from CoG.
+
+glb_transform:
+  rotation_deg:  {x: 0, y: -90, z: 0}
+  translation_m: {x: -1.5, y: -1.2, z: 0}
+  scale: 1
+
+lights:
+  wing_tip_position:  [0.06,  0.79, 5.11]   # starboard; port is mirrored on z
+  tailcone_position:  [-5.2,  0.4,  0]
+  strobe_position:    [-1.0,  0.75, 0]
+
+propeller:
+  position:   [1.67, 0.05, 0]   # body-frame offset from CoG, meters
+  diameter_m: 1.7                # tip-to-tip diameter, meters
+
+camera_positions:
+  cockpit: {x: 0.5,  y: 1.0, z: 0.0,  yaw_deg: 90,    pitch_deg: 0, roll_deg: 0}
+  wing:    {x: -1.5, y: 0.5, z: 4.2, yaw_deg: -5.7,  pitch_deg: 0, roll_deg: 0}

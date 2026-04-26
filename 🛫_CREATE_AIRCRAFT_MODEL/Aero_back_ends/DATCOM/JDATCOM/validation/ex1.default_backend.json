@@ -1,0 +1,249 @@
+{
+    "backend": "analytic",
+    "num_cases": 4,
+    "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex1.inp",
+    "cases": [
+        {
+            "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+            "mach_results": [
+                {
+                    "reynolds": 4280000,
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.025898855177493338,
+                            "cl": -0.01600219625148643,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -6,
+                            "cm": -0.5268525291553907
+                        },
+                        {
+                            "cd": 0.024744325550879145,
+                            "cl": -0.009616287109425258,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -4,
+                            "cm": -0.3496799385580825
+                        },
+                        {
+                            "cd": 0.024133678695048063,
+                            "cl": -0.0042716422565205895,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -2,
+                            "cm": -0.174058619081506
+                        },
+                        {
+                            "cd": 0.023955332799508216,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.024133678695048063,
+                            "cl": 0.0042716422565205895,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 2,
+                            "cm": -0.1724921027313393
+                        },
+                        {
+                            "cd": 0.024744325550879145,
+                            "cl": 0.009616287109425258,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": -0.3434215050676081
+                        },
+                        {
+                            "cd": 0.027705311800083374,
+                            "cl": 0.02338607380298401,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": -0.6806454832892566
+                        },
+                        {
+                            "cd": 0.03368050050130672,
+                            "cl": 0.04092574599446865,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 12,
+                            "cm": -1.0118534691199343
+                        },
+                        {
+                            "cd": 0.043413852217641845,
+                            "cl": 0.06172049820273517,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 16,
+                            "cm": -1.337344091463431
+                        },
+                        {
+                            "cd": 0.05752086403292339,
+                            "cl": 0.08521377758964829,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 20,
+                            "cm": -1.6574945873508935
+                        },
+                        {
+                            "cd": 0.07652795208999066,
+                            "cl": 0.11102757111477338,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 24,
+                            "cm": -1.9725257306665476
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+            "mach_results": [
+                {
+                    "reynolds": null,
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+            "mach_results": [
+                {
+                    "reynolds": 6400000,
+                    "mach": 0.9,
+                    "alpha_results": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_transonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_transonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_transonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ]
+                },
+                {
+                    "reynolds": 9960000,
+                    "mach": 1.4,
+                    "alpha_results": [
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0011133848076805234,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0022050988465359936,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ]
+                },
+                {
+                    "reynolds": 17000000,
+                    "mach": 2.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0011133848076805234,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0022050988465359936,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+            "mach_results": [
+                {
+                    "reynolds": 17860000,
+                    "mach": 2.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0011133848076805234,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": -0.0022050988465359936,
+                            "regime": "body_alone_supersonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+[deps]
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+MsgPack = "99f44e22-a591-53d1-9472-aa23ef4bd671"
+Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"
+YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"

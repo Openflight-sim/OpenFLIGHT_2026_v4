@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OPENFLIGHT Sim 2025</title>
+    <link rel="stylesheet" href="./00_CSS_styles/styles.css">
+    <link rel="icon" href="./00_CSS_styles/openflight.ico" sizes="any">
+
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/babylon.js"></script>
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/babylon_GUI.js"></script>
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/msgpack.min.js"></script>
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/babylonjs.loaders.min.js"></script>
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/babylon.customMaterial.min.js"></script>
+    <script src="./%F0%9F%9B%91_EXTERNAL_LIBRARIES/cannon.js"></script>
+    <script src="./0_INITIALIZATION/0.1_%F0%9F%A7%BE_initializations.js"></script>
+    <script src="./assets/day_sky_b64.js"></script>
+    <script src="./assets/night_sky_b64.js"></script>
+    <script
+        src="./1_AIRCRAFT_STATE_TRANSFER/1.1_%F0%9F%94%81_exchange_aircraft_state_with_server.js?v=20260426_chase_visual_pose"></script>
+    <script src="./2_GUI/2.1_%E2%8F%B1_fps_calculator.js"></script>
+    <script src="./2_GUI/2.2_%F0%9F%8E%A8_GUI_components.js"></script>
+    <script src="./2_GUI/2.3_%E2%AD%95_pause_menu.js"></script>
+    <script src="./2_GUI/2.4_%F0%9F%94%80_simulation_manager.js"></script>
+    <script src="./2_GUI/2.5_%E2%8F%AB_Main_HUD.js"></script>
+    <script src="./3_INCEPTORS/3.1_%F0%9F%95%B9_joystick_gamepad.js"></script>
+    <script src="./4_TERRAIN_AND_WORLD_OBJECTS/4.1_%F0%9F%8C%8D_create_world_scenery.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.2_%F0%9F%8C%8D_TERRAIN_AND_RUNWAY/4.2.1_%F0%9F%8F%9E_create_terrain_height.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.2_%F0%9F%8C%8D_TERRAIN_AND_RUNWAY/4.2.2_%F0%9F%97%BA_create_terrain_texture.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.2_%F0%9F%8C%8D_TERRAIN_AND_RUNWAY/4.2.3_%F0%9F%8E%B9_create_runway.js?v=20260426_depth_aware_glow"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.2_%F0%9F%8C%8D_TERRAIN_AND_RUNWAY/4.2.4_%F0%9F%8C%96_create_sky_sphere_and_fog.js?v=20260425_foggy_dusk"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.1_%F0%9F%8F%A0_generic_house_constructor.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.2_%E2%9B%BD_create_control_tower.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.3_%F0%9F%8C%B2_create_trees.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.4_%E2%9B%AA_create_buildings.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.5_%F0%9F%97%BC_create_lighthouses.js?v=20260426_depth_aware_glow"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.6._%F0%9F%92%A1_blinking_light_constructor.js?v=20260426_depth_aware_glow"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.7_%F0%9F%92%A8_create_wind_turbines.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.3_%F0%9F%8F%A1_WORLD_OBJECTS/4.3.8_%F0%9F%9A%97_Create_car.js"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.4_%E2%9C%88_AIRCRAFT_GEOMETRY/4.1_%E2%9C%88_default_aircraft_model.js?v=20260426_visual_geometry_cache"></script>
+    <script
+        src="./4_TERRAIN_AND_WORLD_OBJECTS/4.4_%E2%9C%88_AIRCRAFT_GEOMETRY/4.3_%F0%9F%94%BC_import_parameters_for_glb_aircraft.js"></script>
+    <script
+        src="./5_3D_FLIGHT_DATA_VISUALIZATION/5.1_%F0%9F%93%90_draw_forces_and_velocities.js?v=20260426_tail_ac"></script>
+    <script src="./5_3D_FLIGHT_DATA_VISUALIZATION/5.2_%E2%9E%B0_draw_aircraft_trajectory.js"></script>
+    <script src="./6_SCENE_AND_RENDER_LOOP/6.1_%E2%99%BB_MAIN_render_loop.js?v=20260426_chase_visual_pose"></script>
+    <script src="./6_SCENE_AND_RENDER_LOOP/6.2_%F0%9F%8C%84_create_scene.js?v=20260425_foggy_dusk"></script>
+    <script src="./6_SCENE_AND_RENDER_LOOP/6.3_%F0%9F%92%A1_create_lights_and_shadows.js"></script>
+    <script src="./6_SCENE_AND_RENDER_LOOP/6.4_%F0%9F%8E%A6_create_cameras.js?v=20260426_chase_retain_last"></script>
+
+    <!-- Gemini Voice ATC -->
+    <script src="./7_ATC_GEMINI/7.2_📡_gemini_live_api_websocket.js"></script>
+
+</head>
+
+<body>
+    <input type="file" id="fileInput" accept=".glb" style="display: none;" />
+
+    <!--
+      Startup loading overlay. Visible from the moment the HTML is parsed so
+      the user sees something meaningful immediately — before Babylon, the
+      scene, or the WebSocket handshake have had a chance to run. Hidden by
+      the main render loop (6.1) once the simulation is ready to be unpaused:
+      window.initialDataReceived === true AND !window.isGlbLoading.
+      Shares the #glbLoadingOverlay id so 4.3_🔼_import_parameters_for_glb_aircraft.js
+      can update its text to "Loading aircraft model (…)" during GLB upload.
+      The inline script below fetches /mission_info as soon as the body
+      parses so the overlay shows the aircraft name and full mission
+      configuration instead of a blank "Loading…" — the previous behaviour
+      left the user staring at a featureless screen for several seconds.
+    -->
+    <div id="glbLoadingOverlay"
+         style="position:fixed;top:0;left:0;width:100%;height:100%;
+                background:rgba(0,0,0,0.78);color:#fff;
+                display:flex;flex-direction:column;align-items:center;
+                justify-content:center;font-family:'Segoe UI',Arial,sans-serif;
+                font-size:18px;letter-spacing:0.3px;z-index:99999;
+                pointer-events:none;text-align:left;padding:24px;
+                box-sizing:border-box;">
+        <div id="glbLoadingTitle" style="font-size:24px;font-weight:bold;
+             margin-bottom:18px;letter-spacing:0.6px;">Loading…</div>
+        <pre id="glbLoadingMissionInfo" style="font-family:'Consolas',
+             'Courier New',monospace;font-size:14px;line-height:1.45;
+             color:#ddd;background:rgba(255,255,255,0.04);
+             padding:14px 22px;border-radius:6px;margin:0;max-width:80vw;
+             max-height:60vh;overflow:auto;white-space:pre-wrap;"></pre>
+    </div>
+
+    <script>
+    // Fetch mission info as early as possible (before the main bundle even
+    // starts loading) so the user sees the aircraft name and active
+    // mission settings while the GLB / aero database stream in. The
+    // overlay would otherwise sit blank for several seconds.
+    (function () {
+        function renderMissionInfo(aircraftName, yamlText) {
+            var titleEl = document.getElementById('glbLoadingTitle');
+            var infoEl = document.getElementById('glbLoadingMissionInfo');
+            if (titleEl) {
+                titleEl.textContent = 'Loading ' + (aircraftName || '(unknown aircraft)');
+            }
+            if (infoEl) {
+                // Strip block comments and blank-line clusters so the user
+                // sees a compact key:value list, not the full file.
+                var trimmed = (yamlText || '')
+                    .split(/\r?\n/)
+                    .filter(function (line) {
+                        var t = line.trim();
+                        return t.length > 0 && !t.startsWith('#');
+                    })
+                    .join('\n');
+                infoEl.textContent = trimmed || '(mission file empty)';
+            }
+        }
+        try {
+            fetch('/mission_info', { cache: 'no-store' })
+                .then(function (r) {
+                    var name = r.headers.get('X-Aircraft-Name') || '';
+                    return r.text().then(function (txt) { return [name, txt]; });
+                })
+                .then(function (pair) { renderMissionInfo(pair[0], pair[1]); })
+                .catch(function (err) {
+                    var titleEl = document.getElementById('glbLoadingTitle');
+                    if (titleEl) titleEl.textContent = 'Loading…';
+                    var infoEl = document.getElementById('glbLoadingMissionInfo');
+                    if (infoEl) infoEl.textContent = '(mission info unavailable: ' + err + ')';
+                });
+        } catch (err) {
+            // Browsers without fetch — leave the default text in place.
+        }
+    })();
+    </script>
+
+    <canvas id="renderCanvas"></canvas>
+
+</body>
+
+</html>

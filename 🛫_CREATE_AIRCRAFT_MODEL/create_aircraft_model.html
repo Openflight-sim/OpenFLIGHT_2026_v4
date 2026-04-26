@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aircraft Aerodynamic Model Generator</title>
+  <link rel="stylesheet" href="src/styles/style.css">
+  <!-- BabylonJS CDN -->
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- JSON tree editor -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.0/jsoneditor.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.10.0/jsoneditor.min.js"></script>
+  <!-- Chart.js for results visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <!-- js-yaml for YAML export -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <!-- MessagePack for binary WebSocket protocol -->
+  <script src="https://cdn.jsdelivr.net/npm/@msgpack/msgpack@3.0.0-beta2/dist.es5+umd/msgpack.min.js"></script>
+
+  <script>
+    // Toggle collapsible sections in modals
+    function toggleCollapsible(header) {
+      var content = header.nextElementSibling;
+      if (content && content.classList.contains('collapsible-content')) {
+        content.classList.toggle('collapsed');
+        var arrow = header.querySelector('.collapse-arrow');
+        if (arrow) arrow.textContent = content.classList.contains('collapsed') ? '\u25B6' : '\u25BC';
+      }
+    }
+  </script>
+  <script>
+    // Prevent auto-reloading and reset
+    window.addEventListener('beforeunload', function(e) {
+      const hasContent = window.aircraftData &&
+                        ((window.aircraftData.lifting_surfaces && window.aircraftData.lifting_surfaces.length > 0) ||
+                        (window.aircraftData.fuselages && window.aircraftData.fuselages.length > 0) ||
+                        window.glbRoot);
+      if (window.userInitiatedAction === 'reload' || window.userInitiatedAction === 'navigate') {
+        if (hasContent) {
+          e.preventDefault();
+          e.returnValue = 'Your changes may be lost. Are you sure you want to leave?';
+          return e.returnValue;
+        }
+      } else {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        return false;
+      }
+    });
+
+    window.appState = { jsonEditorVisible: false };
+    window.userInitiatedAction = null;
+    window.originalReload = window.location.reload;
+    window.location.reload = function() {
+      window.userInitiatedAction = 'reload';
+      window.originalReload.apply(window.location, arguments);
+    };
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirm('Do you want to reload the page? Your unsaved changes will be lost.')) {
+          window.userInitiatedAction = 'reload';
+          window.location.href = window.location.href;
+        }
+        return false;
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Hidden file inputs -->
+  <input type="file" id="jsonFileInput" accept=".yaml,.yml,.json" style="display:none;">
+  <input type="file" id="glbFileInput" accept=".glb" style="display:none;">
+
+  <!-- ============================================================= -->
+  <!--  MENU BAR                                                      -->
+  <!-- ============================================================= -->
+  <nav id="menubar">
+    <div class="menu" data-menu="file">
+      <button class="menu-trigger">File</button>
+      <div class="menu-dropdown">
+        <button id="selectJsonBtn" class="menu-action"><i class="fas fa-folder-open"></i> Open<span class="shortcut">Ctrl+O</span></button>
+        <button id="downloadJsonBtn" class="menu-action"><i class="fas fa-save"></i> Save ac_data<span class="shortcut">Ctrl+S</span></button>
+        <button id="selectGlbBtn" class="menu-action"><i class="fas fa-cube"></i> Import GLB Model</button>
+        <div class="menu-divider"></div>
+        <button id="exportOpenFlightBtn" class="menu-action accent-export"><i class="fas fa-plane-departure"></i> Export for OpenFlight</button>
+      </div>
+    </div>
+
+    <div class="menu" data-menu="components">
+      <button class="menu-trigger">Components</button>
+      <div class="menu-dropdown">
+        <button id="addLiftingSurfaceBtn" class="menu-action"><i class="fas fa-wind"></i> Add Lifting Surface</button>
+        <button id="addFuselageBtn" class="menu-action"><i class="fas fa-capsules"></i> Add Fuselage</button>
+        <button id="addEngineBtn" class="menu-action"><i class="fas fa-jet-fighter"></i> Add Engine</button>
+        <div class="menu-divider"></div>
+        <button id="editGeneralBtn" class="menu-action"><i class="fas fa-weight-hanging"></i> Mass &amp; Reference</button>
+        <button id="editConfigsBtn" class="menu-action"><i class="fas fa-sliders-h"></i> Configurations</button>
+        <div class="menu-divider"></div>
+        <button id="clearAircraft" class="menu-action accent-danger"><i class="fas fa-trash-alt"></i> Clear All Components</button>
+      </div>
+    </div>
+
+    <div class="menu" data-menu="analysis">
+      <button class="menu-trigger">Analysis</button>
+      <div class="menu-dropdown">
+        <button id="openAnalysisBtn" class="menu-action"><i class="fas fa-calculator"></i> Setup &amp; Run</button>
+        <button id="toggleResultsBtn" class="menu-action"><i class="fas fa-chart-line"></i> Results Panel</button>
+        <div class="menu-divider"></div>
+        <button id="toggleVLMMeshBtn" class="menu-action" onclick="toggleVLMMesh()"><i class="fas fa-border-all"></i> VLM Mesh Overlay</button>
+        <button id="toggleInertiaEllipsoidBtn" class="menu-action" onclick="toggleInertiaEllipsoid()"><i class="fas fa-atom"></i> Inertia Ellipsoid</button>
+      </div>
+    </div>
+
+    <div class="menu" data-menu="view">
+      <button class="menu-trigger">View</button>
+      <div class="menu-dropdown">
+        <button id="toggleJsonEditorBtn" class="menu-action"><i class="fas fa-code"></i> JSON Editor</button>
+        <button id="openGraphicsSettingsBtn" class="menu-action"><i class="fas fa-cog"></i> Graphics Settings</button>
+        <div class="menu-divider"></div>
+        <button id="toggleGround" class="menu-action"><i class="fas fa-border-bottom-right"></i> Toggle Ground</button>
+        <button id="toggleTranslucencyBtn" class="menu-action"><i class="fas fa-eye"></i> Toggle Translucency</button>
+        <button id="toggleGlbTranslucencyBtn" class="menu-action"><i class="fas fa-cube"></i> GLB Translucency</button>
+        <button id="resetViewBtn" class="menu-action"><i class="fas fa-home"></i> Reset Camera<span class="shortcut">H</span></button>
+        <div class="menu-divider"></div>
+        <div class="menu-group-label">Camera Presets</div>
+        <div class="menu-preset-row">
+          <button class="menu-preset" onclick="setCameraPreset('top')" title="Top View">T</button>
+          <button class="menu-preset" onclick="setCameraPreset('bottom')" title="Bottom View">B</button>
+          <button class="menu-preset" onclick="setCameraPreset('front')" title="Front View">F</button>
+          <button class="menu-preset" onclick="setCameraPreset('side')" title="Side View">S</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="menu-trigger standalone" id="toggleAssistantBtn" title="AI Assistant"><i class="fas fa-robot"></i> AI</button>
+
+    <!-- Right-aligned status cluster -->
+    <div class="menubar-spacer"></div>
+    <div class="menubar-status">
+      <span id="gizmoModeIndicator" class="gizmo-badge" style="display:none;"></span>
+      <span id="validationIndicator" class="status-badge validation-indicator validation-error" title="Validation status"><i class="fas fa-times-circle"></i></span>
+      <span id="wsStatus" class="status-dot ws-status ws-disconnected" title="WebSocket">&#x25CF;</span>
+      <span id="assistantStatus" class="status-dot ws-status ws-disconnected" title="AI Assistant">&#x25CF;</span>
+    </div>
+  </nav>
+
+  <!-- ============================================================= -->
+  <!--  TOOLBAR                                                       -->
+  <!-- ============================================================= -->
+  <div id="toolbar">
+    <!-- Selection -->
+    <div class="tb-group">
+      <span id="selectedComponentName" class="tb-selection">No Selection</span>
+      <button id="editComponentBtn" class="tb-btn" disabled title="Edit Selected Component"><i class="fas fa-pen-to-square"></i></button>
+      <button id="deleteComponentBtn" class="tb-btn tb-danger" disabled title="Delete Selected Component"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="tb-divider"></div>
+    <!-- GLB Controls -->
+    <div class="tb-group tb-glb">
+      <label class="tb-label">Rx</label><input type="number" id="glbRotateXInput" class="tb-input" value="0" step="1">
+      <label class="tb-label">Ry</label><input type="number" id="glbRotateYInput" class="tb-input" value="0" step="1">
+      <label class="tb-label">Rz</label><input type="number" id="glbRotateZInput" class="tb-input" value="0" step="1">
+      <button id="applyGlbRotationBtn" class="tb-btn tb-apply" title="Apply Rotation"><i class="fas fa-check"></i></button>
+      <div class="tb-divider"></div>
+      <label class="tb-label">Scale</label><input type="number" id="glbScaleInput" class="tb-input tb-input-sm" value="1" step="0.1" min="0.1">
+      <button id="applyGlbScaleBtn" class="tb-btn tb-apply" title="Apply Scale"><i class="fas fa-check"></i></button>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  JSON EDITOR PANEL (LEFT SLIDE-IN)                             -->
+  <!-- ============================================================= -->
+  <div id="jsonEditorPanel" class="json-editor-panel">
+    <div class="panel-header">
+      <h3><i class="fas fa-code"></i> JSON Editor</h3>
+      <button id="closeJsonEditorBtn" class="panel-close">&times;</button>
+    </div>
+    <div id="jsonEditor"></div>
+    <div class="panel-footer">
+      <button id="applyJsonChangesBtn" class="btn btn-primary">Apply Changes</button>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  3D VIEWPORT                                                   -->
+  <!-- ============================================================= -->
+  <canvas id="renderCanvas"></canvas>
+
+  <!-- Floating viewport controls (bottom-right, above status bar) -->
+  <div id="viewportControls">
+    <button class="vc-btn" onclick="setCameraPreset('top')" title="Top View">T</button>
+    <button class="vc-btn" onclick="setCameraPreset('bottom')" title="Bottom View">B</button>
+    <button class="vc-btn" onclick="setCameraPreset('front')" title="Front View">F</button>
+    <button class="vc-btn" onclick="setCameraPreset('side')" title="Side View">S</button>
+    <div class="vc-sep"></div>
+    <button class="vc-btn vc-home" onclick="setCameraPreset && typeof resetCameraView==='function' ? resetCameraView() : setCameraPreset('home')" title="Reset Camera (H)"><i class="fas fa-home"></i></button>
+  </div>
+
+  <!-- Static Margin Legend (shown when NP is computed from analysis) -->
+  <div id="staticMarginLegend" class="sm-legend" style="display:none;">
+    <div class="sm-title">Stability</div>
+    <div class="sm-row"><span class="sm-dot sm-cog"></span> CoG <span id="smCogX" class="sm-val"></span></div>
+    <div class="sm-row"><span class="sm-dot sm-np"></span> NP <span id="smNpX" class="sm-val"></span></div>
+    <div class="sm-divider"></div>
+    <div class="sm-row sm-main"><span id="smValue" class="sm-val-main"></span></div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div id="loadingText">Loading 3D Model...</div>
+
+  <!-- GLB transform snippet (bottom-left) -->
+  <div id="glbTransformSnippet"></div>
+
+  <!-- ============================================================= -->
+  <!--  MODALS                                                        -->
+  <!-- ============================================================= -->
+
+  <!-- Lifting Surface Modal -->
+  <div id="liftingSurfaceModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Lifting Surface</h3>
+        <button id="ls_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-section">Identification</div>
+        <div class="field"><label>Name</label><input type="text" id="ls_name" value="wing"></div>
+        <div class="field">
+          <label>Role</label>
+          <select id="ls_role">
+            <option value="wing">Wing</option>
+            <option value="horizontal_stabilizer">Horizontal Stabilizer</option>
+            <option value="vertical_stabilizer">Vertical Stabilizer</option>
+            <option value="canard">Canard</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Mass (kg)</label><input type="number" id="ls_mass_kg" value="600"></div>
+
+        <div class="form-section">Geometry</div>
+        <div class="field"><label>Root LE (x,y,z)</label><input type="text" id="ls_root_LE" value="0,0,0"></div>
+        <div class="field"><label>Aspect Ratio</label><input type="number" step="0.01" id="ls_AR" value="8.33"></div>
+        <div class="field"><label>Taper Ratio</label><input type="number" step="0.01" id="ls_TR" value="0.6"></div>
+        <div class="field"><label>Area (m&sup2;)</label><input type="number" step="0.1" id="ls_surface_area_m2" value="48"></div>
+        <div class="field"><label>MAC (m)</label><input type="number" step="0.01" id="ls_mean_aerodynamic_chord_m" value="1.35"></div>
+        <div class="field"><label>Sweep &frac14;c (&deg;)</label><input type="number" step="0.1" id="ls_sweep_quarter_chord_DEG" value="15"></div>
+        <div class="field"><label>Dihedral (&deg;)</label><input type="number" step="0.1" id="ls_dihedral_DEG" value="3"></div>
+        <div class="field"><label>Incidence (&deg;)</label><input type="number" step="0.1" id="ls_incidence_DEG" value="0"></div>
+        <div class="field"><label>Twist Tip (&deg;)</label><input type="number" step="0.1" id="ls_twist_tip_DEG" value="0"></div>
+        <div class="field-row">
+          <div class="field-check"><label>Mirror</label><input type="checkbox" id="ls_mirror"></div>
+          <div class="field-check"><label>Symmetric</label><input type="checkbox" id="ls_symmetric" checked></div>
+          <div class="field-check"><label>Vertical</label><input type="checkbox" id="ls_vertical"></div>
+        </div>
+
+        <div class="form-section">Airfoil</div>
+        <div class="field"><label>Root</label><input type="text" id="ls_airfoil_root" value="2412" placeholder="NACA e.g. 2412"></div>
+        <div class="field"><label>Tip</label><input type="text" id="ls_airfoil_tip" value="0012" placeholder="NACA e.g. 0012"></div>
+
+        <div class="form-section">Discretization</div>
+        <div class="field"><label>Stations (&eta;)</label><input type="text" id="ls_stations_eta" value="0,0.5,1"></div>
+
+        <div class="form-section">Inertia</div>
+        <div class="field"><label>CoG (x,y,z)</label><input type="text" id="ls_CoG_pos_xyz_m" value="0,0,0"></div>
+        <div class="field"><label>Gyration Pitch (m)</label><input type="number" step="0.1" id="ls_radius_of_giration_pitch_m" value="3.5"></div>
+        <div class="field"><label>Gyration Yaw (m)</label><input type="number" step="0.1" id="ls_radius_of_giration_yaw_m" value="4.0"></div>
+        <div class="field"><label>Gyration Roll (m)</label><input type="number" step="0.1" id="ls_radius_of_giration_roll_m" value="4.0"></div>
+        <div class="field"><label>Pitch Up (&deg;)</label><input type="number" step="0.1" id="ls_principal_axis_pitch_up_DEG" value="-2"></div>
+
+        <div class="form-section">Control Surfaces</div>
+        <div id="ls_control_surfaces_container"></div>
+        <button type="button" id="ls_add_control_surface" class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i> Add Control Surface</button>
+      </div>
+      <div class="modal-footer">
+        <button id="ls_submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fuselage Modal -->
+  <div id="fuselageModal" class="modal">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h3>Fuselage</h3>
+        <button id="fus_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field"><label>Name</label><input type="text" id="fus_name" value="fus1"></div>
+        <div class="field"><label>Diameter (m)</label><input type="number" step="0.1" id="fus_diameter" value="2.5"></div>
+        <div class="field"><label>Length (m)</label><input type="number" step="0.1" id="fus_length" value="15.0"></div>
+        <div class="field"><label>Nose (x,y,z)</label><input type="text" id="fus_nose_position" value="0,0,0"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="fus_submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLB Model Edit Modal -->
+  <div id="glbModal" class="modal">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h3>GLB Model Properties</h3>
+        <button id="glb_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field"><label>Scale Factor</label><input type="number" step="0.1" id="glb_scale" value="1.0"></div>
+        <div class="form-section">Rotation</div>
+        <div class="field"><label>X (&deg;)</label><input type="number" step="1" id="glb_rotation_x" value="0"></div>
+        <div class="field"><label>Y (&deg;)</label><input type="number" step="1" id="glb_rotation_y" value="0"></div>
+        <div class="field"><label>Z (&deg;)</label><input type="number" step="1" id="glb_rotation_z" value="0"></div>
+        <div class="form-section">Position</div>
+        <div class="field"><label>X (m)</label><input type="number" step="0.1" id="glb_position_x" value="0.0"></div>
+        <div class="field"><label>Y (m)</label><input type="number" step="0.1" id="glb_position_y" value="0.0"></div>
+        <div class="field"><label>Z (m)</label><input type="number" step="0.1" id="glb_position_z" value="0.0"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="glb_submit" class="btn btn-primary">Apply Changes</button>
+        <button id="glb_generate_snippet" class="btn btn-secondary">Generate Code Snippet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engine Modal -->
+  <div id="engineModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Engine</h3>
+        <button id="eng_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-section">Identification</div>
+        <div class="field"><label>Engine ID</label><input type="text" id="eng_id" value="ENG1"></div>
+        <div class="field"><label>Position (x,y,z)</label><input type="text" id="eng_position" value="0,0,0"></div>
+
+        <div class="form-section">Orientation</div>
+        <div class="field"><label>Yaw (&deg;)</label><input type="number" step="0.1" id="eng_yaw" value="0"></div>
+        <div class="field"><label>Pitch (&deg;)</label><input type="number" step="0.1" id="eng_pitch" value="0"></div>
+        <div class="field"><label>Roll (&deg;)</label><input type="number" step="0.1" id="eng_roll" value="0"></div>
+
+        <div class="form-section">Thrust</div>
+        <div class="field"><label>Max Thrust (N)</label><input type="number" step="10" id="eng_max_thrust_n" value="600"></div>
+        <div class="field"><label>Thrust Scale</label><input type="number" step="0.01" id="eng_thrust_scale" value="1.0"></div>
+        <div class="field"><label>Spool Up (1/s)</label><input type="number" step="0.1" id="eng_spool_up" value="1.2"></div>
+        <div class="field"><label>Spool Down (1/s)</label><input type="number" step="0.1" id="eng_spool_down" value="1.0"></div>
+        <div class="field"><label>Reverse Ratio</label><input type="number" step="0.1" min="0" max="1" id="eng_reverse_ratio" value="0"></div>
+        <div class="field"><label>Throttle Channel</label><input type="number" step="1" min="1" id="eng_throttle_channel" value="1"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="eng_submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- General / Mass Properties Modal -->
+  <div id="generalModal" class="modal">
+    <div class="modal-content modal-md">
+      <div class="modal-header">
+        <h3>General &amp; Mass Properties</h3>
+        <button id="gen_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-section">Reference Geometry</div>
+        <div class="field"><label>Aircraft Name</label><input type="text" id="gen_aircraft_name" value=""></div>
+        <div class="field"><label>Ref. Area (m&sup2;)</label><input type="number" step="0.1" id="gen_sref" value="10"></div>
+        <div class="field"><label>Ref. MAC (m)</label><input type="number" step="0.01" id="gen_cref" value="3"></div>
+        <div class="field"><label>Ref. Span (m)</label><input type="number" step="0.1" id="gen_bref" value="20"></div>
+        <div class="field"><label>CoG (x,y,z) m</label><input type="text" id="gen_cog" value="2,1,0"></div>
+
+        <div class="form-section">Mass &amp; Inertia</div>
+        <div class="field"><label>Total Mass (kg)</label><input type="number" step="1" id="gen_mass" value="5000"></div>
+        <div class="field"><label>Ixx_p (kg&middot;m&sup2;)</label><input type="number" step="1" id="gen_ixx" value="1000"></div>
+        <div class="field"><label>Iyy_p (kg&middot;m&sup2;)</label><input type="number" step="1" id="gen_iyy" value="3000"></div>
+        <div class="field"><label>Izz_p (kg&middot;m&sup2;)</label><input type="number" step="1" id="gen_izz" value="3500"></div>
+        <div class="field"><label>PA Roll (&deg;)</label><input type="number" step="0.1" id="gen_pa_roll" value="0"></div>
+        <div class="field"><label>PA Pitch (&deg;)</label><input type="number" step="0.1" id="gen_pa_pitch" value="0"></div>
+        <div class="field"><label>PA Yaw (&deg;)</label><input type="number" step="0.1" id="gen_pa_yaw" value="0"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button id="gen_submit" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Configurations Modal -->
+  <div id="configModal" class="modal">
+    <div class="modal-content modal-sm">
+      <div class="modal-header">
+        <h3>Aircraft Configurations</h3>
+        <button id="cfg_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="cfg_container"></div>
+        <button type="button" id="cfg_add" class="btn btn-sm btn-secondary"><i class="fas fa-plus"></i> Add Configuration</button>
+      </div>
+      <div class="modal-footer">
+        <button id="cfg_submit" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analysis Setup Modal -->
+  <div id="analysisModal" class="modal">
+    <div class="modal-content modal-md">
+      <div class="modal-header modal-header-analysis">
+        <h3>Analysis Setup</h3>
+        <button id="analysis_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-section">Angle of Attack</div>
+        <div class="field"><label>Alpha Min (&deg;)</label><input type="number" step="1" id="analysis_alpha_min" value="-180"></div>
+        <div class="field"><label>Alpha Max (&deg;)</label><input type="number" step="1" id="analysis_alpha_max" value="180"></div>
+        <div class="field"><label title="Used for |alpha| <= 30 deg. Outside that range the model creator automatically switches to 5 deg steps.">Alpha Step (&deg;)</label><input type="number" step="0.5" id="analysis_alpha_step" value="1"></div>
+
+        <div class="form-section">Sideslip</div>
+        <div class="field"><label>Beta Min (&deg;)</label><input type="number" step="1" id="analysis_beta_min" value="-180"></div>
+        <div class="field"><label>Beta Max (&deg;)</label><input type="number" step="1" id="analysis_beta_max" value="180"></div>
+        <div class="field"><label title="Used for |beta| <= 30 deg. Outside that range the model creator automatically switches to 5 deg steps.">Beta Step (&deg;)</label><input type="number" step="1" id="analysis_beta_step" value="1"></div>
+        <div class="field"><label title="For |alpha| beyond this value, force beta=0">Beta=0 beyond &alpha; (&deg;)</label><input type="number" step="1" id="analysis_beta_zero_beyond_alpha" value="20"></div>
+
+        <div class="form-section">Mach &amp; Altitude</div>
+        <div class="field"><label>Mach Values</label><input type="text" id="analysis_mach_values" value="0.2,0.4,0.6" placeholder="comma-separated"></div>
+        <div class="field"><label>Altitude (m)</label><input type="number" step="100" id="analysis_altitude" value="0"></div>
+
+        <div class="form-section">Backends</div>
+        <div class="field-check"><label>VortexLattice (VLM)</label><input type="checkbox" id="analysis_vlm"></div>
+        <div class="field-check"><label>Julia AVL (JAVL)</label><input type="checkbox" id="analysis_javl" checked></div>
+        <div class="field-check"><label>DATCOM (JDATCOM)</label><input type="checkbox" id="analysis_datcom" checked></div>
+
+        <div class="form-section">Connection</div>
+        <div class="field"><label>Server URL</label><input type="text" id="analysis_ws_url" value="ws://localhost:8765"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="analysis_run" class="btn btn-success"><i class="fas fa-play"></i> Run Analysis</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graphics Settings Modal -->
+  <div id="graphicsSettingsModal" class="modal">
+    <div class="modal-content modal-xs">
+      <div class="modal-header">
+        <h3>Graphics Settings</h3>
+        <button id="gfx_cancel" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-section">Origin Cube</div>
+        <div class="field-check"><label>Show Origin Cube</label><input type="checkbox" id="gfx_show_cube" checked></div>
+        <div class="field"><label>Cube Size (m)</label><input type="number" id="gfx_cube_size" value="1" step="0.1" min="0.1"></div>
+        <div class="field"><label>Cube Opacity</label><input type="number" id="gfx_cube_opacity" value="0.4" step="0.05" min="0" max="1"></div>
+        <div class="form-section">Scene</div>
+        <div class="field-check"><label>Show Ground</label><input type="checkbox" id="gfx_show_ground" checked></div>
+        <div class="field-check"><label>Show Axes</label><input type="checkbox" id="gfx_show_axes" checked></div>
+        <div class="form-section">Camera</div>
+        <div class="field-check"><label>Parallel View (Ortho)</label><input type="checkbox" id="gfx_parallel_view"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="gfx_apply" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  RESULTS PANEL (RIGHT SLIDE-IN)                                -->
+  <!-- ============================================================= -->
+  <div id="resultsPanel" class="results-panel">
+    <div class="panel-header panel-header-results">
+      <h3>Aerodynamic Results</h3>
+      <div class="panel-header-actions">
+        <button id="fullResultsViewBtn" class="btn btn-sm btn-accent" title="Full results dashboard" onclick="openFullResultsView()"><i class="fas fa-chart-bar"></i> Full View</button>
+        <button id="exportOpenFlightResultsBtn" class="btn btn-sm btn-export" title="Export for OpenFlight"><i class="fas fa-plane-departure"></i> OpenFlight</button>
+        <button id="exportYamlBtn" class="btn btn-sm btn-secondary" title="Download YAML"><i class="fas fa-file-export"></i> YAML</button>
+        <button id="exportJsonModelBtn" class="btn btn-sm btn-secondary" title="Download JSON"><i class="fas fa-file-code"></i> JSON</button>
+        <button id="closeResultsBtn" class="panel-close">&times;</button>
+      </div>
+    </div>
+    <div class="results-body">
+      <!-- Progress section -->
+      <div id="analysisProgress" style="display:none;">
+        <div class="form-section">Analysis Progress</div>
+        <div id="progressVLM" class="progress-row">
+          <span class="progress-label">VLM</span>
+          <div class="progress-track"><div class="progress-bar" id="progressBarVLM"></div></div>
+          <span class="progress-status" id="progressStatusVLM">--</span>
+        </div>
+        <div id="progressJAVL" class="progress-row">
+          <span class="progress-label">JAVL</span>
+          <div class="progress-track"><div class="progress-bar" id="progressBarJAVL"></div></div>
+          <span class="progress-status" id="progressStatusJAVL">--</span>
+        </div>
+        <div id="progressDATCOM" class="progress-row">
+          <span class="progress-label">DATCOM</span>
+          <div class="progress-track"><div class="progress-bar" id="progressBarDATCOM"></div></div>
+          <span class="progress-status" id="progressStatusDATCOM">--</span>
+        </div>
+        <div id="progressLog" class="progress-log"></div>
+      </div>
+      <!-- Chart tabs -->
+      <div id="resultsCharts" style="display:none;">
+        <div class="chart-tabs">
+          <button class="chart-tab active" data-chart="clAlpha">CL vs &alpha;</button>
+          <button class="chart-tab" data-chart="dragPolar">Drag Polar</button>
+          <button class="chart-tab" data-chart="cmAlpha">Cm vs &alpha;</button>
+          <button class="chart-tab" data-chart="lateral">Lateral</button>
+          <button class="chart-tab" data-chart="controls">Controls</button>
+          <button class="chart-tab" data-chart="derivatives">Derivatives</button>
+          <button class="chart-tab" data-chart="downwash">Downwash &epsilon;(&alpha;)</button>
+          <button class="chart-tab" data-chart="etaH">&eta;<sub>h</sub>(&alpha;)</button>
+          <button class="chart-tab" data-chart="sidewash">Sidewash &sigma;(&beta;)</button>
+          <button class="chart-tab" data-chart="etaV">&eta;<sub>v</sub>(&beta;)</button>
+        </div>
+        <div class="chart-container">
+          <canvas id="aeroChart"></canvas>
+        </div>
+        <div id="derivativesTable" style="display:none;">
+          <table id="derivTable" class="deriv-table">
+            <thead><tr><th>Derivative</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  AI ASSISTANT PANEL (RIGHT SLIDE-IN)                           -->
+  <!-- ============================================================= -->
+  <div id="assistantPanel" class="assistant-panel">
+    <div class="panel-header panel-header-ai">
+      <h3><i class="fas fa-robot"></i> J O S H U A</h3>
+      <div class="panel-header-actions">
+        <button id="assistantSettingsBtn" class="btn btn-sm btn-ghost" title="API Key Settings"><i class="fas fa-key"></i></button>
+        <button id="assistantClearBtn" class="btn btn-sm btn-ghost" title="Clear Chat History"><i class="fas fa-eraser"></i></button>
+        <button id="closeAssistantBtn" class="panel-close">&times;</button>
+      </div>
+    </div>
+    <div id="assistantMessages" class="assistant-messages">
+      <div class="assistant-msg system-msg">
+        <p>GREETINGS, PROFESSOR.<br>SHALL WE DESIGN AN AIRCRAFT?</p>
+        <div class="assistant-api-help">
+          <div class="assistant-api-help-title"><i class="fas fa-key"></i> Gemini API key setup</div>
+          <ol>
+            <li>Create a Gemini API key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.</li>
+            <li>Click the key button in this panel header.</li>
+            <li>Paste the key and press OK. It is stored only in this browser.</li>
+          </ol>
+          <p>After the status dot turns green, type here or hold the mic to speak.</p>
+        </div>
+      </div>
+    </div>
+    <div class="assistant-input-area">
+      <div class="assistant-input-row">
+        <button id="assistantMicBtn" class="ai-mic-btn" title="Hold to speak (Push-to-Talk)"><i class="fas fa-microphone"></i></button>
+        <textarea id="assistantInput" placeholder="Ask about your aircraft design..." rows="1"></textarea>
+        <button id="assistantSendBtn" class="ai-send-btn" title="Send Message"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  FOLDER PICKER MODAL                                           -->
+  <!-- ============================================================= -->
+  <div id="folderPickerModal" class="modal" style="z-index:200;">
+    <div class="modal-content modal-md">
+      <div class="modal-header">
+        <h3><i class="fas fa-folder-open"></i> Save ac_data</h3>
+        <button id="fpCloseBtn" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="fp-path-row">
+          <button id="fpUpBtn" class="btn btn-sm btn-secondary" title="Go to parent folder"><i class="fas fa-arrow-up"></i> Up</button>
+          <input id="fpCurrentPath" type="text" readonly class="fp-path-input">
+        </div>
+        <div id="fpEntryList" class="fp-list"></div>
+        <div class="fp-filename-row">
+          <label>File name:</label>
+          <input id="fpFilename" type="text" class="fp-filename-input">
+        </div>
+        <div id="fpStatus" class="fp-status"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="fpCancelBtn" class="btn btn-secondary">Cancel</button>
+        <button id="fpSaveBtn" class="btn btn-primary"><i class="fas fa-save"></i> Save ac_data</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!--  SCRIPTS (order is important)                                  -->
+  <!-- ============================================================= -->
+  <script src="src/js/⛺_scene_setup/set_up_camera.js"></script>
+  <script src="src/js/⛺_scene_setup/lights_and_shadows.js"></script>
+  <script src="src/js/⛺_scene_setup/ground_axis_sphere.js"></script>
+  <script src="src/js/⛺_scene_setup/babylon-setup.js"></script>
+
+  <script src="src/js/render_aircraft.js"></script>
+  <script src="src/js/load_glb_file.js"></script>
+  <script src="src/js/component-creation.js"></script>
+  <script src="src/js/interaction.js"></script>
+  <script src="src/js/scene-utils.js"></script>
+  <script src="src/js/ui-logic.js"></script>
+  <script src="src/js/glb-editing.js"></script>
+  <script src="src/js/json-editor.js"></script>
+  <script src="src/js/WebSocketClient.js"></script>
+  <script src="src/js/MessagePackProtocol.js"></script>
+  <script src="src/js/AeroModelClient.js"></script>
+  <script src="src/js/analysis-setup.js"></script>
+  <script src="src/js/results-panel.js"></script>
+  <script src="src/js/full-results-view.js"></script>
+  <script src="src/js/vlm-mesh-view.js"></script>
+  <script src="src/js/inertia-ellipsoid.js"></script>
+  <script src="src/js/openflight-export.js"></script>
+  <script src="src/js/validation.js"></script>
+  <script src="src/js/server-save.js"></script>
+  <script src="src/js/gemini-assistant.js"></script>
+
+  <!-- Dropdown menu behavior -->
+  <script>
+    (function() {
+      // Menu dropdown toggle logic
+      document.querySelectorAll('.menu .menu-trigger').forEach(function(trigger) {
+        trigger.addEventListener('click', function(e) {
+          var menu = trigger.closest('.menu');
+          if (!menu || !menu.querySelector('.menu-dropdown')) return;
+          var wasOpen = menu.classList.contains('open');
+          closeAllMenus();
+          if (!wasOpen) menu.classList.add('open');
+          e.stopPropagation();
+        });
+      });
+      // Close menus on outside click or on action click
+      document.addEventListener('click', closeAllMenus);
+      document.querySelectorAll('.menu-dropdown .menu-action').forEach(function(btn) {
+        btn.addEventListener('click', closeAllMenus);
+      });
+      function closeAllMenus() {
+        document.querySelectorAll('.menu.open').forEach(function(m) { m.classList.remove('open'); });
+      }
+
+      // Sync the server URL input with the port set by RunModelCreator.jl
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof aeromodel_port !== 'undefined') {
+          var urlInput = document.getElementById('analysis_ws_url');
+          if (urlInput) urlInput.value = 'ws://localhost:' + aeromodel_port;
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

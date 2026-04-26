@@ -1,0 +1,3267 @@
+{
+    "backend": "analytic",
+    "num_cases": 5,
+    "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex3.inp",
+    "cases": [
+        {
+            "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+            "mach_results": [
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.008,
+                            "cl": -0.003,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0099
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0.003,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.0099
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0.007,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.0194
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.015,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.0371
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": 0.023,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.0533
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0.032,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.0679
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0.043,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0812
+                        },
+                        {
+                            "cd": 0.03,
+                            "cl": 0.053,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 0.0931
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.008,
+                            "cl": -0.093,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.015
+                        },
+                        {
+                            "cd": 0.006,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0.093,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0159
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.187,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0334
+                        },
+                        {
+                            "cd": 0.039,
+                            "cl": 0.372,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.0727
+                        },
+                        {
+                            "cd": 0.078,
+                            "cl": 0.548,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1097
+                        },
+                        {
+                            "cd": 0.115,
+                            "cl": 0.678,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.1354
+                        },
+                        {
+                            "cd": 0.138,
+                            "cl": 0.744,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.1556
+                        },
+                        {
+                            "cd": 0.134,
+                            "cl": 0.734,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.1649
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.002,
+                            "cl": -0.016,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0358
+                        },
+                        {
+                            "cd": 0.001,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.002,
+                            "cl": 0.016,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0356
+                        },
+                        {
+                            "cd": 0.003,
+                            "cl": 0.032,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0721
+                        },
+                        {
+                            "cd": 0.009,
+                            "cl": 0.065,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1471
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.096,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.2177
+                        },
+                        {
+                            "cd": 0.027,
+                            "cl": 0.119,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2735
+                        },
+                        {
+                            "cd": 0.033,
+                            "cl": 0.132,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3107
+                        },
+                        {
+                            "cd": 0.037,
+                            "cl": 0.14,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.34
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.002,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": -0.001755,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.001554,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.001352,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.0009424,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.0005285,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.0001119,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.0003051,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.0007207,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.016,
+                            "cl": -0.125,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0032
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0.125,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0042
+                        },
+                        {
+                            "cd": 0.024,
+                            "cl": 0.251,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0106
+                        },
+                        {
+                            "cd": 0.067,
+                            "cl": 0.5,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.0292
+                        },
+                        {
+                            "cd": 0.149,
+                            "cl": 0.738,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.047
+                        },
+                        {
+                            "cd": 0.236,
+                            "cl": 0.907,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.0542
+                        },
+                        {
+                            "cd": 0.992,
+                            "cl": -0.0583,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0092
+                        },
+                        {
+                            "cd": 0.981,
+                            "cl": -0.0552,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.01458
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.01,
+                            "cl": -0.028,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0435
+                        },
+                        {
+                            "cd": 0.009,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.028,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0432
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": 0.056,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.088
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.112,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1802
+                        },
+                        {
+                            "cd": 0.031,
+                            "cl": 0.164,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.2618
+                        },
+                        {
+                            "cd": 0.044,
+                            "cl": 0.204,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.3201
+                        },
+                        {
+                            "cd": 0.056,
+                            "cl": 0.228,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3475
+                        },
+                        {
+                            "cd": 0.067,
+                            "cl": 0.245,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.3608
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.01,
+                            "cl": -0.003,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0099
+                        },
+                        {
+                            "cd": 0.009,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.003,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.0099
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.007,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.0194
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": 0.015,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.0371
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0.023,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.0533
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.032,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.0679
+                        },
+                        {
+                            "cd": 0.024,
+                            "cl": 0.043,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0812
+                        },
+                        {
+                            "cd": 0.031,
+                            "cl": 0.053,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 0.0931
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.134,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0228
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.909,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.134,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0239
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.27,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0535
+                        },
+                        {
+                            "cd": 0.995,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.073,
+                            "cl": 0.542,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1228
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.16,
+                            "cl": 0.804,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1985
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.361
+                        },
+                        {
+                            "cd": 0.255,
+                            "cl": 1.006,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2806
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.452,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.162
+                        },
+                        {
+                            "cd": 1.128,
+                            "cl": -0.3731,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.01762
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.65,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.065
+                        },
+                        {
+                            "cd": 1.147,
+                            "cl": -0.4388,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.008122
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.929,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.18
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.125,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0032
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.125,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0042
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.251,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0106
+                        },
+                        {
+                            "cd": 0.069,
+                            "cl": 0.5,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.0292
+                        },
+                        {
+                            "cd": 0.151,
+                            "cl": 0.738,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.047
+                        },
+                        {
+                            "cd": 0.238,
+                            "cl": 0.907,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.0542
+                        },
+                        {
+                            "cd": 0.992,
+                            "cl": -0.0583,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0092
+                        },
+                        {
+                            "cd": 0.981,
+                            "cl": -0.0552,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.01458
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.019,
+                            "cl": -0.134,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0228
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.909,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.134,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0239
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.028,
+                            "cl": 0.27,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0535
+                        },
+                        {
+                            "cd": 0.995,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.074,
+                            "cl": 0.542,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1228
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.162,
+                            "cl": 0.804,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1985
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.361
+                        },
+                        {
+                            "cd": 0.257,
+                            "cl": 1.006,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2806
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.452,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.162
+                        },
+                        {
+                            "cd": 1.128,
+                            "cl": -0.3731,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.01762
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.65,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.065
+                        },
+                        {
+                            "cd": 1.147,
+                            "cl": -0.4388,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.008122
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.929,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.18
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.008,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.009,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.011,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.006,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.001,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.003,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.017,
+                            "cl": -0.13,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0077
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0.13,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.131
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.261,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.262
+                        },
+                        {
+                            "cd": 0.082,
+                            "cl": 0.521,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.527
+                        },
+                        {
+                            "cd": 0.158,
+                            "cl": 0.782,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.797
+                        },
+                        {
+                            "cd": 0.246,
+                            "cl": 1.042,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 1.07
+                        },
+                        {
+                            "cd": 1.303,
+                            "cl": 0.06513,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.009441
+                        },
+                        {
+                            "cd": 1.563,
+                            "cl": 0.06513,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.01133
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.009,
+                            "cl": -0.027,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.027,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -6.755e-5
+                        },
+                        {
+                            "cd": 0.054,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0001351
+                        },
+                        {
+                            "cd": 0.107,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.0002702
+                        },
+                        {
+                            "cd": 0.161,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.0004053
+                        },
+                        {
+                            "cd": 0.215,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.0005404
+                        },
+                        {
+                            "cd": 0.268,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.0006755
+                        },
+                        {
+                            "cd": 0.322,
+                            "cl": 0.01342,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.0008106
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.01,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.011,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.011,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.014,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.914,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.639
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.02,
+                            "cl": -0.13,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0.13,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.029,
+                            "cl": 0.261,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.085,
+                            "cl": 0.521,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.161,
+                            "cl": 0.782,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.249,
+                            "cl": 1.042,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 1.303,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.06513
+                        },
+                        {
+                            "cd": 1.563,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 0.06513
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.017,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.914,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.639
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.014,
+                            "cl": -0.004,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.0085
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0.004,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.0085
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.01,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.0173
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.027,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.0358
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.053,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 0.0551
+                        },
+                        {
+                            "cd": 0.038,
+                            "cl": 0.087,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 0.0752
+                        },
+                        {
+                            "cd": 0.061,
+                            "cl": 0.132,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 0.0966
+                        },
+                        {
+                            "cd": 0.098,
+                            "cl": 0.19,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 0.1197
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.008,
+                            "cl": -0.077,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0298
+                        },
+                        {
+                            "cd": 0.006,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.008,
+                            "cl": 0.077,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0298
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.155,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.0597
+                        },
+                        {
+                            "cd": 0.041,
+                            "cl": 0.308,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1193
+                        },
+                        {
+                            "cd": 0.082,
+                            "cl": 0.452,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.133,
+                            "cl": 0.583,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.186,
+                            "cl": 0.694,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.234,
+                            "cl": 0.781,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.002,
+                            "cl": -0.014,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0308
+                        },
+                        {
+                            "cd": 0.001,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.002,
+                            "cl": 0.014,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0308
+                        },
+                        {
+                            "cd": 0.003,
+                            "cl": 0.027,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.0615
+                        },
+                        {
+                            "cd": 0.007,
+                            "cl": 0.054,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1231
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0.08,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.103,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.033,
+                            "cl": 0.123,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.042,
+                            "cl": 0.139,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.001,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": -0.01012,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.009103,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.008073,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.005982,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.003863,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": -0.001725,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.0004214,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.002566,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.022,
+                            "cl": -0.1,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.018
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0.1,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0265
+                        },
+                        {
+                            "cd": 0.029,
+                            "cl": 0.203,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.053
+                        },
+                        {
+                            "cd": 0.059,
+                            "cl": 0.412,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1047
+                        },
+                        {
+                            "cd": 0.107,
+                            "cl": 0.617,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": -0.1528
+                        },
+                        {
+                            "cd": 0.171,
+                            "cl": 0.808,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": -0.1947
+                        },
+                        {
+                            "cd": 0.247,
+                            "cl": 0.982,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": -0.227
+                        },
+                        {
+                            "cd": 0.332,
+                            "cl": 1.142,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": -0.2463
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.016,
+                            "cl": -0.021,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0421
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0.021,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0421
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0.044,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.0843
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.095,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1677
+                        },
+                        {
+                            "cd": 0.039,
+                            "cl": 0.149,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": -0.2451
+                        },
+                        {
+                            "cd": 0.062,
+                            "cl": 0.209,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": -0.308
+                        },
+                        {
+                            "cd": 0.094,
+                            "cl": 0.275,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": -0.3557
+                        },
+                        {
+                            "cd": 0.139,
+                            "cl": 0.349,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": -0.3887
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.015,
+                            "cl": -0.004,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.0085
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.004,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.0085
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0.01,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.0173
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.027,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.0358
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.053,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 0.0551
+                        },
+                        {
+                            "cd": 0.039,
+                            "cl": 0.087,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 0.0752
+                        },
+                        {
+                            "cd": 0.062,
+                            "cl": 0.132,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 0.0966
+                        },
+                        {
+                            "cd": 0.099,
+                            "cl": 0.19,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 0.1197
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.024,
+                            "cl": -0.111,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": -0.717,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.915,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.024,
+                            "cl": 0.111,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": 0.717,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.032,
+                            "cl": 0.225,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.1
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 1.437,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.065,
+                            "cl": 0.456,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.2021
+                        },
+                        {
+                            "cd": 0.999,
+                            "cl": 2.858,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.352
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.022,
+                            "cl": -0.1,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.018
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0.1,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0265
+                        },
+                        {
+                            "cd": 0.029,
+                            "cl": 0.203,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.053
+                        },
+                        {
+                            "cd": 0.059,
+                            "cl": 0.412,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1047
+                        },
+                        {
+                            "cd": 0.107,
+                            "cl": 0.617,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": -0.1528
+                        },
+                        {
+                            "cd": 0.171,
+                            "cl": 0.808,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": -0.1947
+                        },
+                        {
+                            "cd": 0.247,
+                            "cl": 0.982,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": -0.227
+                        },
+                        {
+                            "cd": 0.332,
+                            "cl": 1.142,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": -0.2463
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.025,
+                            "cl": -0.111,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": -0.717,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.915,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.111,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": 0.717,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.033,
+                            "cl": 0.225,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.1
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 1.437,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.066,
+                            "cl": 0.456,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.2021
+                        },
+                        {
+                            "cd": 0.999,
+                            "cl": 2.858,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.352
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 2280000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.025,
+                            "cl": -0.137,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0355
+                        },
+                        {
+                            "cd": 0.937,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.001,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.0072
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.904,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.027,
+                            "cl": 0.138,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0203
+                        },
+                        {
+                            "cd": 0.937,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.038,
+                            "cl": 0.275,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0501
+                        },
+                        {
+                            "cd": 0.991,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.099,
+                            "cl": 0.547,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.106
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.2,
+                            "cl": 0.749,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.0965
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.309,
+                            "cl": 0.891,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.148
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.435,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.152
+                        },
+                        {
+                            "cd": 0.437,
+                            "cl": 0.975,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.1962
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.576,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.084
+                        },
+                        {
+                            "cd": 0.587,
+                            "cl": 1.091,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.234
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.766,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.202
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": true
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+            "mach_results": [
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.124,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0296
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.909,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.124,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0296
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.249,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0629
+                        },
+                        {
+                            "cd": 0.995,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.071,
+                            "cl": 0.511,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1315
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.153,
+                            "cl": 0.717,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1535
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.361
+                        },
+                        {
+                            "cd": 0.237,
+                            "cl": 0.859,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2394
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.452,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.162
+                        },
+                        {
+                            "cd": 0.336,
+                            "cl": 0.946,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3278
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.65,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.065
+                        },
+                        {
+                            "cd": 0.455,
+                            "cl": 1.066,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4036
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.929,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.18
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.021,
+                            "cl": -0.153,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.914,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.639
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.025,
+                            "cl": -0.111,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": -0.717,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.915,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.111,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": 0.717,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.033,
+                            "cl": 0.225,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.1
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 1.437,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.066,
+                            "cl": 0.456,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.2021
+                        },
+                        {
+                            "cd": 0.999,
+                            "cl": 2.858,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.352
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 2280000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.019,
+                            "cl": -0.119,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0252
+                        },
+                        {
+                            "cd": 0.937,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0.114,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.3066
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.904,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.348,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.5862
+                        },
+                        {
+                            "cd": 0.937,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.584,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.8608
+                        },
+                        {
+                            "cd": 0.991,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.071,
+                            "cl": 1.065,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 1.4056
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.154,
+                            "cl": 1.485,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 1.989
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.239,
+                            "cl": 1.839,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 2.4962
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.435,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.152
+                        },
+                        {
+                            "cd": 0.339,
+                            "cl": 2.133,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 2.9851
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.576,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.084
+                        },
+                        {
+                            "cd": 0.46,
+                            "cl": 2.453,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 3.469
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.766,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.202
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+            "mach_results": [
+                {
+                    "altitude": null,
+                    "reynolds": 4260000,
+                    "source": "reference_oracle",
+                    "mach": 0.6,
+                    "alpha_results": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.124,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.0296
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": -1.234,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.017,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.909,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.617
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.124,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0296
+                        },
+                        {
+                            "cd": 0.944,
+                            "cl": 1.234,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.603
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.249,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0629
+                        },
+                        {
+                            "cd": 0.995,
+                            "cl": 2.413,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.572
+                        },
+                        {
+                            "cd": 0.071,
+                            "cl": 0.511,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1315
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 4.565,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.493
+                        },
+                        {
+                            "cd": 0.153,
+                            "cl": 0.717,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1535
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.358,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.361
+                        },
+                        {
+                            "cd": 0.237,
+                            "cl": 0.859,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2394
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.452,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.162
+                        },
+                        {
+                            "cd": 0.336,
+                            "cl": 0.946,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3278
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 7.65,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.065
+                        },
+                        {
+                            "cd": 0.455,
+                            "cl": 1.066,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4036
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 6.929,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.18
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.8,
+                    "alpha_results": [
+                        {
+                            "cd": 0.021,
+                            "cl": -0.153,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.914,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": 0.639
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ]
+                },
+                {
+                    "altitude": null,
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.5,
+                    "alpha_results": [
+                        {
+                            "cd": 0.025,
+                            "cl": -0.111,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": -0.717,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.915,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0.358
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.111,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0491
+                        },
+                        {
+                            "cd": 0.964,
+                            "cl": 0.717,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.033,
+                            "cl": 0.225,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.1
+                        },
+                        {
+                            "cd": 1,
+                            "cl": 1.437,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.359
+                        },
+                        {
+                            "cd": 0.066,
+                            "cl": 0.456,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.2021
+                        },
+                        {
+                            "cd": 0.999,
+                            "cl": 2.858,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.352
+                        }
+                    ]
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 4",
+            "mach_results": [
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 5",
+            "mach_results": [
+            ],
+            "has_surfaces": false
+        }
+    ]
+}

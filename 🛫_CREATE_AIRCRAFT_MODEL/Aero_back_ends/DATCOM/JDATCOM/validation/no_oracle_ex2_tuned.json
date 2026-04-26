@@ -1,0 +1,257 @@
+{
+    "summary": {
+        "comparable_blocks": 7,
+        "failed_blocks": 7,
+        "total_blocks": 12,
+        "skipped_blocks": 5,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 7,
+                    "total_blocks": 12,
+                    "skipped_blocks": 5,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.010545454545454545,
+                                "mean_rel": 0.19995546305604364,
+                                "max_abs": 0.032,
+                                "max_rel": 0.2903225806451613
+                            },
+                            "cl": {
+                                "mean_abs": 0.006181818181818186,
+                                "mean_rel": 0.05764774180380052,
+                                "max_abs": 0.02200000000000002,
+                                "max_rel": 0.3181818181818182
+                            },
+                            "cm": {
+                                "mean_abs": 0.008200000000000008,
+                                "mean_rel": 0.07810511772297207,
+                                "max_abs": 0.025400000000000034,
+                                "max_rel": 0.2
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 1,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0019999999999999996,
+                                "mean_rel": 0.06748318760702661,
+                                "max_abs": 0.008,
+                                "max_rel": 0.15686274509803924
+                            },
+                            "cl": {
+                                "mean_abs": 0.00442857142857143,
+                                "mean_rel": 0.048214303871937716,
+                                "max_abs": 0.007000000000000006,
+                                "max_rel": 0.07999999999999993
+                            },
+                            "cm": {
+                                "mean_abs": 0.0020714285714285713,
+                                "mean_rel": 0.06065599683856947,
+                                "max_abs": 0.003799999999999998,
+                                "max_rel": 0.16
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.004428571428571428,
+                                "mean_rel": 0.23298333826284132,
+                                "max_abs": 0.005999999999999998,
+                                "max_rel": 0.2857142857142857
+                            },
+                            "cl": {
+                                "mean_abs": 0.0014285714285714299,
+                                "mean_rel": 0.030666440904452273,
+                                "max_abs": 0.0020000000000000018,
+                                "max_rel": 0.06666666666666674
+                            },
+                            "cm": {
+                                "mean_abs": 7.142857142857158e-5,
+                                "mean_rel": 0.0041410488245931425,
+                                "max_abs": 0.00010000000000000286,
+                                "max_rel": 0.01
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.011090909090909094,
+                                "mean_rel": 0.2615668072030828,
+                                "max_abs": 0.03600000000000003,
+                                "max_rel": 0.6
+                            },
+                            "cl": {
+                                "mean_abs": 0.01745454545454547,
+                                "mean_rel": 0.04893085045241042,
+                                "max_abs": 0.05399999999999994,
+                                "max_rel": 0.08379888268156432
+                            },
+                            "cm": {
+                                "mean_abs": 0.0191,
+                                "mean_rel": 0.21313426460374316,
+                                "max_abs": 0.08729999999999999,
+                                "max_rel": 0.68
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.013000000000000005,
+                                "mean_rel": 0.1980879402939011,
+                                "max_abs": 0.04700000000000004,
+                                "max_rel": 0.40624999999999994
+                            },
+                            "cl": {
+                                "mean_abs": 0.01745454545454547,
+                                "mean_rel": 0.04893085045241042,
+                                "max_abs": 0.05399999999999994,
+                                "max_rel": 0.08379888268156432
+                            },
+                            "cm": {
+                                "mean_abs": 0.0191,
+                                "mean_rel": 0.21313426460374316,
+                                "max_abs": 0.08729999999999999,
+                                "max_rel": 0.68
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.014636363636363635,
+                                "mean_rel": 0.20127059104306894,
+                                "max_abs": 0.04099999999999998,
+                                "max_rel": 0.6
+                            },
+                            "cl": {
+                                "mean_abs": 0.025909090909090923,
+                                "mean_rel": 0.0925199540931903,
+                                "max_abs": 0.062000000000000055,
+                                "max_rel": 0.13740458015267176
+                            },
+                            "cm": {
+                                "mean_abs": 0.009572727272727273,
+                                "mean_rel": 0.18890889166916286,
+                                "max_abs": 0.028799999999999992,
+                                "max_rel": 0.68
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.014272727272727275,
+                                "mean_rel": 0.1465809580137406,
+                                "max_abs": 0.03999999999999998,
+                                "max_rel": 0.29999999999999993
+                            },
+                            "cl": {
+                                "mean_abs": 0.025909090909090923,
+                                "mean_rel": 0.0925199540931903,
+                                "max_abs": 0.062000000000000055,
+                                "max_rel": 0.13740458015267176
+                            },
+                            "cm": {
+                                "mean_abs": 0.009572727272727273,
+                                "mean_rel": 0.18890889166916286,
+                                "max_abs": 0.028799999999999992,
+                                "max_rel": 0.68
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex2.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T22:29:54.176"
+}

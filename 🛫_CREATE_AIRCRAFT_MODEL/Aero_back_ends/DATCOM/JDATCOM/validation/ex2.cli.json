@@ -1,0 +1,780 @@
+{
+    "backend": "legacy_datcom",
+    "num_cases": 3,
+    "input": "tests/fixtures/ex2.inp",
+    "cases": [
+        {
+            "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+            "case_index": 1,
+            "mach_results": [
+                {
+                    "altitude": 0,
+                    "points": [
+                        {
+                            "cd": 0.007,
+                            "cl": -0.087,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": 0.0264
+                        },
+                        {
+                            "cd": 0.005,
+                            "cl": -0.031,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": 0.0073
+                        },
+                        {
+                            "cd": 0.005,
+                            "cl": 0.022,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0124
+                        },
+                        {
+                            "cd": 0.006,
+                            "cl": 0.077,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": -0.0344
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.135,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0592
+                        },
+                        {
+                            "cd": 0.016,
+                            "cl": 0.196,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0862
+                        },
+                        {
+                            "cd": 0.036,
+                            "cl": 0.323,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1419
+                        },
+                        {
+                            "cd": 0.062,
+                            "cl": 0.44,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1985
+                        },
+                        {
+                            "cd": 0.088,
+                            "cl": 0.531,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2508
+                        },
+                        {
+                            "cd": 0.107,
+                            "cl": 0.587,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.2925
+                        },
+                        {
+                            "cd": 0.113,
+                            "cl": 0.605,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.3207
+                        }
+                    ],
+                    "reynolds": 4240900,
+                    "source": "legacy_datcom",
+                    "mach": 0.6,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 2000,
+                    "points": [
+                        {
+                            "cd": 0.004,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": -6,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": -4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ],
+                    "reynolds": 6020500,
+                    "source": "legacy_datcom",
+                    "mach": 0.9,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 40000,
+                    "points": [
+                        {
+                            "cd": 0.019,
+                            "cl": -0.102,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0482
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": -0.05,
+                            "regime": "supersonic",
+                            "alpha": -4,
+                            "cm": 0.0241
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.05,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": -0.0241
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.102,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0482
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.156,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.0723
+                        },
+                        {
+                            "cd": 0.051,
+                            "cl": 0.267,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.1205
+                        },
+                        {
+                            "cd": 0.088,
+                            "cl": 0.377,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.135,
+                            "cl": 0.481,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.187,
+                            "cl": 0.575,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.238,
+                            "cl": 0.653,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ],
+                    "reynolds": 2668300,
+                    "source": "legacy_datcom",
+                    "mach": 1.4,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 90000,
+                    "points": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.062,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0316
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": -0.03,
+                            "regime": "supersonic",
+                            "alpha": -4,
+                            "cm": 0.0158
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.015,
+                            "cl": 0.03,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": -0.0158
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.062,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": -0.0316
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.095,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": -0.0473
+                        },
+                        {
+                            "cd": 0.04,
+                            "cl": 0.159,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": -0.0789
+                        },
+                        {
+                            "cd": 0.064,
+                            "cl": 0.22,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.091,
+                            "cl": 0.273,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.121,
+                            "cl": 0.322,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": 0.155,
+                            "cl": 0.37,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ],
+                    "reynolds": 426440,
+                    "source": "legacy_datcom",
+                    "mach": 2.5,
+                    "configuration": "WING ALONE CONFIGURATION"
+                }
+            ],
+            "has_surfaces": true
+        },
+        {
+            "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+            "case_index": 2,
+            "mach_results": [
+                {
+                    "altitude": 0,
+                    "points": [
+                        {
+                            "cd": 0.01,
+                            "cl": -0.119,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": 0.0371
+                        },
+                        {
+                            "cd": 0.006,
+                            "cl": -0.06,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": 0.0179
+                        },
+                        {
+                            "cd": 0.005,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0032
+                        },
+                        {
+                            "cd": 0.006,
+                            "cl": 0.06,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": -0.0264
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0.119,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0512
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0.179,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0768
+                        },
+                        {
+                            "cd": 0.091,
+                            "cl": 0.341,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1444
+                        },
+                        {
+                            "cd": 0.146,
+                            "cl": 0.534,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.2126
+                        },
+                        {
+                            "cd": 0.225,
+                            "cl": 0.73,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2955
+                        },
+                        {
+                            "cd": 0.323,
+                            "cl": 0.915,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3846
+                        },
+                        {
+                            "cd": 0.434,
+                            "cl": 1.087,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4891
+                        }
+                    ],
+                    "reynolds": 4240900,
+                    "source": "legacy_datcom",
+                    "mach": 0.6,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 0,
+                    "points": [
+                        {
+                            "cd": 0.011,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0365
+                        }
+                    ],
+                    "reynolds": 17671000,
+                    "source": "legacy_datcom",
+                    "mach": 2.5,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 90000,
+                    "points": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.119,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": 0.0371
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": -0.06,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": 0.0179
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0032
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": 0.06,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": -0.0264
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.119,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0512
+                        },
+                        {
+                            "cd": 0.032,
+                            "cl": 0.179,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0768
+                        },
+                        {
+                            "cd": 0.123,
+                            "cl": 0.341,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1444
+                        },
+                        {
+                            "cd": 0.217,
+                            "cl": 0.534,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.2126
+                        },
+                        {
+                            "cd": 0.354,
+                            "cl": 0.73,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2955
+                        },
+                        {
+                            "cd": 0.524,
+                            "cl": 0.915,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3846
+                        },
+                        {
+                            "cd": 0.715,
+                            "cl": 1.087,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4891
+                        }
+                    ],
+                    "reynolds": 102350,
+                    "source": "legacy_datcom",
+                    "mach": 0.6,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 90000,
+                    "points": [
+                        {
+                            "cd": 0.012,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0365
+                        }
+                    ],
+                    "reynolds": 426440,
+                    "source": "legacy_datcom",
+                    "mach": 2.5,
+                    "configuration": "WING ALONE CONFIGURATION"
+                }
+            ],
+            "has_surfaces": true
+        },
+        {
+            "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+            "case_index": 3,
+            "mach_results": [
+                {
+                    "altitude": 0,
+                    "points": [
+                        {
+                            "cd": 0.014,
+                            "cl": -0.131,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": 0.041
+                        },
+                        {
+                            "cd": 0.007,
+                            "cl": -0.065,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": 0.0199
+                        },
+                        {
+                            "cd": 0.005,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0032
+                        },
+                        {
+                            "cd": 0.007,
+                            "cl": 0.065,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": -0.0286
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0.131,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0558
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.196,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0839
+                        },
+                        {
+                            "cd": 0.061,
+                            "cl": 0.337,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1429
+                        },
+                        {
+                            "cd": 0.122,
+                            "cl": 0.496,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1976
+                        },
+                        {
+                            "cd": 0.207,
+                            "cl": 0.656,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2661
+                        },
+                        {
+                            "cd": 0.315,
+                            "cl": 0.808,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3401
+                        },
+                        {
+                            "cd": 0.445,
+                            "cl": 0.949,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4276
+                        }
+                    ],
+                    "reynolds": 4240900,
+                    "source": "legacy_datcom",
+                    "mach": 0.6,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 90000,
+                    "points": [
+                        {
+                            "cd": 0.018,
+                            "cl": -0.131,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": 0.041
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": -0.065,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": 0.0199
+                        },
+                        {
+                            "cd": 0.01,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0032
+                        },
+                        {
+                            "cd": 0.012,
+                            "cl": 0.065,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": -0.0286
+                        },
+                        {
+                            "cd": 0.018,
+                            "cl": 0.131,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": -0.0558
+                        },
+                        {
+                            "cd": 0.029,
+                            "cl": 0.196,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": -0.0839
+                        },
+                        {
+                            "cd": 0.066,
+                            "cl": 0.337,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": -0.1429
+                        },
+                        {
+                            "cd": 0.127,
+                            "cl": 0.496,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": -0.1976
+                        },
+                        {
+                            "cd": 0.212,
+                            "cl": 0.656,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": -0.2661
+                        },
+                        {
+                            "cd": 0.32,
+                            "cl": 0.808,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": -0.3401
+                        },
+                        {
+                            "cd": 0.45,
+                            "cl": 0.949,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": -0.4276
+                        }
+                    ],
+                    "reynolds": 102350,
+                    "source": "legacy_datcom",
+                    "mach": 0.6,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 0,
+                    "points": [
+                        {
+                            "cd": 0.011,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0365
+                        }
+                    ],
+                    "reynolds": 17671000,
+                    "source": "legacy_datcom",
+                    "mach": 2.5,
+                    "configuration": "WING ALONE CONFIGURATION"
+                },
+                {
+                    "altitude": 90000,
+                    "points": [
+                        {
+                            "cd": 0.012,
+                            "cl": null,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": 0.0365
+                        }
+                    ],
+                    "reynolds": 426440,
+                    "source": "legacy_datcom",
+                    "mach": 2.5,
+                    "configuration": "WING ALONE CONFIGURATION"
+                }
+            ],
+            "has_surfaces": true
+        }
+    ]
+}

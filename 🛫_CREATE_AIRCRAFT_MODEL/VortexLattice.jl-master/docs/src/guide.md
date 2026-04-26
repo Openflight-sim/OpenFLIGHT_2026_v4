@@ -1,0 +1,181 @@
+# Guide
+
+This guide demonstrates the basic steady analysis capabilities of VortexLattice. See the examples for more advanced uses of VortexLattice, including unsteady simulations.
+
+We start by loading the package.
+
+```@example guide
+using VortexLattice
+nothing #hide
+```
+
+Then we need to create our geometry.  While VortexLattice can handle multiple lifting surfaces, for this guide we will be analyzing a wing with the following geometric properties.
+
+```@example guide
+xle = [0.0, 0.4] # leading edge x-position
+yle = [0.0, 7.5] # leading edge y-position
+zle = [0.0, 0.0] # leading edge z-position
+chord = [2.2, 1.8] # chord length
+theta = [2.0*pi/180, 2.0*pi/180] # twist (in radians)
+phi = [0.0, 0.0] # section rotation about the x-axis
+fc = fill((xc) -> 0, 2) # camberline function for each section (y/c = f(x/c))
+nothing #hide
+```
+
+Note that we are only defining half the wing since the wing is symmetric about the X-Z plane.
+
+We also need to define the number of panels and the discretization scheme in the spanwise and chordwise directions.  There are currently three discretization
+scheme options: `Uniform()`, `Sine()`, and `Cosine()`.  To maximize the accuracy of our analysis we would like to use cosine spacing in the spanwise direction.  To do this, we need to use sine spacing on the right half of the wing (since once reflected across the y-z plane, sine spacing become cosine spacing).  
+
+```@example guide
+ns = 12 # number of spanwise panels
+nc = 6  # number of chordwise panels
+spacing_s = Sine() # spanwise discretization scheme
+spacing_c = Uniform() # chordwise discretization scheme
+nothing #hide
+```
+
+We generate our lifting surface grid using `wing_to_grid`.  We use the keyword argument `mirror` to mirror our geometry across the X-Y plane.  A grid with the panel corners and a vector of ratios for control point placement are returned. The latter is not needed if all spacings are set to `Uniform()`.
+
+```@example guide
+grid, ratio = wing_to_grid(xle, yle, zle, chord, theta, phi, ns, nc;
+fc = fc, spacing_s=spacing_s, spacing_c=spacing_c, mirror=true)
+nothing #hide
+```
+
+We can generate the lifting surface from the grid and ratios using
+`grid_to_surface_panels`.
+
+The last step in defining our geometry is to combine all grids in a single vector and all our ratios into a single vector.  Since we only have one grid, we create two vectors with single elements. These are loaded into `System`. 
+
+```@example guide
+grids = [grid]
+ratios = [ratio]
+system = System(grids; ratios)
+nothing #hide
+```
+
+Now that we have generated our geometry we need to define our reference parameters and freestream properties. We use the following reference parameters
+
+```@example guide
+Sref = 30.0 # reference area
+cref = 2.0  # reference chord
+bref = 15.0 # reference span
+rref = [0.50, 0.0, 0.0] # reference location for rotations/moments (typically the c.g.)
+Vinf = 1.0 # reference velocity (magnitude)
+ref = Reference(Sref, cref, bref, rref, Vinf)
+nothing #hide
+```
+
+We use the following freestream properties.
+```@example guide
+alpha = 1.0*pi/180 # angle of attack
+beta = 0.0 # sideslip angle
+Omega = [0.0, 0.0, 0.0] # rotational velocity around the reference location
+fs = Freestream(Vinf, alpha, beta, Omega)
+nothing #hide
+```
+
+Since the flow conditions are symmetric, we could have modeled one half of our wing and used symmetry to model the other half.  This, however, would give incorrect results for the lateral stability derivatives so we have instead mirrored our geometry across the X-Z plane.
+
+```@example guide
+symmetric = false
+nothing #hide
+```
+
+We are now ready to perform a steady state analysis. We do so by calling the `steady_analysis` function. This function:
+ - Finds the circulation distribution for a given set of panels and flow conditions
+ - Performs a near-field analysis to find the forces on each panel, unless
+   otherwise specified through the keyword argument `near_field_analysis`
+ - Determines the derivatives of the near-field analysis forces with respect to
+   the freestream variables, unless otherwise specified through the keyword
+   argument `derivatives`
+
+```@example guide
+steady_analysis!(system, ref, fs; symmetric)
+nothing #hide
+```
+
+The result of our analysis is in the system.  Note that the keyword argument `symmetric` is not strictly necessary, since by default it is set to false for each surface.
+
+Once we have performed our steady state analysis (and associated near field analysis) we can extract the body force/moment coefficients using the function `body_forces`. These forces are returned in the reference frame specified by the keyword argument `frame`, which defaults to the body reference frame.
+
+Note that a near field analysis must have been performed on `system` for this function to return sensible results (which is the default behavior when running an analysis).
+
+```@example guide
+CF, CM = body_forces(system; frame=Wind())
+
+# extract aerodynamic forces
+CD, CY, CL = CF
+Cl, Cm, Cn = CM
+nothing #hide
+```
+
+Numerical noise often corrupts drag estimates from near-field analyses, therefore, it is often more accurate to compute drag in the farfield on the Trefftz plane.
+
+```@example guide
+CDiff = far_field_drag(system)
+nothing #hide
+```
+
+Sectional coefficients may be calculated using the `lifting_line_coefficients` function.
+```@example guide
+# calculate lifting line coefficients
+cf, cm = lifting_line_coefficients(system; frame=Body())
+nothing #hide
+```
+These coefficients are defined as ``c_f = \frac{F'}{q_\infty c}`` and ``c_m = \frac{M'}{q_\infty c^2}``, respectively, where ``F'`` is the force per unit length
+along the lifting line, ``M'`` is the moment per unit length along the lifting line, ``q_\infty`` is the freestream dynamic pressure, and ``c`` is the local chord length.  
+By default, these coefficients are defined in the body frame, but may be returned in the stability or wind frame by using the `frame` keyword argument.  Note that further manipulations upon these coefficients may be required to calculate local aerodynamic coefficients since 1) the local frame of reference is not necessarily equivalent to the global frame of reference and 2) the quantities used to normalize a given local aerodynamic coefficient may vary from those used in this package.
+
+We can also extract the body and/or stability derivatives for the aircraft easily using the functions `body_derivatives` and/or `stability_derivatives`.  
+
+Once again, note that the derivatives of the near-field analysis forces with respect to the freestream variables must have been previously calculated (which is the default behavior when running an analysis) for these functions to yield sensible results.
+
+```@example guide
+dCFb, dCMb = body_derivatives(system)
+
+# traditional names for each body derivative
+CXu, CYu, CZu = dCFb.u
+CXv, CYv, CZv = dCFb.v
+CXw, CYw, CZw = dCFb.w
+CXp, CYp, CZp = dCFb.p
+CXq, CYq, CZq = dCFb.q
+CXr, CYr, CZr = dCFb.r
+Clu, Cmu, Cnu = dCMb.u
+Clv, Cmv, Cnv = dCMb.v
+Clw, Cmw, Cnw = dCMb.w
+Clp, Cmp, Cnp = dCMb.p
+Clq, Cmq, Cnq = dCMb.q
+Clr, Cmr, Cnr = dCMb.r
+
+nothing #hide
+```
+
+```@example guide
+dCFs, dCMs = stability_derivatives(system)
+
+# traditional names for each stability derivative
+CDa, CYa, CLa = dCFs.alpha
+Cla, Cma, Cna = dCMs.alpha
+CDb, CYb, CLb = dCFs.beta
+Clb, Cmb, Cnb = dCMs.beta
+CDp, CYp, CLp = dCFs.p
+Clp, Cmp, Cnp = dCMs.p
+CDq, CYq, CLq = dCFs.q
+Clq, Cmq, Cnq = dCMs.q
+CDr, CYr, CLr = dCFs.r
+Clr, Cmr, Cnr = dCMs.r
+
+nothing #hide
+```
+
+Visualizing the geometry (and results) may be done in Paraview after writing the associated visualization files using `write_vtk`.
+
+```julia
+write_vtk("simplewing", system)
+```
+
+![](simple-guide.png)
+
+For visualization purposes, positive circulation is defined in the +i and +j directions.

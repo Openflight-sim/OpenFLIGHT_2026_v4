@@ -1,0 +1,419 @@
+{
+    "summary": {
+        "comparable_blocks": 6,
+        "failed_blocks": 6,
+        "total_blocks": 38,
+        "skipped_blocks": 32,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.01,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 6,
+                    "total_blocks": 38,
+                    "skipped_blocks": 32,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.01,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0077142857142857195,
+                                "mean_rel": 0.13490095170951008,
+                                "max_abs": 0.018000000000000016,
+                                "max_rel": 0.2857142857142856
+                            },
+                            "cl": {
+                                "mean_abs": 0.036714285714285734,
+                                "mean_rel": 0.06123373566067191,
+                                "max_abs": 0.11299999999999999,
+                                "max_rel": 0.11232604373757454
+                            },
+                            "cm": {
+                                "mean_abs": 0.019914285714285718,
+                                "mean_rel": 0.12347453811690137,
+                                "max_abs": 0.08380000000000001,
+                                "max_rel": 0.2986457590876693
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0014000000000000013,
+                                "mean_rel": 0.044945054945054984,
+                                "max_abs": 0.0030000000000000027,
+                                "max_rel": 0.09523809523809532
+                            },
+                            "cl": {
+                                "mean_abs": 0.0032000000000000028,
+                                "mean_rel": 0.008368421052631586,
+                                "max_abs": 0.013000000000000012,
+                                "max_rel": 0.028508771929824584
+                            },
+                            "cm": {
+                                "mean_abs": 0.0010200000000000014,
+                                "mean_rel": 0.009353693751253419,
+                                "max_abs": 0.0032999999999999974,
+                                "max_rel": 0.016328550222662035
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.004777777777777774,
+                                "mean_rel": 0.03995817701569834,
+                                "max_abs": 0.014999999999999958,
+                                "max_rel": 0.11764705882352951
+                            },
+                            "cl": {
+                                "mean_abs": 0.022666666666666686,
+                                "mean_rel": 0.04251362827339184,
+                                "max_abs": 0.08900000000000008,
+                                "max_rel": 0.10483870967741944
+                            },
+                            "cm": {
+                                "mean_abs": 0.010266666666666658,
+                                "mean_rel": 0.07695483829104609,
+                                "max_abs": 0.02949999999999997,
+                                "max_rel": 0.1993243243243244
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0014000000000000006,
+                                "mean_rel": 0.04327272727272728,
+                                "max_abs": 0.0030000000000000027,
+                                "max_rel": 0.09090909090909084
+                            },
+                            "cl": {
+                                "mean_abs": 0.0032000000000000028,
+                                "mean_rel": 0.008368421052631586,
+                                "max_abs": 0.013000000000000012,
+                                "max_rel": 0.028508771929824584
+                            },
+                            "cm": {
+                                "mean_abs": 0.0010200000000000014,
+                                "mean_rel": 0.009353693751253419,
+                                "max_abs": 0.0032999999999999974,
+                                "max_rel": 0.016328550222662035
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 2,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.004777777777777774,
+                                "mean_rel": 0.03995817701569834,
+                                "max_abs": 0.014999999999999958,
+                                "max_rel": 0.11764705882352951
+                            },
+                            "cl": {
+                                "mean_abs": 0.022666666666666686,
+                                "mean_rel": 0.04251362827339184,
+                                "max_abs": 0.08900000000000008,
+                                "max_rel": 0.10483870967741944
+                            },
+                            "cm": {
+                                "mean_abs": 0.010266666666666658,
+                                "mean_rel": 0.07695483829104609,
+                                "max_abs": 0.02949999999999997,
+                                "max_rel": 0.1993243243243244
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0014000000000000006,
+                                "mean_rel": 0.04327272727272728,
+                                "max_abs": 0.0030000000000000027,
+                                "max_rel": 0.09090909090909084
+                            },
+                            "cl": {
+                                "mean_abs": 0.0032000000000000028,
+                                "mean_rel": 0.008368421052631586,
+                                "max_abs": 0.013000000000000012,
+                                "max_rel": 0.028508771929824584
+                            },
+                            "cm": {
+                                "mean_abs": 0.0010200000000000014,
+                                "mean_rel": 0.009353693751253419,
+                                "max_abs": 0.0032999999999999974,
+                                "max_rel": 0.016328550222662035
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.5,
+                        "case_index": 3,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex3.inp"
+        }
+    ],
+    "generated_at": "2026-02-26T08:31:23.750"
+}

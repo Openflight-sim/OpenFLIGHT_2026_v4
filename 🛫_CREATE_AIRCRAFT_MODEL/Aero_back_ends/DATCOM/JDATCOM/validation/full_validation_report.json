@@ -1,0 +1,613 @@
+{
+    "summary": {
+        "reference_failures": 0,
+        "total_cases_run": 14,
+        "fixtures_run": [
+            "ex1",
+            "ex2",
+            "ex3",
+            "ex4"
+        ],
+        "reference_cases_compared": 4
+    },
+    "reference_validation": [
+        {
+            "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+            "fixture": "ex1",
+            "comparison": {
+                "mach_target": 0.6,
+                "mach_used": 0.6,
+                "max_abs": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "rms": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "per_point": [
+                    {
+                        "cm_ref": 0,
+                        "cl_julia": 0,
+                        "cl_ref": 0,
+                        "cd_julia": 0.021,
+                        "dcm": 0,
+                        "alpha": 0,
+                        "cm_julia": 0,
+                        "cd_ref": 0.021,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0.0137,
+                        "cl_julia": 0.014,
+                        "cl_ref": 0.014,
+                        "cd_julia": 0.022,
+                        "dcm": 0,
+                        "alpha": 4,
+                        "cm_julia": 0.0137,
+                        "cd_ref": 0.022,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0.0273,
+                        "cl_julia": 0.027,
+                        "cl_ref": 0.027,
+                        "cd_julia": 0.025,
+                        "dcm": 0,
+                        "alpha": 8,
+                        "cm_julia": 0.0273,
+                        "cd_ref": 0.025,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0.041,
+                        "cl_julia": 0.041,
+                        "cl_ref": 0.041,
+                        "cd_julia": 0.029,
+                        "dcm": 0,
+                        "alpha": 12,
+                        "cm_julia": 0.041,
+                        "cd_ref": 0.029,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0.0546,
+                        "cl_julia": 0.055,
+                        "cl_ref": 0.055,
+                        "cd_julia": 0.036,
+                        "dcm": 0,
+                        "alpha": 16,
+                        "cm_julia": 0.0546,
+                        "cd_ref": 0.036,
+                        "dcl": 0,
+                        "dcd": 0
+                    }
+                ]
+            },
+            "status": "pass",
+            "id": "ex1_case1_m0p6",
+            "case_index": 1,
+            "diagnostic_reasons": [
+                "Exact match to DATCOM reference values within numerical precision."
+            ]
+        },
+        {
+            "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+            "fixture": "ex2",
+            "comparison": {
+                "mach_target": 0.6,
+                "mach_used": 0.6,
+                "max_abs": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "rms": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "per_point": [
+                    {
+                        "cm_ref": 0.0264,
+                        "cl_julia": -0.087,
+                        "cl_ref": -0.087,
+                        "cd_julia": 0.007,
+                        "dcm": 0,
+                        "alpha": -6,
+                        "cm_julia": 0.0264,
+                        "cd_ref": 0.007,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0344,
+                        "cl_julia": 0.077,
+                        "cl_ref": 0.077,
+                        "cd_julia": 0.006,
+                        "dcm": 0,
+                        "alpha": 0,
+                        "cm_julia": -0.0344,
+                        "cd_ref": 0.006,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0862,
+                        "cl_julia": 0.196,
+                        "cl_ref": 0.196,
+                        "cd_julia": 0.016,
+                        "dcm": 0,
+                        "alpha": 4,
+                        "cm_julia": -0.0862,
+                        "cd_ref": 0.016,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.1419,
+                        "cl_julia": 0.323,
+                        "cl_ref": 0.323,
+                        "cd_julia": 0.036,
+                        "dcm": 0,
+                        "alpha": 8,
+                        "cm_julia": -0.1419,
+                        "cd_ref": 0.036,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.1985,
+                        "cl_julia": 0.44,
+                        "cl_ref": 0.44,
+                        "cd_julia": 0.062,
+                        "dcm": 0,
+                        "alpha": 12,
+                        "cm_julia": -0.1985,
+                        "cd_ref": 0.062,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.2508,
+                        "cl_julia": 0.531,
+                        "cl_ref": 0.531,
+                        "cd_julia": 0.088,
+                        "dcm": 0,
+                        "alpha": 16,
+                        "cm_julia": -0.2508,
+                        "cd_ref": 0.088,
+                        "dcl": 0,
+                        "dcd": 0
+                    }
+                ]
+            },
+            "status": "pass",
+            "id": "ex2_case1_m0p6",
+            "case_index": 1,
+            "diagnostic_reasons": [
+                "Exact match to DATCOM reference values within numerical precision."
+            ]
+        },
+        {
+            "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+            "fixture": "ex3",
+            "comparison": {
+                "mach_target": 0.6,
+                "mach_used": 0.6,
+                "max_abs": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "rms": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "per_point": [
+                    {
+                        "cm_ref": 0.0228,
+                        "cl_julia": -0.134,
+                        "cl_ref": -0.134,
+                        "cd_julia": 0.018,
+                        "dcm": 0,
+                        "alpha": -2,
+                        "cm_julia": 0.0228,
+                        "cd_ref": 0.018,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0,
+                        "cl_julia": 0,
+                        "cl_ref": 0,
+                        "cd_julia": 0.016,
+                        "dcm": 0,
+                        "alpha": 0,
+                        "cm_julia": 0,
+                        "cd_ref": 0.016,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0239,
+                        "cl_julia": 0.134,
+                        "cl_ref": 0.134,
+                        "cd_julia": 0.018,
+                        "dcm": 0,
+                        "alpha": 2,
+                        "cm_julia": -0.0239,
+                        "cd_ref": 0.018,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0535,
+                        "cl_julia": 0.27,
+                        "cl_ref": 0.27,
+                        "cd_julia": 0.026,
+                        "dcm": 0,
+                        "alpha": 4,
+                        "cm_julia": -0.0535,
+                        "cd_ref": 0.026,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.1228,
+                        "cl_julia": 0.542,
+                        "cl_ref": 0.542,
+                        "cd_julia": 0.073,
+                        "dcm": 0,
+                        "alpha": 8,
+                        "cm_julia": -0.1228,
+                        "cd_ref": 0.073,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.1985,
+                        "cl_julia": 0.804,
+                        "cl_ref": 0.804,
+                        "cd_julia": 0.16,
+                        "dcm": 0,
+                        "alpha": 12,
+                        "cm_julia": -0.1985,
+                        "cd_ref": 0.16,
+                        "dcl": 0,
+                        "dcd": 0
+                    }
+                ]
+            },
+            "status": "pass",
+            "id": "ex3_case1_m0p6",
+            "case_index": 1,
+            "diagnostic_reasons": [
+                "Exact match to DATCOM reference values within numerical precision."
+            ]
+        },
+        {
+            "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+            "fixture": "ex4",
+            "comparison": {
+                "mach_target": 0.6,
+                "mach_used": 0.6,
+                "max_abs": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "rms": {
+                    "cd": 0,
+                    "cl": 0,
+                    "cm": 0
+                },
+                "per_point": [
+                    {
+                        "cm_ref": 0,
+                        "cl_julia": 0,
+                        "cl_ref": 0,
+                        "cd_julia": 0.007,
+                        "dcm": 0,
+                        "alpha": 0,
+                        "cm_julia": 0,
+                        "cd_ref": 0.007,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0245,
+                        "cl_julia": 0.306,
+                        "cl_ref": 0.306,
+                        "cd_julia": 0.02,
+                        "dcm": 0,
+                        "alpha": 5,
+                        "cm_julia": -0.0245,
+                        "cd_ref": 0.02,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.044,
+                        "cl_julia": 0.603,
+                        "cl_ref": 0.603,
+                        "cd_julia": 0.054,
+                        "dcm": 0,
+                        "alpha": 10,
+                        "cm_julia": -0.044,
+                        "cd_ref": 0.054,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": -0.0352,
+                        "cl_julia": 0.793,
+                        "cl_ref": 0.793,
+                        "cd_julia": 0.091,
+                        "dcm": 0,
+                        "alpha": 15,
+                        "cm_julia": -0.0352,
+                        "cd_ref": 0.091,
+                        "dcl": 0,
+                        "dcd": 0
+                    },
+                    {
+                        "cm_ref": 0.0128,
+                        "cl_julia": 0.815,
+                        "cl_ref": 0.815,
+                        "cd_julia": 0.104,
+                        "dcm": 0,
+                        "alpha": 20,
+                        "cm_julia": 0.0128,
+                        "cd_ref": 0.104,
+                        "dcl": 0,
+                        "dcd": 0
+                    }
+                ]
+            },
+            "status": "pass",
+            "id": "ex4_case1_m0p6",
+            "case_index": 1,
+            "diagnostic_reasons": [
+                "Exact match to DATCOM reference values within numerical precision."
+            ]
+        }
+    ],
+    "case_diagnostics": [
+        {
+            "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+            "fixture": "ex1",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 1,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+            "fixture": "ex1",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 2,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+            "fixture": "ex1",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 11,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 11 point(s)."
+                ]
+            },
+            "case_index": 3,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+            "fixture": "ex1",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 4,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+            "fixture": "ex2",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 19,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 19 point(s)."
+                ]
+            },
+            "case_index": 1,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+            "fixture": "ex2",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 2,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 2 point(s)."
+                ]
+            },
+            "case_index": 2,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+            "fixture": "ex2",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 2,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 2 point(s)."
+                ]
+            },
+            "case_index": 3,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+            "fixture": "ex3",
+            "diagnostics": {
+                "cd_positive": false,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 103,
+                "low_alpha_cl_monotonic": false,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 103 point(s).",
+                    "Negative/zero CD detected.",
+                    "CL is not monotonic near zero alpha."
+                ]
+            },
+            "case_index": 1,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+            "fixture": "ex3",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 13,
+                "low_alpha_cl_monotonic": false,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 13 point(s).",
+                    "CL is not monotonic near zero alpha."
+                ]
+            },
+            "case_index": 2,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+            "fixture": "ex3",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": false,
+                "regime_consistent": true,
+                "ndm_points": 12,
+                "low_alpha_cl_monotonic": false,
+                "notes": [
+                    "DATCOM reported NDM/non-finite coefficients at 12 point(s).",
+                    "CL is not monotonic near zero alpha."
+                ]
+            },
+            "case_index": 3,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 4",
+            "fixture": "ex3",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 4,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 5",
+            "fixture": "ex3",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 5,
+            "has_surfaces": false
+        },
+        {
+            "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+            "fixture": "ex4",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 1,
+            "has_surfaces": true
+        },
+        {
+            "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+            "fixture": "ex4",
+            "diagnostics": {
+                "cd_positive": true,
+                "finite_ok": true,
+                "regime_consistent": true,
+                "ndm_points": 0,
+                "low_alpha_cl_monotonic": true,
+                "notes": [
+                    "No numerical/pathology flags."
+                ]
+            },
+            "case_index": 2,
+            "has_surfaces": true
+        }
+    ]
+}

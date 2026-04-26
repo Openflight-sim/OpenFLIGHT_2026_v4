@@ -1,0 +1,35 @@
+{
+  "name": "JDATCOM Frozen Validation Baseline",
+  "version": "2026-02-27",
+  "description": "Frozen parity and diagnostics artifacts used to detect regressions in CI and local qualification runs.",
+  "full_qualification": {
+    "seed_range": "20260301..20260330",
+    "rel_tol": 0.01,
+    "expected_combined": {
+      "comparable_blocks": 206,
+      "passed_blocks": 206,
+      "failed_blocks": 0
+    },
+    "report_json": "parity_qualification_report_1pct_seed30.json",
+    "report_md": "parity_qualification_report_1pct_seed30.md"
+  },
+  "strict_track": {
+    "seed_range": "20260301..20260330",
+    "rel_tol": 0.005,
+    "expected_combined": {
+      "comparable_blocks": 206,
+      "passed_blocks": 118,
+      "failed_blocks": 88
+    },
+    "report_json": "parity_qualification_report_05pct_seed30.json",
+    "report_md": "parity_qualification_report_05pct_seed30.md"
+  },
+  "diagnostics": {
+    "script": "JDATCOM/validation/bodyrt_term_diagnostics.jl",
+    "mach": 0.4,
+    "seed_range": "20260301..20260330",
+    "report_json": "bodyrt_term_diagnostics_report_mach04_seed30.json",
+    "report_md": "bodyrt_term_diagnostics_report_mach04_seed30.md"
+  },
+  "primary_gate_check_script": "JDATCOM/validation/check_frozen_baseline.jl"
+}

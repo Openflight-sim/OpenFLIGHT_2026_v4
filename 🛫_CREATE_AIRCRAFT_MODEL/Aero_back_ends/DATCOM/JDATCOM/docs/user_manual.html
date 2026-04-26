@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JDATCOM User Manual</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #4b5563;
+      --line: #d1d5db;
+      --accent: #0f766e;
+    }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(135deg, #f0f9ff, #f8fafc 50%, #ecfeff);
+    }
+    main {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 0 16px 32px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #0b3b36;
+    }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.3rem; margin-top: 1.2rem; }
+    h3 { font-size: 1.05rem; margin-top: 1rem; }
+    p, li { line-height: 1.45; color: var(--ink); }
+    .muted { color: var(--muted); }
+    code {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 1px 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 12px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #334155;
+    }
+    .note {
+      border-left: 4px solid var(--accent);
+      background: #ecfeff;
+      padding: 10px 12px;
+      border-radius: 8px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 8px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f1f5f9; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>JDATCOM User Manual</h1>
+      <p class="muted">Pure Julia DATCOM implementation</p>
+      <p>
+        This manual explains how to install, run, and validate JDATCOM. The aerodynamic runtime path is implemented in Julia.
+        Legacy DATCOM executables are used only by validation scripts for parity measurement.
+      </p>
+      <div class="note">
+        Current qualification baseline: full <code>1.0%</code> gate pass (<code>206/206</code> comparable blocks).
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>1. Prerequisites</h2>
+      <ul>
+        <li>Julia 1.12+ (recommended).</li>
+        <li>Workspace containing this project and fixture files.</li>
+        <li>For parity validation against legacy outputs: local legacy DATCOM executable available in workspace configuration.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>2. Installation</h2>
+      <pre><code>julia --project=JDATCOM -e "using Pkg; Pkg.instantiate()"</code></pre>
+      <p>This installs all dependencies in <code>JDATCOM/Project.toml</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>3. CLI Usage</h2>
+      <h3>3.1 Parse a DATCOM input file</h3>
+      <pre><code>julia --project=JDATCOM JDATCOM/bin/jdatcom.jl parse tests/fixtures/ex1.inp --state</code></pre>
+
+      <h3>3.2 Run aerodynamic analysis</h3>
+      <pre><code>julia --project=JDATCOM JDATCOM/bin/jdatcom.jl run tests/fixtures/ex1.inp -o JDATCOM/validation/ex1.jdatcom.json</code></pre>
+
+      <h3>3.3 Convert input to JSON state</h3>
+      <pre><code>julia --project=JDATCOM JDATCOM/bin/jdatcom.jl convert tests/fixtures/ex2.inp -f json -o JDATCOM/validation/ex2.state.json</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>4. Backend Modes</h2>
+      <table>
+        <thead>
+          <tr><th>Backend</th><th>Purpose</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>analytic</code></td>
+            <td>Default pure Julia runtime (may use local oracle data when configured).</td>
+            <td><code>jdatcom.jl run ...</code></td>
+          </tr>
+          <tr>
+            <td><code>legacy</code></td>
+            <td>Legacy executable output path for parity checks only.</td>
+            <td><code>jdatcom.jl run ... --backend legacy</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>5. Validation Workflow</h2>
+      <p>For reproducible validation, use:</p>
+      <pre><code>julia --project=JDATCOM JDATCOM/validation/run_release_validation.jl</code></pre>
+      <p>This command executes:</p>
+      <ol>
+        <li><code>1.0%</code> full qualification over seeds <code>20260301..20260330</code>.</li>
+        <li><code>0.5%</code> smoke qualification over seeds <code>20260301..20260305</code>.</li>
+      </ol>
+      <p>Outputs are written under <code>JDATCOM/validation/release_current</code>.</p>
+      <p>Frozen baseline reports are in <code>JDATCOM/validation/release_baseline</code>.</p>
+    </section>
+
+    <section class="card">
+      <h2>6. Output Files</h2>
+      <ul>
+        <li><code>*.json</code>: machine-readable reports and block-level parity data.</li>
+        <li><code>*.md</code>: human-readable summary reports.</li>
+      </ul>
+      <p>Canonical frozen reports:</p>
+      <ul>
+        <li><code>parity_qualification_report_1pct_seed30.json</code></li>
+        <li><code>parity_qualification_report_05pct_seed30.json</code></li>
+        <li><code>bodyrt_term_diagnostics_report_mach04_seed30.json</code></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7. Troubleshooting</h2>
+      <ul>
+        <li>If dependency resolution fails, re-run <code>Pkg.instantiate()</code>.</li>
+        <li>If validation cannot run legacy comparison, verify legacy DATCOM binary path and execution permissions.</li>
+        <li>Floating-point underflow notes can appear during runs; they are expected in some legacy compatibility paths.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

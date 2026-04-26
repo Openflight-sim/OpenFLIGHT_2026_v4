@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFlight Telemetry</title>
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #17212b;
+            --muted: #5b6b7b;
+            --border: #dbe3ec;
+            --ok: #1b8f3d;
+            --warn: #b87300;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #eef3f9 0%, var(--bg) 100%);
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .wrap {
+            flex: 1;
+            display: grid;
+            gap: 16px;
+        }
+
+        .hud-container {
+            width: 750px;
+            height: 500px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(24, 42, 58, 0.4);
+            flex-shrink: 0;
+        }
+
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(24, 42, 58, 0.06);
+            padding: 14px 16px;
+        }
+
+        .top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            letter-spacing: 0.2px;
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 0.92rem;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .meta .ok {
+            color: var(--ok);
+            font-weight: 600;
+        }
+
+        .meta .warn {
+            color: var(--warn);
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.93rem;
+        }
+
+        td {
+            padding: 5px 0;
+            border-bottom: 1px dashed #edf1f5;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td:first-child {
+            color: var(--muted);
+        }
+
+        td:last-child {
+            text-align: right;
+            font-family: Consolas, "Courier New", monospace;
+            font-weight: 600;
+        }
+    </style>
+    <!-- Include Babylon.js and the HUD logic -->
+    <script src="./🛑_EXTERNAL_LIBRARIES/babylon.js"></script>
+    <script src="./🛑_EXTERNAL_LIBRARIES/babylon_GUI.js"></script>
+    <script src="./2_GUI/2.2_🎨_GUI_components.js"></script>
+    <script src="./2_GUI/2.5_⏫_Main_HUD.js"></script>
+</head>
+
+<body>
+    <div class="main-layout">
+        <div class="wrap">
+            <div class="panel top">
+                <h1>OpenFlight Live Telemetry</h1>
+                <div class="meta">
+                    <div>
+                        <a href="/aero_model_viewer.html" target="_blank"
+                           style="color:#1f6feb; text-decoration:none; font-weight:600; font-size:0.88rem;">
+                           📊 Open Aerodynamic Model Inspector →
+                        </a>
+                    </div>
+                    <div id="statusText" class="warn">Waiting for telemetry...</div>
+                    <div id="lastUpdateText">Last update: n/a</div>
+                </div>
+            </div>
+
+            <div class="grid" id="cardsContainer"></div>
+        </div>
+
+        <div class="right-col" style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- HUD Canvas Area -->
+            <div class="hud-container">
+                <canvas id="hudCanvas" style="width: 100%; height: 100%; display: block; outline: none;"></canvas>
+            </div>
+            
+            <!-- Control Deflections -->
+            <div class="panel controls-panel" style="padding: 14px 16px;">
+                <h2 style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px;">Control Deflections</h2>
+                <div id="controlsVisualizer" style="display: flex; flex-direction: column; gap: 12px; font-family: Consolas, monospace; font-size: 13px;">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+
+            <!-- Auto Pitch Trim -->
+            <div class="panel autotrim-panel" style="padding: 14px 16px;">
+                <h2 style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; display: flex; justify-content: space-between; align-items: baseline;">
+                    <span>Auto Pitch Trim</span>
+                    <span id="autoTrimModeLabel" style="text-transform: none; letter-spacing: 0; font-size: 0.8rem; color: #8ba5b8;">mode: –</span>
+                </h2>
+                <div id="autoTrimVisualizer" style="display: flex; flex-direction: column; gap: 12px; font-family: Consolas, monospace; font-size: 13px;">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const statusText = document.getElementById("statusText");
+        const lastUpdateText = document.getElementById("lastUpdateText");
+        const cardsContainer = document.getElementById("cardsContainer");
+
+        // --- HUD Globals Expected by 2.5_⏫_Main_HUD.js ---
+        window.scene = null;
+        window.hudDisplayMode = 2; // Force Mode 2
+        var isPaused = false;
+        var hasStartedOnce = true;
+        var aircraft = null;
+        var velocity = { x: 0, y: 0, z: 0 };
+        var angularVelocity = { x: 0, y: 0, z: 0 };
+        var nz = 1.0;
+        var joystickAxes = [0, 0, 0, 0];
+        var alpha_RAD = 0;
+        var beta_RAD = 0;
+        window.serverElapsedTime = 0;
+
+        function calculateFPS() {
+            return (window.telemetryEngine) ? Math.round(window.telemetryEngine.getFps()) : 60;
+        }
+
+        // --- Initialize the HUD System ---
+        function initHUD() {
+            const canvas = document.getElementById("hudCanvas");
+            const engine = new BABYLON.Engine(canvas, true);
+            window.engine = engine; // Needed for FOV ratio scaling
+            engine.setHardwareScalingLevel(1);
+
+            const scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color4(0.1, 0.1, 0.1, 1);
+
+            // CockpitCamera is required by isCockpitCameraActive() check
+            const camera = new BABYLON.UniversalCamera("CockpitCamera", new BABYLON.Vector3(0, 0, 0), scene);
+            // Default FOV in Babylon is 0.8 radians, match simulator camera if needed
+            camera.fov = 0.8;
+            window.scene = scene;
+
+            // Proper node with math functions required by the HUD
+            aircraft = new BABYLON.TransformNode("aircraft", scene);
+            aircraft.rotationQuaternion = BABYLON.Quaternion.Identity();
+
+            const advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+            createCockpitHUD(advancedTexture);
+
+            engine.runRenderLoop(() => {
+                const speedMs = Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y + velocity.z * velocity.z);
+                updateCockpitHUD(speedMs); // Update HUD lines and numbers
+                scene.render();
+            });
+
+            window.addEventListener("resize", () => {
+                engine.resize();
+            });
+        }
+        initHUD();
+
+        let lastTelemetryMs = 0;
+
+        const groups = [
+            {
+                title: "Flight",
+                fields: [
+                    ["server_time", "Server time (s)"],
+                    ["TAS", "TAS (m/s)"],
+                    ["EAS", "EAS (m/s)"],
+                    ["Mach", "Mach"],
+                    ["dynamic_pressure", "Dyn pressure (Pa)"],
+                    ["alpha_deg", "Alpha (deg)"],
+                    ["beta_deg", "Beta (deg)"]
+                ]
+            },
+            {
+                title: "Aero",
+                fields: [
+                    ["CL", "CL"],
+                    ["CD", "CD"],
+                    ["CL/CD", "CL/CD"],
+                    ["CS", "CS"],
+                    ["nx", "nx (g)"],
+                    ["ny", "ny (g)"],
+                    ["nz", "nz (g)"]
+                ]
+            },
+            {
+                title: "State",
+                fields: [
+                    ["x", "X (m)"],
+                    ["y", "Y (m)"],
+                    ["z", "Z (m)"],
+                    ["vx", "Vx (m/s)"],
+                    ["vy", "Vy (m/s)"],
+                    ["vz", "Vz (m/s)"]
+                ]
+            },
+            {
+                title: "Controls",
+                fields: [
+                    ["roll_demand", "Roll demand"],
+                    ["pitch_demand", "Pitch demand"],
+                    ["yaw_demand", "Yaw demand"],
+                    ["roll_demand_attained", "Roll attained"],
+                    ["pitch_demand_attained", "Pitch attained"],
+                    ["yaw_demand_attained", "Yaw attained"],
+                    ["thrust_setting_demand", "Thrust demand"],
+                    ["thrust_attained", "Thrust attained"],
+                    ["auto_pitch_trim_bias", "Auto trim bias"],
+                    ["elevator_deg_from_trim", "δe from trim (°)"],
+                    ["elevator_deg_attained", "δe total (°)"]
+                ]
+            }
+        ];
+
+        const cellRefs = new Map();
+
+        function makeCards() {
+            for (const group of groups) {
+                const card = document.createElement("div");
+                card.className = "panel card";
+
+                const title = document.createElement("h2");
+                title.textContent = group.title;
+                card.appendChild(title);
+
+                const table = document.createElement("table");
+                for (const [key, label] of group.fields) {
+                    const row = document.createElement("tr");
+
+                    const left = document.createElement("td");
+                    left.textContent = label;
+                    row.appendChild(left);
+
+                    const right = document.createElement("td");
+                    right.textContent = "-";
+                    row.appendChild(right);
+
+                    table.appendChild(row);
+                    cellRefs.set(key, right);
+                }
+                card.appendChild(table);
+                cardsContainer.appendChild(card);
+            }
+        }
+
+        function fmtNumber(value, digits = 3) {
+            return Number.isFinite(value) ? value.toFixed(digits) : "-";
+        }
+
+        function updateField(key, value) {
+            const cell = cellRefs.get(key);
+            if (!cell) return;
+            cell.textContent = fmtNumber(value);
+        }
+
+        function updateFromTelemetry(data) {
+            lastTelemetryMs = Date.now();
+
+            updateField("server_time", Number(data["server_time"]));
+            updateField("TAS", Number(data["TAS"]));
+            updateField("EAS", Number(data["EAS"]));
+            updateField("Mach", Number(data["Mach"]));
+            updateField("dynamic_pressure", Number(data["dynamic_pressure"]));
+            updateField("alpha_deg", Number(data["alpha_RAD"]) * 180.0 / Math.PI);
+            updateField("beta_deg", Number(data["beta_RAD"]) * 180.0 / Math.PI);
+
+            updateField("CL", Number(data["CL"]));
+            updateField("CD", Number(data["CD"]));
+            updateField("CL/CD", Number(data["CL/CD"]));
+            updateField("CS", Number(data["CS"]));
+            updateField("nx", Number(data["nx"]));
+            updateField("ny", Number(data["ny"]));
+            updateField("nz", Number(data["nz"]));
+
+            updateField("x", Number(data["x"]));
+            updateField("y", Number(data["y"]));
+            updateField("z", Number(data["z"]));
+            updateField("vx", Number(data["vx"]));
+            updateField("vy", Number(data["vy"]));
+            updateField("vz", Number(data["vz"]));
+
+            updateField("roll_demand", Number(data["roll_demand"]));
+            updateField("pitch_demand", Number(data["pitch_demand"]));
+            updateField("yaw_demand", Number(data["yaw_demand"]));
+            updateField("roll_demand_attained", Number(data["roll_demand_attained"]));
+            updateField("pitch_demand_attained", Number(data["pitch_demand_attained"]));
+            updateField("yaw_demand_attained", Number(data["yaw_demand_attained"]));
+            updateField("thrust_setting_demand", Number(data["thrust_setting_demand"]));
+            updateField("thrust_attained", Number(data["thrust_attained"]));
+            updateField("auto_pitch_trim_bias", Number(data["auto_pitch_trim_bias"]));
+            updateField("elevator_deg_from_trim", Number(data["elevator_deg_from_trim"]));
+            updateField("elevator_deg_attained", Number(data["elevator_deg_attained"]));
+
+            // Pass mapped data directly to Babylon HUD globals
+            aircraft.position.x = Number(data["x"]) || 0;
+            aircraft.position.y = Number(data["y"]) || 0;
+            aircraft.position.z = Number(data["z"]) || 0;
+
+            aircraft.rotationQuaternion.copyFromFloats(
+                Number(data["qx"]) || 0,
+                Number(data["qy"]) || 0,
+                Number(data["qz"]) || 0,
+                Number(data["qw"]) || 1
+            );
+
+            velocity.x = Number(data["vx"]) || 0;
+            velocity.y = Number(data["vy"]) || 0;
+            velocity.z = Number(data["vz"]) || 0;
+
+            angularVelocity.x = Number(data["wx"]) || 0;
+            angularVelocity.y = Number(data["wy"]) || 0;
+            angularVelocity.z = Number(data["wz"]) || 0;
+
+            alpha_RAD = Number(data["alpha_RAD"]) || 0;
+            beta_RAD = Number(data["beta_RAD"]) || 0;
+            nz = Number(data["nz"]) || 1;
+            window.ny = Number(data["ny"]) || 0;
+
+            joystickAxes[0] = Number(data["roll_demand"]) || 0;
+            joystickAxes[1] = Number(data["pitch_demand"]) || 0;
+            joystickAxes[2] = Number(data["yaw_demand"]) || 0;
+            joystickAxes[3] = Number(data["thrust_setting_demand"]) || 0;
+            window.serverElapsedTime = Number(data["server_time"]) || 0;
+            window.thrust_attained = Number(data["thrust_attained"]) || 0;
+
+            const t = new Date(lastTelemetryMs).toLocaleTimeString();
+            lastUpdateText.textContent = `Last update: ${t}`;
+            
+            updateControlLines(data);
+            updateAutoTrimLines(data);
+        }
+
+        function updateControlLines(data) {
+            const visualizer = document.getElementById("controlsVisualizer");
+            if (!visualizer) return;
+            
+            const controls = [
+                { name: "Roll", cmd: data["roll_demand"], att: data["roll_demand_attained"] },
+                { name: "Pitch", cmd: data["pitch_demand"], att: data["pitch_demand_attained"] },
+                { name: "Yaw", cmd: data["yaw_demand"], att: data["yaw_demand_attained"] }
+            ];
+            
+            let html = "";
+            for (const ctrl of controls) {
+                let cmdVal = Number(ctrl.cmd) || 0;
+                let attVal = Number(ctrl.att) || 0;
+                
+                cmdVal = Math.max(-1.2, Math.min(1.2, cmdVal));
+                attVal = Math.max(-1.2, Math.min(1.2, attVal));
+
+                const cmdWidth = Math.abs(cmdVal) * 41.66;
+                const attWidth = Math.abs(attVal) * 41.66;
+                const cmdLeft = cmdVal < 0 ? 50 - cmdWidth : 50;
+                const attLeft = attVal < 0 ? 50 - attWidth : 50;
+                
+                html += `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);">
+                        <span>${ctrl.name}</span>
+                        <span>Cmd: <span style="color:#8ba5b8">${cmdVal.toFixed(2)}</span> | Att: <span style="color:var(--ok)">${attVal.toFixed(2)}</span></span>
+                    </div>
+                    <div style="width: 100%; height: 16px; background: #eef3f9; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border);">
+                        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #a0aebc;"></div>
+                        <!-- Command -->
+                        <div style="position: absolute; top: 3px; height: 3px; left: ${cmdLeft}%; width: ${cmdWidth}%; background: #8ba5b8; border-radius: 2px;"></div>
+                        <!-- Attained -->
+                        <div style="position: absolute; top: 10px; height: 3px; left: ${attLeft}%; width: ${attWidth}%; background: var(--ok); border-radius: 2px;"></div>
+                    </div>
+                </div>`;
+            }
+            visualizer.innerHTML = html;
+        }
+
+        // --- Auto Pitch Trim visualiser ---
+        // Shows three horizontal sliders:
+        //   1. Auto-trim bias (normalised −1..+1 stick-equivalent)
+        //   2. Elevator deflection contributed by auto-trim alone (deg)
+        //   3. Total attained elevator deflection (deg)
+        //
+        // Sign convention (matches the Julia aero model): a negative
+        // elevator_deg value is trailing-edge UP, which produces a nose-up
+        // pitching moment. The slider centre is zero; bars extend left for
+        // negative values and right for positive values.
+        function updateAutoTrimLines(data) {
+            const visualizer = document.getElementById("autoTrimVisualizer");
+            if (!visualizer) return;
+
+            const storedBias = Number(data["auto_pitch_trim_bias"]) || 0;
+            const appliedBias = Number(data["auto_pitch_trim_bias_applied"]);
+            const bias = Number.isFinite(appliedBias) ? appliedBias : storedBias;
+            const elevFromTrim = Number(data["elevator_deg_from_trim"]) || 0;
+            const elevAttained = Number(data["elevator_deg_attained"]) || 0;
+            const maxElevDeg = Number(data["max_elevator_deflection_deg"]) || 25;
+            const modeLabel = document.getElementById("autoTrimModeLabel");
+            if (modeLabel) {
+                const mode = (typeof data["auto_pitch_trim_mode"] === "string") ? data["auto_pitch_trim_mode"] : "?";
+                const rate = Number(data["auto_pitch_trim_rate"]);
+                const blend = Number(data["auto_pitch_trim_command_blend"]);
+                const rateStr = Number.isFinite(rate) && mode === "continuous" ? ` @ ${rate.toFixed(2)}/s` : "";
+                const blendStr = Number.isFinite(blend) ? `, applied ${(100 * blend).toFixed(0)}%` : "";
+                modeLabel.textContent = `mode: ${mode}${rateStr}${blendStr}`;
+            }
+
+            // Each row: [label, value, fullScale, unit, format]
+            const rows = [
+                {
+                    label: "Trim bias",
+                    value: bias,
+                    fullScale: 1.0,
+                    unit: "",
+                    format: (v) => v.toFixed(3),
+                    barColor: "#c98c1a"
+                },
+                {
+                    label: "δe from trim",
+                    value: elevFromTrim,
+                    fullScale: maxElevDeg,
+                    unit: "°",
+                    format: (v) => v.toFixed(2),
+                    barColor: "#c98c1a"
+                },
+                {
+                    label: "δe total",
+                    value: elevAttained,
+                    fullScale: maxElevDeg,
+                    unit: "°",
+                    format: (v) => v.toFixed(2),
+                    barColor: "var(--ok)"
+                }
+            ];
+
+            let html = "";
+            for (const row of rows) {
+                let v = row.value;
+                const fs = Math.max(row.fullScale, 1e-6);
+                // Clip for rendering only; still show the real number.
+                const clipped = Math.max(-fs, Math.min(fs, v));
+                const width = Math.abs(clipped) / fs * 50.0;   // 50 % = half-width
+                const left = clipped < 0 ? 50.0 - width : 50.0;
+
+                html += `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);">
+                        <span>${row.label}</span>
+                        <span>Value: <span style="color:${row.barColor}">${row.format(v)}${row.unit}</span>
+                            <span style="color:#8ba5b8; margin-left: 8px;">(±${row.format(fs)}${row.unit})</span>
+                        </span>
+                    </div>
+                    <div style="width: 100%; height: 16px; background: #eef3f9; position: relative; border-radius: 4px; overflow: hidden; border: 1px solid var(--border);">
+                        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #a0aebc;"></div>
+                        <div style="position: absolute; top: 4px; height: 8px; left: ${left}%; width: ${width}%; background: ${row.barColor}; border-radius: 2px;"></div>
+                    </div>
+                </div>`;
+            }
+            visualizer.innerHTML = html;
+        }
+
+        function setStatusConnected(isConnected) {
+            if (isConnected) {
+                statusText.textContent = "Receiving telemetry from simulation tab";
+                statusText.className = "ok";
+            } else {
+                statusText.textContent = "Waiting for telemetry...";
+                statusText.className = "warn";
+            }
+        }
+
+        makeCards();
+
+        if (typeof BroadcastChannel === "undefined") {
+            statusText.textContent = "BroadcastChannel not supported in this browser";
+            statusText.className = "warn";
+        } else {
+            const telemetryChannel = new BroadcastChannel("openflight_telemetry");
+            telemetryChannel.onmessage = (event) => {
+                const payload = event && event.data ? event.data : null;
+                if (!payload || payload.type !== "telemetry" || !payload.data) return;
+                updateFromTelemetry(payload.data);
+            };
+        }
+
+        setInterval(() => {
+            const ageMs = Date.now() - lastTelemetryMs;
+            setStatusConnected(lastTelemetryMs > 0 && ageMs < 2000);
+        }, 300);
+    </script>
+</body>
+
+</html>

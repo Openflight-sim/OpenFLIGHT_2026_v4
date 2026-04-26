@@ -1,0 +1,51 @@
+# Per-aircraft render overrides for the Su-57.
+# See 4.3_🔼_import_parameters_for_glb_aircraft.js and
+# 6.4_🎦_create_cameras.js for the full schema.  Body-frame:
+# x toward tail from CoG, y up, z toward right wing.
+
+glb_transform:
+  rotation_deg:  {x: 0, y: -90, z: 0}
+  translation_m: {x: 2, y: 0, z: 0}
+  scale: 1
+
+lights:
+  wing_tip_position: [-3.55, -0.1, 6.47]
+  tailcone_position: [-9.1, -.3,  0]
+  strobe_position:   [3.75, 1.15,  0]
+
+# Per-camera position AND visibility flags.
+#
+# `render_aircraft`  — show/hide the aircraft body (GLB mesh, or the
+#                      parametric planeNode if no GLB is loaded).
+# `render_propeller` — show/hide the propellerPivot from this camera.
+#                      The yaml's `propeller:` section still decides
+#                      whether a propeller exists at all; this flag
+#                      only masks the view — it can hide but not conjure.
+#
+# Defaults if either flag is omitted:
+#   cockpit → render_aircraft=false (see out of the cockpit, not through
+#             the fuselage), render_propeller=true.
+#   wing / orbital / chase → both true.
+#
+# Note: the Su-57 is a jet, so there is no `propeller:` section above
+# and the render_propeller flag here has no effect — left in explicitly
+# so the file matches the schema for every aircraft.
+camera_positions:
+  cockpit:
+    x: -6.
+    y: 2.2
+    z: 3.3
+    yaw_deg: 90
+    pitch_deg: 10
+    roll_deg: 0
+    render_aircraft: true
+    render_propeller: false
+  wing:
+    x: -4.5
+    y: 0.5
+    z: -7.2
+    yaw_deg: 25.7
+    pitch_deg: 0
+    roll_deg: 0
+    render_aircraft: true
+    render_propeller: false

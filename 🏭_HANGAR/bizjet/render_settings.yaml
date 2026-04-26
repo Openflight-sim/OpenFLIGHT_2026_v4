@@ -1,0 +1,15 @@
+# Per-aircraft render overrides for the bizjet.
+# The bizjet GLB was authored in a different coordinate system (cm scale,
+# different axis conventions) so it needs a non-trivial transform.
+# See 4.3_🔼_import_parameters_for_glb_aircraft.js and
+# 6.4_🎦_create_cameras.js for the full schema.
+
+glb_transform:
+  rotation_deg:  {x: 90, y: 180, z: 90}
+  translation_m: {x: 0,  y: -1.5, z: 0}
+  scale: 0.01
+
+# camera_positions: uncomment to override cockpit/wing defaults.
+# camera_positions:
+#   cockpit: {x: 0.5, y: 1.0, z: 0.0, yaw_deg: 90,    pitch_deg: 0, roll_deg: 0}
+#   wing:    {x: -1.5, y: 0.5, z: -3.2, yaw_deg: -5.7, pitch_deg: 0, roll_deg: 0}

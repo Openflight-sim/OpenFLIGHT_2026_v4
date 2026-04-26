@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aero Database Technical Viewer</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg1: #f3f8ff;
+      --bg2: #e9f1fd;
+      --panel: #fff;
+      --ink: #102436;
+      --muted: #5a6f84;
+      --line: #cad8e7;
+      --accent: #0f5d9c;
+      --ok: #15764f;
+      --err: #a13d30;
+      --mono: "IBM Plex Mono", Consolas, monospace;
+      --ui: "IBM Plex Sans", "Segoe UI", sans-serif
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--ui);
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height: 100vh
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(16, 36, 54, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 36, 54, .04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at top, rgba(0, 0, 0, .9), rgba(0, 0, 0, .05))
+    }
+
+    .wrap {
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 24px clamp(14px, 2.8vw, 36px) 40px;
+      position: relative
+    }
+
+    .kicker {
+      margin: 0 0 6px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font: 700 11px var(--ui);
+      color: var(--accent)
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.8vw, 2.1rem)
+    }
+
+    .sub {
+      margin: 8px 0 0;
+      color: var(--muted)
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 12px 30px rgba(21, 52, 84, .1);
+      margin: 16px 0
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: end
+    }
+
+    label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font: 700 11px var(--ui);
+      color: var(--muted);
+      margin-bottom: 6px
+    }
+
+    input[type=file] {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px;
+      min-width: min(420px, 88vw);
+      font-family: var(--ui);
+      background: #f9fbff
+    }
+
+    .status {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font: 600 12px var(--ui);
+      color: var(--muted);
+      background: #f3f7fc
+    }
+
+    .pill[data-state=ok] {
+      color: var(--ok);
+      border-color: rgba(21, 118, 79, .35);
+      background: rgba(21, 118, 79, .08)
+    }
+
+    .pill[data-state=working] {
+      color: var(--accent);
+      border-color: rgba(15, 93, 156, .35);
+      background: rgba(15, 93, 156, .08)
+    }
+
+    .pill[data-state=error] {
+      color: var(--err);
+      border-color: rgba(161, 61, 48, .35);
+      background: rgba(161, 61, 48, .08)
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 10px
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(155deg, #fff, #f4f9ff);
+      padding: 11px 12px
+    }
+
+    .cl {
+      font: 700 10px var(--ui);
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .cv {
+      margin-top: 6px;
+      font: 700 1.02rem var(--ui)
+    }
+
+    .sec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font: 700 1rem var(--ui);
+      margin: 0 0 10px
+    }
+
+    .tag {
+      font: 700 11px var(--ui);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted)
+    }
+
+    .tbl-wrap {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 420px;
+      background: #fff
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 620px;
+      font-size: 12px
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(180deg, #f7fbff, #edf4fc);
+      text-align: left;
+      color: #20354a;
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      font: 700 10px var(--ui);
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    td {
+      border-bottom: 1px solid #e8f0f8;
+      padding: 8px 10px;
+      white-space: nowrap
+    }
+
+    tbody tr:nth-child(even) td {
+      background: #f9fbff
+    }
+
+    .mono {
+      font-family: var(--mono);
+      font-variant-numeric: tabular-nums
+    }
+
+    .plots {
+      display: grid;
+      gap: 20px
+    }
+
+    .coef {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 12px;
+      box-shadow: 0 12px 30px rgba(21, 52, 84, .1)
+    }
+
+    .chead {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 9px
+    }
+
+    .ctitle {
+      margin: 0;
+      font: 500 1.04rem var(--mono)
+    }
+
+    .csub {
+      margin-top: 4px;
+      color: var(--muted);
+      font: 12px var(--mono)
+    }
+
+    .chips {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #f6faff;
+      color: #23445f;
+      font: 600 11px var(--mono)
+    }
+
+    .plot {
+      height: 440px;
+      border: 1px solid #d7e3f0;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #fbfdff, #f4f9ff)
+    }
+
+    .pl {
+      margin: 10px 0 6px;
+      font: 700 11px var(--ui);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted)
+    }
+
+    .preview {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: auto;
+      max-height: 260px;
+      background: #fff
+    }
+
+    .note {
+      margin-top: 7px;
+      color: var(--muted);
+      font: 12px var(--mono)
+    }
+
+    .empty {
+      border: 1px dashed #b8cadf;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: linear-gradient(180deg, #fbfdff, #f2f8ff)
+    }
+
+    .schem {
+      display: grid;
+      gap: 10px
+    }
+
+    .schem-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px
+    }
+
+    .schem-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #f7fbff;
+      color: #24445f;
+      padding: 4px 8px;
+      font: 600 11px var(--mono)
+    }
+
+    .schem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 10px
+    }
+
+    .view {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 8px;
+      background: linear-gradient(180deg, #fcfeff, #f3f9ff)
+    }
+
+    .view-h {
+      font: 700 11px var(--ui);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 0 0 6px
+    }
+
+    .air-svg {
+      width: 100%;
+      height: 250px;
+      display: block;
+      border: 1px solid #d6e3f1;
+      border-radius: 10px;
+      background: radial-gradient(circle at 20% 15%, #ffffff, #f6fbff 58%, #edf5ff)
+    }
+
+    .schem-legend {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap
+    }
+
+    .l-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: #fff;
+      color: #264760;
+      font: 600 11px var(--ui)
+    }
+
+    .l-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%
+    }
+
+    .l-cog {
+      background: #d62d20
+    }
+
+    .l-ac {
+      background: #0057e7
+    }
+
+    .l-rp {
+      background: #6a0dad
+    }
+
+    .l-ry {
+      background: #008744
+    }
+
+    .l-rr {
+      background: #ef6c00
+    }
+
+    .l-tail {
+      background: #4f83cc
+    }
+
+    @media(max-width:960px) {
+      .plot {
+        height: 380px
+      }
+
+      table {
+        min-width: 520px
+      }
+    }
+
+    @media(max-width:640px) {
+      input[type=file] {
+        min-width: 100%
+      }
+
+      .status {
+        width: 100%
+      }
+
+      .pill {
+        text-align: center;
+        width: 100%
+      }
+
+      .plot {
+        height: 340px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <p class="kicker">Aerospace Data Console</p>
+    <h1>Aerodynamic Coefficient Technical Viewer</h1>
+    <p class="sub">Load a YAML aero database and inspect constants, coefficient groupings, and curve behavior with
+      engineering-oriented plots and numeric tables.</p>
+
+    <section class="panel">
+      <div class="row">
+        <div>
+          <label for="yamlFile">YAML Source</label>
+          <input type="file" id="yamlFile" accept=".yaml,.yml" />
+        </div>
+        <div class="status">
+          <span id="statusPill" class="pill" data-state="neutral">Awaiting file input</span>
+          <span id="fileMeta" class="pill" data-state="neutral">No dataset loaded</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="summaryGrid" class="grid"></section>
+
+    <section class="panel">
+      <h2 class="sec">Reference Geometry <span class="tag">3-View Schematic</span></h2>
+      <div id="aircraftContainer"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="sec">Constants Register <span class="tag">Global Inputs</span></h2>
+      <div id="constantsContainer"></div>
+    </section>
+
+    <section>
+      <h2 class="sec">Coefficient Surfaces <span class="tag">Plot + Table Preview</span></h2>
+      <div id="plotsContainer" class="plots"></div>
+    </section>
+  </div>
+
+  <script>
+    const COLORS = ["#0057e7", "#d62d20", "#008744", "#ffa700", "#6a0dad", "#00a1c9", "#c2185b", "#2e7d32", "#ef6c00", "#283593", "#ad1457", "#00897b", "#7b1fa2", "#0277bd", "#f4511e", "#1b5e20", "#b71c1c", "#455a64", "#3949ab", "#808000"];
+    const SHAPES = ["circle", "square", "diamond", "triangle-up", "triangle-down", "cross", "star"];
+    const OUTLINES = ["#0d1b2a", "#6b1d1d", "#14532d", "#7a4300", "#203a43", "#3b2f2f", "#1e3a8a"];
+    const DASH = ["solid", "dash", "dot", "dashdot", "longdash", "longdashdot"];
+
+    function colorForSeries(baseIndex, shadeIndex = 0) {
+      if (baseIndex < COLORS.length && shadeIndex === 0) return COLORS[baseIndex];
+
+      const hues = [217, 3, 152, 38, 271, 192, 335, 134, 28, 231, 328, 174, 287, 202, 14, 120, 0, 200, 228, 60];
+      const hue = baseIndex < hues.length ? hues[baseIndex] : (baseIndex * 137.508) % 360;
+
+      const shades = [
+        { s: 90, l: 45 }, { s: 75, l: 65 }, { s: 95, l: 25 }, { s: 60, l: 80 }, { s: 100, l: 55 }
+      ];
+      const shade = shades[shadeIndex % shades.length];
+
+      return `hsl(${hue.toFixed(1)} ${shade.s}% ${shade.l}%)`;
+    }
+
+    const fileInput = document.getElementById("yamlFile");
+    const statusPill = document.getElementById("statusPill");
+    const fileMeta = document.getElementById("fileMeta");
+    const summaryGrid = document.getElementById("summaryGrid");
+    const aircraftContainer = document.getElementById("aircraftContainer");
+    const constantsContainer = document.getElementById("constantsContainer");
+    const plotsContainer = document.getElementById("plotsContainer");
+
+    fileInput.addEventListener("change", e => {
+      if (!e.target.files.length) return;
+      const file = e.target.files[0];
+      setStatus("Parsing YAML...", "working");
+      const r = new FileReader();
+      r.onload = ev => {
+        try {
+          const data = jsyaml.load(ev.target.result);
+          if (!data || typeof data !== "object") throw new Error("YAML root is empty or invalid");
+          renderAircraftSchematic(data);
+          renderConstants(data);
+          const stats = renderCoefficients(data);
+          renderSummary({ file: file.name, constants: Object.keys(data.constants || {}).length, ...stats });
+          setStatus("Dataset loaded", "ok");
+          fileMeta.textContent = `${file.name} | ${new Date().toLocaleString()}`;
+          fileMeta.dataset.state = "neutral";
+        } catch (err) {
+          console.error(err);
+          setStatus("Parse failed", "error");
+          fileMeta.textContent = err.message || "Invalid YAML data";
+          fileMeta.dataset.state = "error";
+          aircraftContainer.innerHTML = "<div class='empty'>No 3-view schematic available due to parse error.</div>";
+          constantsContainer.innerHTML = "<div class='empty'>Could not parse file. Review YAML syntax and try again.</div>";
+          plotsContainer.innerHTML = "<div class='empty'>No plots available due to parse error.</div>";
+          renderSummary({ file: file.name, constants: 0, coefs: 0, points: 0, traces: 0, depth: 0 });
+        }
+      };
+      r.readAsText(file);
+    });
+
+    function renderSummary(s) {
+      const cards = [
+        ["Loaded File", s.file || "No file"],
+        ["Constants", String(s.constants || 0)],
+        ["Coefficients", String(s.coefs || 0)],
+        ["Data Points", fmtInt(s.points || 0)],
+        ["Trace Families", fmtInt(s.traces || 0)],
+        ["Max Dimension", `${s.depth || 0} parameters`]
+      ];
+      summaryGrid.innerHTML = cards.map(([k, v]) => `<article class='card'><div class='cl'>${esc(k)}</div><div class='cv'>${esc(v)}</div></article>`).join("");
+    }
+
+    function renderAircraftSchematic(data) {
+      const c = data.constants || {};
+      const takeNum = (...keys) => {
+        for (const key of keys) {
+          const n = Number(c[key]);
+          if (Number.isFinite(n)) return n;
+        }
+        return NaN;
+      };
+
+      const xCg = takeNum("x_CoG", "x_cog", "x_CG", "x_cg");
+      const xWingAC = takeNum("x_wing_aerodynamic_center", "x_wing_ac", "x_ac_wing");
+      let span = takeNum("reference_span", "wing_span", "span");
+      let mac = takeNum("wing_mean_aerodynamic_chord", "mean_aerodynamic_chord", "MAC");
+      const area = takeNum("reference_area", "wing_area", "area");
+      const rgPitch = takeNum("radius_of_giration_pitch", "radius_of_gyration_pitch");
+      const rgYaw = takeNum("radius_of_giration_yaw", "radius_of_gyration_yaw");
+      const rgRoll = takeNum("radius_of_giration_roll", "radius_of_gyration_roll");
+      const principalPitch = takeNum("principal_axis_pitch_up_DEG", "principal_axis_pitch_up_deg");
+
+      const hasProvided = [xCg, xWingAC, span, mac, area, rgPitch, rgYaw, rgRoll, principalPitch].some(v => Number.isFinite(v));
+      if (!hasProvided) {
+        aircraftContainer.innerHTML = "<div class='empty'>No geometry constants found for 3-view drawing.</div>";
+        return;
+      }
+
+      if (!Number.isFinite(span) && Number.isFinite(area) && Number.isFinite(mac) && mac !== 0) span = area / mac;
+      if (!Number.isFinite(mac) && Number.isFinite(area) && Number.isFinite(span) && span !== 0) mac = area / span;
+      if (!Number.isFinite(span)) span = 15.3; // SF25B glider typical
+      if (!Number.isFinite(mac)) mac = Math.max(1.2, span * 0.09);
+
+      const xRefMax = Math.max(0, Number.isFinite(xCg) ? xCg : 0, Number.isFinite(xWingAC) ? xWingAC : 0);
+      const fuselageLength = Math.max(xRefMax + 4 * mac, span * 0.5, 7.6);
+      const xRef = Number.isFinite(xCg) ? xCg : (Number.isFinite(xWingAC) ? xWingAC : fuselageLength * 0.3);
+      const xWing = Number.isFinite(xWingAC) ? xWingAC : fuselageLength * 0.35;
+
+      const xMin = -1.0;
+      const xMax = fuselageLength + 0.5;
+      const topHalfY = Math.max(span * 0.55, 3);
+      const sideHalfZ = Math.max(span * 0.2, mac * 1.8, 1.8);
+      const frontHalfY = Math.max(span * 0.55, 3);
+      const frontHalfZ = Math.max(span * 0.25, mac * 1.8, 1.8);
+
+      const mkScale = (w, h, pad, xMin, xMax, yMin, yMax) => {
+        const dx = (xMax - xMin) || 1;
+        const dy = (yMax - yMin) || 1;
+        const sx = (w - pad.l - pad.r) / dx;
+        const sy = (h - pad.t - pad.b) / dy;
+        return { w, h, sx, sy, x: v => pad.l + (v - xMin) * sx, y: v => h - pad.b - (v - yMin) * sy, lenX: v => v * sx, lenY: v => Math.abs(v * sy) };
+      };
+
+      const W = 520, H = 280, pad = { l: 50, r: 30, t: 30, b: 40 };
+      const sTop = mkScale(W, H, pad, xMin, xMax, -topHalfY, topHalfY);
+      const sSide = mkScale(W, H, pad, xMin, xMax, -sideHalfZ, sideHalfZ);
+      const sFront = mkScale(W, H, pad, -frontHalfY, frontHalfY, -frontHalfZ, frontHalfZ);
+
+      // --- SVG Helper Generators ---
+      const markerOptions = `
+        <defs>
+          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#d5e1f0" stroke-width="0.8"/>
+            <path d="M 15 0 L 15 30 M 0 15 L 30 15" fill="none" stroke="#e8f0f8" stroke-width="0.4"/>
+          </pattern>
+          <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#475569" />
+          </marker>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="1" dy="4" stdDeviation="3" flood-opacity="0.12" />
+          </filter>
+        </defs>
+      `;
+
+      // ISO Standard CoG Symbol
+      const cogSymbol = (x, y, color, scale = 1) => `
+        <g transform="translate(${x}, ${y}) scale(${scale})" stroke="${color}" stroke-width="1.2">
+          <circle cx="0" cy="0" r="7" fill="none" />
+          <path d="M -9 0 L 9 0 M 0 -9 L 0 9" />
+          <path d="M 0 0 L 7 0 A 7 7 0 0 1 0 7 Z M 0 0 L -7 0 A 7 7 0 0 1 0 -7 Z" fill="${color}" opacity="0.85"/>
+        </g>
+      `;
+
+      const acSymbol = (x, y, color) => `
+        <g transform="translate(${x}, ${y})" fill="none" stroke="${color}" stroke-width="1.5">
+          <circle cx="0" cy="0" r="5" fill="#fff" />
+          <circle cx="0" cy="0" r="2.5" fill="${color}" />
+        </g>
+      `;
+
+      const dimLine = (x1, y1, x2, y2, label) => {
+        const mx = (x1 + x2) / 2, my = (y1 + y2) / 2 - 6;
+        return `
+          <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#475569" stroke-width="1.2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+          <text x="${mx}" y="${my}" fill="#1e293b" font-size="10" font-family="'IBM Plex Mono', monospace" text-anchor="middle" font-weight="600" letter-spacing="0.05em">${label}</text>
+        `;
+      };
+
+      const dimLeader = (x, y, label, dx, dy, color = "#2563eb") => `
+        <polyline points="${x},${y} ${x + dx},${y + dy} ${x + dx + 60 * Math.sign(dx)},${y + dy}" fill="none" stroke="${color}" stroke-width="1" opacity="0.8"/>
+        <circle cx="${x}" cy="${y}" r="1.5" fill="${color}"/>
+        <text x="${x + dx + 4 * Math.sign(dx)}" y="${y + dy - 4}" fill="${color}" font-size="10" font-family="'IBM Plex Sans', sans-serif" font-weight="600" text-anchor="${dx < 0 ? 'end' : 'start'}">${label}</text>
+      `;
+
+      // Aircraft Geometry Proportions
+      const nose = 0;
+      const tail = fuselageLength;
+
+      const fusW = mac * 0.35;
+      const fusH = mac * 0.6;
+      const canopyStart = nose + fuselageLength * 0.1;
+      const canopyEnd = nose + fuselageLength * 0.35;
+      const canopyH = fusH * 1.6;
+
+      const wRoot = mac * 1.3;
+      const wTip = mac * 0.5;
+      const wLeadSweep = mac * 0.1; // Slight aft sweep
+      const pTipY = span / 2;
+      const wLeadXRoot = xWing - wRoot * 0.25;
+      const wTrailXRoot = xWing + wRoot * 0.75;
+      const wLeadXTip = wLeadXRoot + wLeadSweep;
+      const wTrailXTip = wLeadXTip + wTip;
+
+      // MAC at 30% semispan
+      const macY = pTipY * 0.3;
+      const wLeadX_mac = wLeadXRoot + wLeadSweep * 0.3;
+      const wTrailX_mac = wLeadX_mac + wRoot + (wTip - wRoot) * 0.3;
+
+      const htSpan = span * 0.25;
+      const htRoot = mac * 0.7;
+      const htTip = mac * 0.4;
+      const htLeadXRoot = tail - htRoot;
+      const htTrailXRoot = tail;
+      const htLeadXTip = htLeadXRoot + htRoot * 0.2;
+      const htTrailXTip = htLeadXTip + htTip;
+      const htAC = htLeadXRoot + htRoot * 0.25;
+
+      const vtHeight = span * 0.12;
+      const vtRoot = mac * 0.8;
+      const vtTip = mac * 0.4;
+      const vtLeadSweep = mac * 0.3;
+      const vtAC = tail - vtRoot + vtLeadSweep * 0.5 + vtRoot * 0.25;
+
+      // Top View Paths (Bezier Curves for Fuselage)
+      const topFuse = `M ${sTop.x(nose)} ${sTop.y(0)} C ${sTop.x(nose + 1)} ${sTop.y(fusW)}, ${sTop.x(tail - 2)} ${sTop.y(fusW * 0.3)}, ${sTop.x(tail)} ${sTop.y(0)} C ${sTop.x(tail - 2)} ${sTop.y(-fusW * 0.3)}, ${sTop.x(nose + 1)} ${sTop.y(-fusW)}, ${sTop.x(nose)} ${sTop.y(0)} Z`;
+      const topWing = `M ${sTop.x(wLeadXRoot)} ${sTop.y(0)} L ${sTop.x(wLeadXTip)} ${sTop.y(pTipY)} L ${sTop.x(wTrailXTip)} ${sTop.y(pTipY)} L ${sTop.x(wTrailXRoot)} ${sTop.y(0)} L ${sTop.x(wTrailXTip)} ${sTop.y(-pTipY)} L ${sTop.x(wLeadXTip)} ${sTop.y(-pTipY)} Z`;
+      const topHTail = `M ${sTop.x(htLeadXRoot)} ${sTop.y(0)} L ${sTop.x(htLeadXTip)} ${sTop.y(htSpan / 2)} L ${sTop.x(htTrailXTip)} ${sTop.y(htSpan / 2)} L ${sTop.x(htTrailXRoot)} ${sTop.y(0)} L ${sTop.x(htTrailXTip)} ${sTop.y(-htSpan / 2)} L ${sTop.x(htLeadXTip)} ${sTop.y(-htSpan / 2)} Z`;
+
+      // Side View Paths
+      const sideFuse = `M ${sSide.x(nose)} ${sSide.y(0)} 
+        C ${sSide.x(canopyStart)} ${sSide.y(fusH * 0.8)}, ${sSide.x((canopyStart + canopyEnd) / 2)} ${sSide.y(canopyH)}, ${sSide.x(canopyEnd)} ${sSide.y(fusH * 0.8)} 
+        C ${sSide.x(xWing)} ${sSide.y(fusH * 0.9)}, ${sSide.x(tail - 1)} ${sSide.y(fusH * 0.3)}, ${sSide.x(tail)} ${sSide.y(0)} 
+        C ${sSide.x(tail - 1)} ${sSide.y(-fusH * 0.3)}, ${sSide.x(nose + 1)} ${sSide.y(-fusH * 0.5)}, ${sSide.x(nose)} ${sSide.y(0)} Z`;
+      const sideVTail = `M ${sSide.x(tail - vtRoot)} ${sSide.y(fusH * 0.4)} L ${sSide.x(tail - vtRoot + vtLeadSweep)} ${sSide.y(vtHeight)} L ${sSide.x(tail - vtRoot + vtLeadSweep + vtTip)} ${sSide.y(vtHeight)} L ${sSide.x(tail)} ${sSide.y(0)} Z`;
+      const sideWing = `M ${sSide.x(wLeadXRoot)} ${sSide.y(fusH * 0.2)} Q ${sSide.x((wLeadXRoot + wTrailXRoot) / 2)} ${sSide.y(fusH * 0.2 + 0.1)}, ${sSide.x(wTrailXRoot)} ${sSide.y(fusH * 0.2)} L ${sSide.x(wTrailXRoot)} ${sSide.y(fusH * 0.2 - 0.05)} L ${sSide.x(wLeadXRoot)} ${sSide.y(fusH * 0.2 - 0.05)} Z`;
+      const sideCanopy = `M ${sSide.x(canopyStart + 0.2)} ${sSide.y(fusH * 0.8)} C ${sSide.x((canopyStart + canopyEnd) / 2)} ${sSide.y(canopyH - 0.05)}, ${sSide.x(canopyEnd - 0.2)} ${sSide.y(fusH * 0.8)}, ${sSide.x(canopyEnd - 0.2)} ${sSide.y(fusH * 0.8)} Z`;
+
+      // Front View Paths
+      const fDihedral = span * 0.035;
+      const frontFuse = `M ${sFront.x(0)} ${sFront.y(canopyH)} C ${sFront.x(fusW * 1.4)} ${sFront.y(canopyH * 0.8)}, ${sFront.x(fusW * 1.4)} ${sFront.y(-fusH * 0.5)}, ${sFront.x(0)} ${sFront.y(-fusH * 0.5)} C ${sFront.x(-fusW * 1.4)} ${sFront.y(-fusH * 0.5)}, ${sFront.x(-fusW * 1.4)} ${sFront.y(canopyH * 0.8)}, ${sFront.x(0)} ${sFront.y(canopyH)} Z`;
+      const frontWing = `M ${sFront.x(-fusW * 0.9)} ${sFront.y(fusH * 0.2)} L ${sFront.x(-pTipY)} ${sFront.y(fusH * 0.2 + fDihedral)} L ${sFront.x(-pTipY)} ${sFront.y(fusH * 0.2 + fDihedral - 0.05)} L ${sFront.x(-fusW * 0.9)} ${sFront.y(fusH * 0.2 - 0.15)} Z
+                         M ${sFront.x(fusW * 0.9)} ${sFront.y(fusH * 0.2)} L ${sFront.x(pTipY)} ${sFront.y(fusH * 0.2 + fDihedral)} L ${sFront.x(pTipY)} ${sFront.y(fusH * 0.2 + fDihedral - 0.05)} L ${sFront.x(fusW * 0.9)} ${sFront.y(fusH * 0.2 - 0.15)} Z`;
+      const frontHTail = `M ${sFront.x(-htSpan / 2)} ${sFront.y(fusH * 0.2)} L ${sFront.x(htSpan / 2)} ${sFront.y(fusH * 0.2)} L ${sFront.x(htSpan / 2)} ${sFront.y(fusH * 0.2 - 0.03)} L ${sFront.x(-htSpan / 2)} ${sFront.y(fusH * 0.2 - 0.03)} Z`;
+      const frontVTail = `M ${sFront.x(-0.03)} ${sFront.y(fusH * 0.2)} L ${sFront.x(-0.02)} ${sFront.y(vtHeight)} L ${sFront.x(0.02)} ${sFront.y(vtHeight)} L ${sFront.x(0.03)} ${sFront.y(fusH * 0.2)} Z`;
+
+      // Colors
+      const wingStyle = `fill="#cbe3fa" fill-opacity="0.9" stroke="#3b699e" stroke-width="1.2" stroke-linejoin="round" filter="url(#shadow)"`;
+      const fuseStyle = `fill="#f8fafc" fill-opacity="1" stroke="#3b699e" stroke-width="1.2" filter="url(#shadow)"`;
+      const canopyStyle = `fill="#94a3b8" fill-opacity="0.4" stroke="#64748b" stroke-width="1"`;
+
+      const cgLineColor = "#dc2626"; // Vibrant Red
+      const acLineColor = "#059669"; // Emerald Green
+      const ellipsoidColor = "#8b5cf6"; // Purple
+
+      const rgEllipses = (s, cx, cy, rX, rY, color) => (Number.isFinite(rX) && Number.isFinite(rY)) ?
+        `<ellipse cx="${s.x(cx)}" cy="${s.y(cy)}" rx="${s.lenX(rX)}" ry="${s.lenY(rY)}" fill="none" stroke="${color}" stroke-width="2" opacity="0.85"/>` : "";
+
+      const topSvg = `
+        <svg class="air-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Top view" style="border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc;">
+          ${markerOptions}
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          
+          <!-- Radii -->
+          ${rgEllipses(sTop, xCg, 0, rgPitch, rgRoll, ellipsoidColor)}
+
+          <!-- Axis Lines -->
+          <line x1="${sTop.x(xMin)}" y1="${sTop.y(0)}" x2="${sTop.x(xMax)}" y2="${sTop.y(0)}" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+          
+          <!-- Aircraft -->
+          <path d="${topHTail}" ${wingStyle} />
+          <path d="${topWing}" ${wingStyle} />
+          <path d="${topFuse}" ${fuseStyle} />
+
+          <!-- MAC Indicator -->
+          <line x1="${sTop.x(wLeadX_mac)}" y1="${sTop.y(macY)}" x2="${sTop.x(wTrailX_mac)}" y2="${sTop.y(macY)}" stroke="#0ea5e9" stroke-width="4" opacity="0.6" stroke-linecap="round"/>
+          ${dimLeader(sTop.x(wLeadX_mac) - 10, sTop.y(macY) - 4, "MAC", -30, -30, "#0284c7")}
+
+          <!-- AC and CoG Alignments -->
+          <line x1="${sTop.x(xWingAC)}" y1="${pad.t}" x2="${sTop.x(xWingAC)}" y2="${H - pad.b}" stroke="${acLineColor}" stroke-width="1.5" opacity="0.3"/>
+          <line x1="${sTop.x(xCg)}" y1="${pad.t}" x2="${sTop.x(xCg)}" y2="${H - pad.b}" stroke="${cgLineColor}" stroke-width="1.5" opacity="0.3"/>
+          
+          ${acSymbol(sTop.x(xWingAC), sTop.y(0), acLineColor)}
+          ${dimLeader(sTop.x(xWingAC), sTop.y(0), "Aerodynamic Center", 40, 50, acLineColor)}
+          
+          ${acSymbol(sTop.x(htAC), sTop.y(0), acLineColor)}
+          ${dimLeader(sTop.x(htAC), sTop.y(0), "HTail AC", -30, 40, acLineColor)}
+          
+          ${cogSymbol(sTop.x(xCg), sTop.y(0), cgLineColor, 1)}
+          ${dimLeader(sTop.x(xCg), sTop.y(0), "Center of Gravity", -40, 30, cgLineColor)}
+          
+          <text x="${pad.l}" y="${H - 12}" fill="#64748b" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600">X-AXIS &rarr; REARWARD</text>
+        </svg>
+      `;
+
+      const sideSvg = `
+        <svg class="air-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Side view" style="border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc;">
+          ${markerOptions}
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          
+          <!-- Dimensions & Radii -->
+          ${dimLine(sSide.x(nose), sSide.y(-sideHalfZ * 0.8), sSide.x(tail), sSide.y(-sideHalfZ * 0.8), "LENGTH " + fuselageLength.toFixed(1) + "m")}
+          ${rgEllipses(sSide, xCg, 0, rgPitch, rgYaw, ellipsoidColor)}
+
+          <!-- Axis Lines -->
+          <line x1="${sSide.x(xMin)}" y1="${sSide.y(0)}" x2="${sSide.x(xMax)}" y2="${sSide.y(0)}" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+          
+          <!-- Aircraft -->
+          <path d="${sideVTail}" ${wingStyle} />
+          <path d="${sideWing}" ${wingStyle} />
+          <path d="${sideFuse}" ${fuseStyle} />
+          <path d="${sideCanopy}" ${canopyStyle} />
+          
+          <!-- Principal Axis calculation -->
+          ${Number.isFinite(principalPitch) ? `
+            <g transform="translate(${sSide.x(xCg)}, ${sSide.y(0)}) rotate(${-principalPitch})">
+              <line x1="-120" y1="0" x2="120" y2="0" stroke="#8b5cf6" stroke-width="2" opacity="0.6"/>
+              <text x="125" y="4" fill="#8b5cf6" font-size="11" font-family="'IBM Plex Mono', monospace" font-weight="600">PRINCIPAL AXIS (${principalPitch}&deg;)</text>
+            </g>
+          ` : ""}
+
+          <!-- AC and CoG Alignments -->
+          <line x1="${sSide.x(xWingAC)}" y1="${pad.t}" x2="${sSide.x(xWingAC)}" y2="${H - pad.b}" stroke="${acLineColor}" stroke-width="1.5" opacity="0.3"/>
+          <line x1="${sSide.x(xCg)}" y1="${pad.t}" x2="${sSide.x(xCg)}" y2="${H - pad.b}" stroke="${cgLineColor}" stroke-width="1.5" opacity="0.3"/>
+          
+          ${acSymbol(sSide.x(xWingAC), sSide.y(0), acLineColor)}
+          
+          ${acSymbol(sSide.x(vtAC), sSide.y(fusH * 0.4 + vtHeight * 0.5), acLineColor)}
+          ${dimLeader(sSide.x(vtAC), sSide.y(fusH * 0.4 + vtHeight * 0.5), "VTail AC", -40, -40, acLineColor)}
+          
+          ${cogSymbol(sSide.x(xCg), sSide.y(0), cgLineColor, 1)}
+
+          <text x="${pad.l}" y="${H - 12}" fill="#64748b" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600">X-AXIS &rarr; REARWARD  |  Z-AXIS &darr; DOWN</text>
+        </svg>
+      `;
+
+      const frontSvg = `
+        <svg class="air-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Front view" style="border: 1px solid #cbd5e1; border-radius: 12px; background: #f8fafc;">
+          ${markerOptions}
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          
+          <!-- Dimensions & Radii -->
+          ${dimLine(sFront.x(-span / 2), sFront.y(-frontHalfZ * 0.8), sFront.x(span / 2), sFront.y(-frontHalfZ * 0.8), "SPAN " + span.toFixed(1) + "m")}
+          ${rgEllipses(sFront, 0, 0, rgRoll, rgYaw, ellipsoidColor)}
+
+          <!-- Axis Lines -->
+          <line x1="${sFront.x(-frontHalfY)}" y1="${sFront.y(0)}" x2="${sFront.x(frontHalfY)}" y2="${sFront.y(0)}" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+          <line x1="${sFront.x(0)}" y1="${sFront.y(-frontHalfZ)}" x2="${sFront.x(0)}" y2="${sFront.y(frontHalfZ)}" stroke="#94a3b8" stroke-width="1" opacity="0.5"/>
+
+          <!-- Aircraft -->
+          <path d="${frontVTail}" ${wingStyle} />
+          <path d="${frontHTail}" ${wingStyle} />
+          <path d="${frontWing}" ${wingStyle} />
+          <path d="${frontFuse}" ${fuseStyle} />
+
+          <!-- Indicators -->
+          ${cogSymbol(sFront.x(0), sFront.y(0), cgLineColor, 1)}
+
+          <text x="${pad.l}" y="${H - 12}" fill="#64748b" font-family="'IBM Plex Mono', monospace" font-size="10" font-weight="600">Y-AXIS &harr; LATERAL</text>
+        </svg>
+      `;
+
+      const chips = [
+        ["x_CoG", xCg, "m"],
+        ["x_wing_aerodynamic_center", xWingAC, "m"],
+        ["reference_span", span, "m"],
+        ["mean_aerodynamic_chord", mac, "m"],
+        ["reference_area", area, "m²"],
+        ["rg_pitch", rgPitch, "m"],
+        ["rg_yaw", rgYaw, "m"],
+        ["rg_roll", rgRoll, "m"],
+        ["principal_axis_pitch", principalPitch, "&deg;"] // Fixed ASCII encoding
+      ].filter(([, v]) => Number.isFinite(v)).map(([k, v, u]) => `<span class="schem-chip">${esc(k)} <strong style="color:#0ea5e9">${esc(fmtNum(v))}</strong> ${u}</span>`).join("");
+
+      aircraftContainer.innerHTML = `
+        <div class="schem">
+          <div class="schem-meta">${chips || "<span class='schem-chip'>Parameters inferred from defaults</span>"}</div>
+          <div class="schem-grid">
+            <article class="view"><h3 class="view-h">Top View (Planform)</h3>${topSvg}</article>
+            <article class="view"><h3 class="view-h">Side View (Profile)</h3>${sideSvg}</article>
+            <article class="view"><h3 class="view-h">Front View</h3>${frontSvg}</article>
+          </div>
+          <div class="schem-legend" style="margin-top: 10px; padding: 12px 14px; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; display: flex; gap: 16px; flex-wrap: wrap;">
+            <span class="l-item" style="border:none; padding:0; background:transparent;"><span class="l-dot" style="background:${cgLineColor}; border-radius:50%; display:inline-block; width:12px; height:12px; margin-right:6px;"></span>Center of Gravity (CoG)</span>
+            <span class="l-item" style="border:none; padding:0; background:transparent;"><span class="l-dot" style="background:${acLineColor}; border-radius:50%; display:inline-block; width:12px; height:12px; margin-right:6px;"></span>Aerodynamic Center (AC)</span>
+            <span class="l-item" style="border:none; padding:0; background:transparent;"><span class="l-dot" style="background:${ellipsoidColor}; border-radius:50%; display:inline-block; width:12px; height:12px; margin-right:6px;"></span>Inertia Ellipsoid (Pitch, Roll, Yaw)</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderConstants(data) {
+      const c = data.constants || {};
+      const names = Object.keys(c).sort((a, b) => a.localeCompare(b));
+      if (!names.length) { constantsContainer.innerHTML = "<div class='empty'>No constants found in this dataset.</div>"; return; }
+      const rows = names.map((n, i) => `<tr><td class='mono'>${i + 1}</td><td class='mono'>${esc(n)}</td><td class='mono'>${esc(fmtNum(c[n]))}</td><td class='mono'>${esc(unit(n))}</td><td class='mono'>${esc(typeof c[n])}</td></tr>`).join("");
+      constantsContainer.innerHTML = `<div class='tbl-wrap'><table><thead><tr><th>#</th><th>Name</th><th>Value</th><th>Unit</th><th>Type</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+
+    function extract(data, coef) {
+      if (!data.coefficients || !data.coefficients[coef]) return [];
+      const obj = data.coefficients[coef];
+      const params = Array.isArray(obj.parameters) ? obj.parameters : [];
+      const rows = [];
+      function walk(node, ctx) {
+        if (!node || typeof node !== "object") return;
+        const next = { ...ctx };
+        params.forEach(p => { if (Object.prototype.hasOwnProperty.call(node, p)) next[p] = node[p]; });
+        if (Object.prototype.hasOwnProperty.call(node, coef)) {
+          const r = {};
+          params.forEach(p => { r[p] = next[p] !== undefined ? next[p] : 0; });
+          r[coef] = node[coef];
+          rows.push(r);
+        }
+        if (Array.isArray(node.data)) node.data.forEach(child => walk(child, next));
+      }
+      walk(obj, {});
+      return rows;
+    }
+    function hierarchy(data, coef) {
+      const p = data.coefficients?.[coef]?.parameters;
+      return Array.isArray(p) ? p.slice() : [];
+    }
+
+    function groupCount(rows, params) {
+      if (!rows.length) return 0;
+      const gp = params.slice(0, -1);
+      if (!gp.length) return 1;
+      return new Set(rows.map(r => gp.map(p => `${p}=${r[p]}`).join("|"))).size;
+    }
+
+    function renderCoefficients(data) {
+      const coefs = Object.keys(data.coefficients || {}).sort((a, b) => a.localeCompare(b));
+      plotsContainer.innerHTML = "";
+      if (!coefs.length) {
+        plotsContainer.innerHTML = "<div class='empty'>No coefficients found in this dataset.</div>";
+        return { coefs: 0, points: 0, traces: 0, depth: 0 };
+      }
+      let points = 0, traces = 0, depth = 0;
+      coefs.forEach((coef, i) => {
+        const rows = extract(data, coef);
+        const params = hierarchy(data, coef);
+        const gCount = groupCount(rows, params);
+        const xParam = params.length ? params[params.length - 1] : "sample";
+        points += rows.length; traces += gCount; depth = Math.max(depth, params.length);
+
+        const sid = safeId(coef, i);
+        const plotId = `plot_${sid}`;
+        const tableId = `table_${sid}`;
+        const card = document.createElement("article");
+        card.className = "coef";
+        card.innerHTML = `
+          <div class='chead'>
+            <div>
+              <h3 class='ctitle'>${esc(coef)}</h3>
+              <div class='csub'>${esc(params.join(" -> ") || "No parameter hierarchy declared")}</div>
+            </div>
+            <div class='chips'>
+              <span class='chip'>${fmtInt(rows.length)} points</span>
+              <span class='chip'>${fmtInt(gCount)} traces</span>
+              <span class='chip'>x-axis: ${esc(xParam)}</span>
+            </div>
+          </div>
+          <div id='${plotId}' class='plot'></div>
+          <div class='pl'>Data preview</div>
+          <div id='${tableId}' class='preview'></div>
+        `;
+        plotsContainer.appendChild(card);
+        plotCoef(plotId, rows, coef, params);
+        tablePreview(tableId, rows, coef, params);
+      });
+      return { coefs: coefs.length, points, traces, depth };
+    }
+
+    function plotCoef(id, rows, coef, params) {
+      if (!rows.length || !Object.prototype.hasOwnProperty.call(rows[0], coef)) {
+        Plotly.newPlot(id, [], { paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "#f8fbff", annotations: [{ text: `No data for ${coef}`, showarrow: false, font: { family: "IBM Plex Sans", size: 14, color: "#4d6278" } }] }, { responsive: true, displaylogo: false });
+        return;
+      }
+      const xParam = params.length ? params[params.length - 1] : "_sample";
+      const gp = params.slice(0, -1);
+      const map = new Map();
+      rows.forEach((row, i) => {
+        const scoped = { ...row, _sample: i + 1 };
+        const key = gp.length ? gp.map(p => `${p}=${row[p]}`).join(" | ") : "series=default";
+        if (!map.has(key)) {
+          const gVals = {}; gp.forEach(p => gVals[p] = row[p]);
+          map.set(key, { rows: [], gVals });
+        }
+        map.get(key).rows.push(scoped);
+      });
+
+      const byParam = {};
+      const idx = (p, v) => { if (!byParam[p]) byParam[p] = { o: [], d: {} }; const k = String(v); if (!Object.prototype.hasOwnProperty.call(byParam[p].d, k)) { byParam[p].o.push(k); byParam[p].d[k] = byParam[p].o.length - 1; } return byParam[p].d[k]; };
+
+      const traces = [];
+      for (const [key, e] of map.entries()) {
+        const sorted = e.rows.slice().sort((a, b) => num(a[xParam]) - num(b[xParam]));
+        const x = sorted.map(r => xParam === "_sample" ? r._sample : r[xParam]);
+        const y = sorted.map(r => r[coef]);
+
+        const i0 = gp[0] ? idx(gp[0], e.gVals[gp[0]]) : 0;
+        const i1 = gp[1] ? idx(gp[1], e.gVals[gp[1]]) : 0;
+        const i2 = gp[2] ? idx(gp[2], e.gVals[gp[2]]) : 0;
+        const i3 = gp[3] ? idx(gp[3], e.gVals[gp[3]]) : 0;
+
+        const color = colorForSeries(i0, i1);
+        const fillColor = i3 === 0 ? color : colorForSeries(i3 + i0, 0);
+
+        const showMarkers = gp.length >= 1;
+
+        const txt = sorted.map(r => {
+          const ls = [`<b>${esc(coef)}</b>: ${fmtNum(r[coef])}`];
+          params.forEach(p => ls.push(`${esc(p)}: ${fmtNum(r[p])}`));
+          return ls.join("<br>");
+        });
+        traces.push({
+          x, y, name: key, text: txt, hovertemplate: "%{text}<extra></extra>",
+          mode: showMarkers ? "lines+markers" : "lines",
+          line: { color, width: 3, dash: "solid" },
+          marker: { symbol: SHAPES[i2 % SHAPES.length], size: showMarkers ? 8 : 0, color: fillColor, line: { color: "#ffffff", width: showMarkers ? 1 : 0 } },
+          opacity: 1
+        });
+      }
+
+      const axis = { showline: true, mirror: true, linewidth: 1, linecolor: "#425770", ticks: "outside", ticklen: 5, tickcolor: "#425770", tickfont: { family: "IBM Plex Mono", size: 11, color: "#20354a" }, gridcolor: "rgba(66,87,112,.14)", zerolinecolor: "rgba(66,87,112,.24)", automargin: true };
+      Plotly.newPlot(id, traces, {
+        paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "#f8fbff",
+        title: { text: coef, x: .01, xanchor: "left", font: { family: "IBM Plex Sans", size: 18, color: "#102436" } },
+        xaxis: { ...axis, title: { text: `${xParam} ${unit(xParam)}`, standoff: 10, font: { family: "IBM Plex Sans", size: 12, color: "#102436" } } },
+        yaxis: { ...axis, title: { text: `${coef} ${unit(coef)}`, standoff: 8, font: { family: "IBM Plex Sans", size: 12, color: "#102436" } } },
+        legend: { orientation: "h", x: 0.5, xanchor: "center", y: -0.2, yanchor: "top", bgcolor: "rgba(255,255,255,.92)", bordercolor: "rgba(66,87,112,.24)", borderwidth: 1, font: { family: "IBM Plex Mono", size: 10, color: "#20354a" }, title: { text: gp.length ? "Group Key" : "Series", font: { family: "IBM Plex Sans", size: 11, color: "#20354a" } } },
+        hoverlabel: { bgcolor: "#1b3550", bordercolor: "#1b3550", font: { family: "IBM Plex Mono", size: 11, color: "#f7fbff" } },
+        hovermode: "closest", separators: ".,", margin: { l: 82, r: 80, t: 54, b: 140 }
+      }, { responsive: true, displaylogo: false, toImageButtonOptions: { filename: `${coef}_technical_plot`, format: "png", height: 900, width: 1600, scale: 2 } });
+    }
+
+    function tablePreview(id, rows, coef, params) {
+      const el = document.getElementById(id); el.innerHTML = "";
+      if (!rows.length) { el.innerHTML = "<div class='empty'>No rows extracted for this coefficient.</div>"; return; }
+      const cols = [...params, coef];
+      const sorted = rows.slice().sort((a, b) => { for (const c of params) { const d = num(a[c]) - num(b[c]); if (d !== 0) return d; } return num(a[coef]) - num(b[coef]); });
+      const view = sorted.slice(0, 24);
+      const head = cols.map(c => `<th>${esc(c)}</th>`).join("");
+      const body = view.map(r => `<tr>${cols.map(c => `<td class='mono'>${esc(fmtNum(r[c]))}</td>`).join("")}</tr>`).join("");
+      el.innerHTML = `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table><div class='note'>Showing ${fmtInt(view.length)} of ${fmtInt(sorted.length)} rows</div>`;
+    }
+
+    function unit(name) {
+      const l = String(name || "").toLowerCase();
+      if (l.includes("mach")) return "[-]";
+      if (l.includes("alpha") || l.includes("beta") || l.includes("phi") || l.includes("theta") || l.includes("psi") || l.includes("_deg") || l.endsWith("deg")) return "[deg]";
+      if (l === "p" || l === "q" || l === "r" || l.includes("rate") || l.includes("_dot")) return "[1/s]";
+      if (l.includes("mass")) return "[kg]";
+      if (l.includes("span") || l.includes("chord") || l.startsWith("x_") || l.startsWith("y_") || l.startsWith("z_") || l.includes("radius")) return "[m]";
+      if (l.includes("area")) return "[m^2]";
+      if (l.includes("thrust")) return "[N]";
+      return "[-]";
+    }
+
+    function fmtNum(v) {
+      if (typeof v === "number" && Number.isFinite(v)) {
+        if (v === 0) return "0";
+        const a = Math.abs(v);
+        if (a >= 1e4 || a < 1e-3) return v.toExponential(4);
+        return v.toFixed(6).replace(/\.?0+$/, "");
+      }
+      if (v === null || v === undefined) return "n/a";
+      return String(v);
+    }
+
+    function fmtInt(v) { return new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Number(v) || 0); }
+    function num(v) { const n = Number(v); return Number.isFinite(n) ? n : 0; }
+    function safeId(t, i) { const c = String(t).toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); return `${c || "coef"}_${i}`; }
+    function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&#39;"); }
+    function setStatus(msg, state) { statusPill.textContent = msg; statusPill.dataset.state = state; }
+
+    renderSummary({ file: "No file", constants: 0, coefs: 0, points: 0, traces: 0, depth: 0 });
+    aircraftContainer.innerHTML = "<div class='empty'>Load a YAML file to generate the 3-view aircraft reference schematic.</div>";
+    constantsContainer.innerHTML = "<div class='empty'>Load a YAML file to inspect constants.</div>";
+    plotsContainer.innerHTML = "<div class='empty'>Load a YAML file to render coefficient plots.</div>";
+  </script>
+</body>
+
+</html>

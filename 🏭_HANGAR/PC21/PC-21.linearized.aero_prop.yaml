@@ -1,0 +1,278 @@
+schema_version: "3.0"
+model_name: "PC-21"
+
+meta:
+  aircraft_id: PC-21
+  created_utc: "2026-04-25T22:16:48Z"
+  author: AeroModel.jl
+  notes: "Generated from unified framework; CG auto-shifted from x=3.601 m to x=3.529 m for 14.0% target static margin; CG auto-shifted from x=3.12 m to x=3.601 m for 14.0% target static margin"
+
+conventions:
+  angles: deg
+  rates: rad_s
+  forces: N
+  moments: N_m
+  coeff_axes: stability
+  body_axes: x_forward_y_right_z_down
+  coefficient_order: [CX, CY, CZ, Cl, Cm, Cn]
+  nondim_rates: {p_hat: "p*b/(2V)", q_hat: "q*c/(2V)", r_hat: "r*b/(2V)"}
+
+reference:
+  mass_kg: 3500
+  geometry: {S_ref_m2: 15.2, b_ref_m: 9.1, c_ref_m: 1.8}
+  cg_ref_m: {x: 3.529, y: 0, z: 0}
+  inertia:
+    principal_moments_kgm2: {Ixx_p: 22723, Iyy_p: 39514, Izz_p: 47335}
+    principal_axes_rotation_deg: {pitch: 0, roll: 0, yaw: 0}
+
+limits:
+  mach: [0.2, 0.2]
+  alpha_deg: [-180, 180]
+  beta_deg: [-180, 180]
+  controls_deg:
+    da: [-25, 25]
+    de: [-25, 20]
+    dr: [-25, 25]
+
+configurations:
+  - id: clean
+    flap_deg: 0
+    gear: up
+
+runtime_model:
+  CD0: 0.0267
+  CL_0: 0.2919
+  CL_alpha: 4.374533
+  CL_max: 1.1859
+  CY_beta: -0.561499
+  Cl_beta: -0.114592
+  Cl_da_per_deg: 0.0051
+  Cl_p_hat: -0.6421
+  Cm0: 0.0299
+  Cm_alpha: -0.638848
+  Cm_alpha_tail_only: -1.4879
+  Cm_de_per_deg: -0.02069
+  Cm_q_hat: -14.8987
+  Cn_beta: 0.223454
+  Cn_beta_vtp_only: 0.1811
+  Cn_dr_per_deg: 0.00256
+  Cn_r_hat: -0.3482
+  alpha_stall_negative: -20.84
+  alpha_stall_positive: 13.55
+  constants:
+    Oswald_factor: 0.887849
+    horizontal_tail_reference_area: 2.8
+    tail_reference_area: 5.3
+    vertical_tail_reference_area: 2.5
+    x_aero_reference_CoG: 3.529
+    x_horizontal_tail_aerodynamic_center: 9.288195
+    x_tail_aerodynamic_center: 9.288195
+    x_vertical_tail_aerodynamic_center: 9.430331
+    x_wing_aerodynamic_center: 3.205938
+    x_wing_body_neutral_point: 3.232153
+    x_wing_fuselage_aerodynamic_center: 3.232153
+    y_aero_reference_CoG: 0
+    y_horizontal_tail_aerodynamic_center: 0
+    y_tail_aerodynamic_center: 0
+    y_vertical_tail_aerodynamic_center: 0
+    y_wing_aerodynamic_center: 0
+    y_wing_body_neutral_point: 0
+    y_wing_fuselage_aerodynamic_center: 0
+    z_aero_reference_CoG: 0
+    z_horizontal_tail_aerodynamic_center: 0.1
+    z_tail_aerodynamic_center: 0.1
+    z_vertical_tail_aerodynamic_center: 0.1
+    z_wing_aerodynamic_center: -0.5
+    z_wing_body_neutral_point: -0.39134
+    z_wing_fuselage_aerodynamic_center: -0.39134
+  dynamic_stall_alpha_off_deg: 16.8
+  dynamic_stall_alpha_on_deg: 20.8
+  dynamic_stall_qhat_to_alpha_deg: 2
+  dynamic_stall_tau_alpha_s: 0.08
+  dynamic_stall_tau_sigma_fall_s: 0.35
+  dynamic_stall_tau_sigma_rise_s: 0.12
+  poststall_cd90: 1.797
+  poststall_cd_min: 0.02106
+  poststall_cl_scale: 1.1
+  poststall_sideforce_scale: 0.75
+  recommended_initial_velocity_m_s: 72.48
+  stall_speed_analysis_altitude_m_s: 55.76
+  stall_speed_sea_level_m_s: 55.76
+  tail_CD0: 0.0023
+  tail_CL_q: 2.244
+  tail_CS_r: 0.198
+  tail_k_induced: 0.2
+  tail_k_side: 0.1
+
+visual_geometry:
+  cg_position_m: {x: 3.529, y: 0, z: 0}
+  coordinate_system: x_aft_y_right_z_up
+  engines:
+    - id: Engine_PT6A
+      orientation_deg: {pitch: 0, roll: 0, yaw: 0}
+      position_m: {x: -0.5, y: 0, z: 0}
+  fuselages:
+    - diameter_m: 1.3
+      length_m: 11.2
+      name: fuselage_main
+      nose_position_m: {x: 0, y: 0, z: 0}
+  lifting_surfaces:
+    - AR: 5.4
+      TR: 0.6
+      aerodynamic_center_m: {x: 3.2059, y: 0, z: -0.3913}
+      airfoil: {root: "63212", tip: "63212", type: NACA}
+      control_surfaces:
+        - chord_fraction: 0.25
+          eta_end: 0.98
+          eta_start: 0.5
+          name: wing_aileron
+          type: aileron
+      dihedral_deg: 3
+      incidence_deg: 2
+      mean_aerodynamic_chord_m: 1.7127
+      mirror: true
+      name: wing
+      role: wing
+      root_LE_m: {x: 2.5, y: 0, z: -0.5}
+      root_chord_m: 2.0972
+      semi_span_m: 4.5299
+      span_m: 9.0598
+      surface_area_m2: 15.2
+      sweep_LE_rad: 0.133
+      sweep_quarter_chord_deg: 5
+      symmetric: true
+      tip_LE_m: {x: 3.106, y: 4.5299, z: -0.2629}
+      tip_chord_m: 1.2583
+      twist_tip_deg: 0
+      vertical: false
+    - AR: 4.3
+      TR: 0.4
+      aerodynamic_center_m: {x: 9.2882, y: 0, z: 0.1}
+      airfoil: {root: "0010", tip: "0010", type: NACA}
+      control_surfaces:
+        - chord_fraction: 0.35
+          eta_end: 0.95
+          eta_start: 0.15
+          name: HTP_elevator
+          type: elevator
+      dihedral_deg: 0
+      incidence_deg: -1.5
+      mean_aerodynamic_chord_m: 0.8564
+      mirror: true
+      name: HTP
+      role: horizontal_stabilizer
+      root_LE_m: {x: 9, y: 0, z: 0.1}
+      root_chord_m: 1.1528
+      semi_span_m: 1.7349
+      span_m: 3.4699
+      surface_area_m2: 2.8
+      sweep_LE_rad: 0.0993
+      sweep_quarter_chord_deg: 0
+      symmetric: true
+      tip_LE_m: {x: 9.1729, y: 1.7349, z: 0.1}
+      tip_chord_m: 0.4611
+      twist_tip_deg: 0
+      vertical: false
+    - AR: 1.5
+      TR: 0.5
+      aerodynamic_center_m: {x: 10.1286, y: 0, z: 0.9607}
+      airfoil: {root: "0010", tip: "0010", type: NACA}
+      control_surfaces:
+        - chord_fraction: 0.35
+          eta_end: 0.95
+          eta_start: 0.1
+          name: VTP_rudder
+          type: rudder
+      dihedral_deg: 0
+      incidence_deg: 0
+      mean_aerodynamic_chord_m: 1.3388
+      mirror: false
+      name: VTP
+      role: vertical_stabilizer
+      root_LE_m: {x: 9, y: 0, z: 0.1}
+      root_chord_m: 1.7213
+      semi_span_m: 1.9365
+      span_m: 1.9365
+      surface_area_m2: 2.5
+      sweep_LE_rad: 0.7451
+      sweep_quarter_chord_deg: 35
+      symmetric: false
+      tip_LE_m: {x: 10.7863, y: 0, z: 2.0365}
+      tip_chord_m: 0.8607
+      twist_tip_deg: 0
+      vertical: true
+  lights:
+    strobe_position_m: {x: 11.217, y: 0, z: 2.036}
+    tailcone_position_m: {x: 10.153, y: 0, z: 0.1}
+    wing_tip_position_m: {x: 3.735, y: 4.53, z: -0.263}
+  propeller:
+    diameter_m: 3.72
+    position_m: {x: -0.5, y: 0, z: 0}
+  reference_chord_m: 1.8
+  reference_span_m: 9.1
+
+propulsion:
+  engine_count: 1
+  throttle_input_mode: single_lever
+  engines:
+    - id: "Engine_PT6A"
+      position_m: {x: -0.5, y: 0, z: 0}
+      orientation_deg: {pitch: 0, roll: 0, yaw: 0}
+      thrust_scale: 1
+      spool_up_1_s: 1.2
+      spool_down_1_s: 1
+  thrust_map_shared:
+    axis_order: [mach, altitude_m, throttle]
+    axes:
+      mach: [0.2]
+      altitude_m: [0, 5000, 10000]
+      throttle: [0, 0.5, 1]
+
+    # values[mach_index][altitude_index][throttle_index]
+    values:
+      - # Mach 0.2
+        - [0, 9024, 18048]
+        - [0, 5473, 10947]
+        - [0, 3320, 6639]
+  aero_propulsion_coupling:
+    delta_CX_from_total_CT: {dCX_dCT_abs_alpha_slope_per_deg: -0.0005, dCX_dCT_at_alpha0: -0.01, model: ct_total_times_affine_abs_alpha_deg}
+
+actuators:
+  surface_rate_limit_deg_s: {HTP_elevator: 60, VTP_rudder: 60, wing_aileron: 60}
+  position_limit_deg:
+    HTP_elevator: [-25, 20]
+    VTP_rudder: [-25, 25]
+    wing_aileron: [-25, 25]
+
+failures:
+  allow_engine_out: false
+  default_failed_engines: []
+  failure_ramp_time_s: 0.5
+
+quality:
+  missing_term_policy: zero
+  provenance: {linear_core: VortexLattice.jl, nonlinear_surfaces: JDATCOM, propulsion: input_definition}
+  confidence: {linear_core: high, nonlinear: medium, poststall: low}
+  cg_auto_adjustment:
+    direction: aft
+    initial_static_margin: 0.407335
+    neutral_point_x_m: 3.853202
+    new_x_m: 3.601
+    previous_x_m: 3.12
+    reason: excessive_static_margin
+    target_static_margin: 0.14
+    trim_alpha_deg: 1.090032
+  validation:
+    errors: 0
+    issues:
+      - category: performance
+        detail: "Estimated clean stall speed: 55.8 m/s at sea level, 55.8 m/s at analysis altitude 0.0 m; use at least 72.5 m/s for simulator initial_velocity."
+        message: Aircraft requires a high simulator launch speed
+        severity: warning
+      - category: pitch_moment
+        detail: Trim α = 2.7° (no elevator)
+        message: Trim condition
+        severity: info
+    passed: true
+    summary: 1 warning(s) — review recommended
+    warnings: 1

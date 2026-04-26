@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFlight — Aerodynamic Model Inspector</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/aero_inspector_favicon.svg">
+    <style>
+        :root {
+            --bg: #f4f7fb;
+            --card: #ffffff;
+            --text: #17212b;
+            --muted: #5b6b7b;
+            --border: #dbe3ec;
+            --ok: #1b8f3d;
+            --warn: #b87300;
+            --err: #c13636;
+            --accent: #1f6feb;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 18px 22px;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            color: var(--text);
+            background: linear-gradient(180deg, #eef3f9 0%, var(--bg) 100%);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.35rem;
+        }
+
+        .mode-pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }
+        .mode-pill.linear  { background: #d5f0df; color: #0a6b2b; }
+        .mode-pill.table   { background: #dde7ff; color: #1a3a8a; }
+        .mode-pill.unknown { background: #f5e0e0; color: #8a1a1a; }
+
+        #statusText { color: var(--muted); font-size: 0.9rem; }
+        #statusText.ok   { color: var(--ok);   font-weight: 600; }
+        #statusText.warn { color: var(--warn); font-weight: 600; }
+        #statusText.err  { color: var(--err);  font-weight: 600; }
+
+        button.reload-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button.reload-btn:hover { filter: brightness(1.08); }
+
+        section.meta {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(24, 42, 58, 0.05);
+            padding: 14px 16px;
+        }
+
+        .panel h2 {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        table.const-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        table.const-table td {
+            padding: 3px 0;
+            border-bottom: 1px dashed #edf1f5;
+        }
+        table.const-table tr:last-child td { border-bottom: none; }
+        table.const-table td:first-child  { color: var(--muted); }
+        table.const-table td:nth-child(2) {
+            text-align: right;
+            font-family: Consolas, "Courier New", monospace;
+            font-weight: 600;
+        }
+        table.const-table td:last-child {
+            text-align: left;
+            padding-left: 8px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            width: 50px;
+        }
+
+        .constants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .plots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 14px;
+        }
+
+        .plot-panel { padding: 10px 12px 8px 12px; }
+        .plot-panel h3 {
+            margin: 0 0 6px 0;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .plot-canvas-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            background: #fbfcfe;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        canvas.plot-canvas { display: block; width: 100%; height: 100%; }
+        canvas.plot-overlay {
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+
+        .plot-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+        .plot-legend .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-swatch {
+            width: 14px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .reference-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        .reference-row b { color: var(--text); }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Aerodynamic Model Inspector</h1>
+        <span id="modePill" class="mode-pill unknown">loading…</span>
+        <span id="statusText" class="warn">Fetching /aero_model_data…</span>
+        <button class="reload-btn" id="reloadBtn">↻ Reload</button>
+        <button class="reload-btn" id="rangeBtn" style="background:#5b6b7b;">α/β ±30°</button>
+        <a class="back-link" href="/">← back to simulator</a>
+    </header>
+
+    <section class="meta">
+        <div class="panel">
+            <h2>Aircraft</h2>
+            <div id="aircraftName" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 6px;">—</div>
+            <div class="reference-row" id="referenceRow"></div>
+        </div>
+        <div class="panel">
+            <h2>Scalar constants</h2>
+            <div class="constants-grid" id="constantsGrid"></div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>Coefficient plots</h2>
+        <div class="plots-grid" id="plotsGrid"></div>
+    </section>
+
+    <script>
+        const TRACE_COLOURS = [
+            "#1f6feb", "#c13636", "#0a6b2b", "#9c3bd1",
+            "#b87300", "#2e6b84", "#8a1a1a", "#1a3a8a",
+        ];
+
+        const modePill     = document.getElementById("modePill");
+        const statusText   = document.getElementById("statusText");
+        const aircraftName = document.getElementById("aircraftName");
+        const referenceRow = document.getElementById("referenceRow");
+        const constantsGrid = document.getElementById("constantsGrid");
+        const plotsGrid    = document.getElementById("plotsGrid");
+        const reloadBtn    = document.getElementById("reloadBtn");
+        const rangeBtn     = document.getElementById("rangeBtn");
+
+        let currentRange = "normal";   // "normal" (±30°) or "wide" (±180°)
+
+        reloadBtn.addEventListener("click", fetchAndRender);
+        rangeBtn.addEventListener("click", () => {
+            currentRange = (currentRange === "normal") ? "wide" : "normal";
+            rangeBtn.textContent = currentRange === "wide" ? "α/β ±180°" : "α/β ±30°";
+            rangeBtn.style.background = currentRange === "wide" ? "var(--accent)" : "#5b6b7b";
+            fetchAndRender();
+        });
+
+        function setStatus(msg, cls) {
+            statusText.textContent = msg;
+            statusText.className = cls;
+        }
+
+        async function fetchAndRender() {
+            const rangeQuery = currentRange === "wide" ? "?range=wide" : "";
+            setStatus("Fetching /aero_model_data…", "warn");
+            try {
+                const res = await fetch("/aero_model_data" + rangeQuery, { cache: "no-store" });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const payload = await res.json();
+                if (payload.error) throw new Error(payload.error);
+                render(payload);
+                setStatus("Loaded", "ok");
+            } catch (err) {
+                console.error(err);
+                setStatus(`Failed: ${err.message}`, "err");
+            }
+        }
+
+        function render(payload) {
+            const mode = payload.mode || "unknown";
+            modePill.textContent = mode.toUpperCase() + " MODE";
+            modePill.className = "mode-pill " + (mode === "linear" ? "linear" : (mode === "table" ? "table" : "unknown"));
+
+            aircraftName.textContent = payload.aircraft_name || "—";
+            renderReferenceRow(payload.reference || {});
+            renderConstantsGroups(payload.constants_groups || []);
+            renderPlots(payload.plots || []);
+        }
+
+        function renderReferenceRow(ref) {
+            const entries = [
+                ["Wing area S", "m²", ref.S],
+                ["Span b",      "m",  ref.b],
+                ["MAC c",       "m",  ref.c],
+                ["Mass",        "kg", ref.mass],
+                ["AR",          "-",  ref.AR],
+                ["Oswald e",    "-",  ref.Oswald],
+                ["x_CoG",       "m",  ref.x_CoG],
+                ["Tail area",   "m²", ref.S_tail],
+            ];
+            referenceRow.innerHTML = entries.map(([name, unit, value]) =>
+                `<span>${name}: <b>${fmt(value)}</b> ${unit}</span>`
+            ).join("");
+        }
+
+        function renderConstantsGroups(groups) {
+            constantsGrid.innerHTML = "";
+            for (const group of groups) {
+                const card = document.createElement("div");
+                card.className = "panel";
+                card.style.padding = "10px 12px";
+                card.innerHTML = `<h2>${escapeHtml(group.title)}</h2>`;
+                const tbl = document.createElement("table");
+                tbl.className = "const-table";
+                for (const row of group.rows || []) {
+                    const [name, value, unit] = row;
+                    const tr = document.createElement("tr");
+                    tr.innerHTML =
+                        `<td>${escapeHtml(name)}</td>` +
+                        `<td>${fmt(value)}</td>` +
+                        `<td>${escapeHtml(unit || "")}</td>`;
+                    tbl.appendChild(tr);
+                }
+                card.appendChild(tbl);
+                constantsGrid.appendChild(card);
+            }
+        }
+
+        function renderPlots(plots) {
+            plotsGrid.innerHTML = "";
+            // Reset the overlay registry — each renderPlots call rebuilds
+            // every canvas, so any previous references are now stale.
+            plotRefs.length = 0;
+            for (const plot of plots) {
+                const panel = document.createElement("div");
+                panel.className = "panel plot-panel";
+
+                const title = document.createElement("h3");
+                title.textContent = plot.title || "";
+                panel.appendChild(title);
+
+                const canvasWrap = document.createElement("div");
+                canvasWrap.className = "plot-canvas-wrap";
+                const canvas = document.createElement("canvas");
+                canvas.className = "plot-canvas";
+                canvasWrap.appendChild(canvas);
+                // Overlay canvas sits on top of the plot canvas and is used
+                // exclusively for the live-state dot + fading trail. It has
+                // pointer-events: none so it never swallows clicks from the
+                // underlying plot.
+                const overlayCanvas = document.createElement("canvas");
+                overlayCanvas.className = "plot-overlay";
+                canvasWrap.appendChild(overlayCanvas);
+                panel.appendChild(canvasWrap);
+
+                const legend = document.createElement("div");
+                legend.className = "plot-legend";
+                panel.appendChild(legend);
+
+                plotsGrid.appendChild(panel);
+                const ref = { plotCanvas: canvas, overlayCanvas, plot, transform: null };
+                plotRefs.push(ref);
+                drawPlot(canvas, plot, legend, ref);
+            }
+            // Replay any state we already have so overlays come back
+            // immediately after a reload instead of waiting for the next
+            // telemetry tick.
+            redrawAllOverlays();
+        }
+
+        // ── Minimal vanilla-canvas line plotter ─────────────────────────
+        function drawPlot(canvas, plot, legend, ref = null) {
+            // Wait one frame so layout has assigned a real width/height.
+            requestAnimationFrame(() => {
+                const dpr = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                const Wcss = Math.max(rect.width, 300);
+                const Hcss = Math.max(rect.height, 200);
+                canvas.width  = Math.floor(Wcss * dpr);
+                canvas.height = Math.floor(Hcss * dpr);
+                const ctx = canvas.getContext("2d");
+                ctx.scale(dpr, dpr);
+
+                // Match the overlay canvas backing store to the plot
+                // canvas so the coordinate transform established below is
+                // directly reusable by drawStateOverlay().
+                if (ref && ref.overlayCanvas) {
+                    ref.overlayCanvas.width  = canvas.width;
+                    ref.overlayCanvas.height = canvas.height;
+                }
+
+                ctx.clearRect(0, 0, Wcss, Hcss);
+
+                // Margins
+                const m = { l: 48, r: 10, t: 8, b: 30 };
+                const plotW = Wcss - m.l - m.r;
+                const plotH = Hcss - m.t - m.b;
+
+                const traces = (plot.traces || []).filter(t => t && t.x && t.y && t.x.length === t.y.length && t.x.length > 0);
+                if (traces.length === 0) {
+                    ctx.fillStyle = "#8a98a8";
+                    ctx.font = "12px Segoe UI";
+                    ctx.textAlign = "center";
+                    ctx.fillText("No data", Wcss / 2, Hcss / 2);
+                    return;
+                }
+
+                let xmin = Infinity, xmax = -Infinity, ymin = Infinity, ymax = -Infinity;
+                for (const tr of traces) {
+                    for (let i = 0; i < tr.x.length; i++) {
+                        const xv = Number(tr.x[i]);
+                        const yv = Number(tr.y[i]);
+                        if (Number.isFinite(xv)) { if (xv < xmin) xmin = xv; if (xv > xmax) xmax = xv; }
+                        if (Number.isFinite(yv)) { if (yv < ymin) ymin = yv; if (yv > ymax) ymax = yv; }
+                    }
+                }
+                if (!Number.isFinite(xmin) || !Number.isFinite(xmax)) { xmin = -1; xmax = 1; }
+                if (!Number.isFinite(ymin) || !Number.isFinite(ymax)) { ymin = -1; ymax = 1; }
+                if (xmin === xmax) { xmin -= 1; xmax += 1; }
+                if (ymin === ymax) { const pad = Math.max(Math.abs(ymin), 1e-6) * 0.1; ymin -= pad; ymax += pad; }
+
+                // Pad y a little so lines don't touch the frame.
+                const yPad = (ymax - ymin) * 0.08;
+                ymin -= yPad;
+                ymax += yPad;
+
+                const xToPx = x => m.l + ((x - xmin) / (xmax - xmin)) * plotW;
+                const yToPx = y => m.t + plotH - ((y - ymin) / (ymax - ymin)) * plotH;
+
+                // Background grid + axes
+                ctx.strokeStyle = "#eef2f7";
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                const xTicks = niceTicks(xmin, xmax, 5);
+                const yTicks = niceTicks(ymin, ymax, 5);
+                for (const xt of xTicks) {
+                    const xp = xToPx(xt);
+                    ctx.moveTo(xp, m.t);
+                    ctx.lineTo(xp, m.t + plotH);
+                }
+                for (const yt of yTicks) {
+                    const yp = yToPx(yt);
+                    ctx.moveTo(m.l, yp);
+                    ctx.lineTo(m.l + plotW, yp);
+                }
+                ctx.stroke();
+
+                // Zero lines
+                ctx.strokeStyle = "#c4cdda";
+                ctx.lineWidth = 1;
+                if (ymin < 0 && ymax > 0) {
+                    const yp = yToPx(0);
+                    ctx.beginPath(); ctx.moveTo(m.l, yp); ctx.lineTo(m.l + plotW, yp); ctx.stroke();
+                }
+                if (xmin < 0 && xmax > 0) {
+                    const xp = xToPx(0);
+                    ctx.beginPath(); ctx.moveTo(xp, m.t); ctx.lineTo(xp, m.t + plotH); ctx.stroke();
+                }
+
+                // Axis frame
+                ctx.strokeStyle = "#8b98a6";
+                ctx.lineWidth = 1;
+                ctx.strokeRect(m.l, m.t, plotW, plotH);
+
+                // Tick labels
+                ctx.fillStyle = "#5b6b7b";
+                ctx.font = "10px Segoe UI";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "top";
+                for (const xt of xTicks) {
+                    ctx.fillText(formatTick(xt), xToPx(xt), m.t + plotH + 4);
+                }
+                ctx.textAlign = "right";
+                ctx.textBaseline = "middle";
+                for (const yt of yTicks) {
+                    ctx.fillText(formatTick(yt), m.l - 4, yToPx(yt));
+                }
+
+                // Axis labels
+                ctx.textAlign = "center";
+                ctx.textBaseline = "alphabetic";
+                ctx.fillStyle = "#3a4856";
+                ctx.font = "11px Segoe UI";
+                if (plot.xlabel) {
+                    ctx.fillText(plot.xlabel, m.l + plotW / 2, Hcss - 6);
+                }
+                if (plot.ylabel) {
+                    ctx.save();
+                    ctx.translate(12, m.t + plotH / 2);
+                    ctx.rotate(-Math.PI / 2);
+                    ctx.fillText(plot.ylabel, 0, 0);
+                    ctx.restore();
+                }
+
+                // Traces
+                traces.forEach((tr, idx) => {
+                    const colour = TRACE_COLOURS[idx % TRACE_COLOURS.length];
+                    ctx.strokeStyle = colour;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    let penDown = false;
+                    for (let i = 0; i < tr.x.length; i++) {
+                        const xv = Number(tr.x[i]);
+                        const yv = Number(tr.y[i]);
+                        if (!Number.isFinite(xv) || !Number.isFinite(yv)) { penDown = false; continue; }
+                        const xp = xToPx(xv);
+                        const yp = yToPx(yv);
+                        if (!penDown) { ctx.moveTo(xp, yp); penDown = true; }
+                        else { ctx.lineTo(xp, yp); }
+                    }
+                    ctx.stroke();
+                });
+
+                // Legend
+                legend.innerHTML = traces.map((tr, idx) => {
+                    const colour = TRACE_COLOURS[idx % TRACE_COLOURS.length];
+                    return `<span class="legend-item">
+                                <span class="legend-swatch" style="background:${colour}"></span>
+                                ${escapeHtml(tr.name || ("series " + (idx + 1)))}
+                            </span>`;
+                }).join("");
+
+                // Stash the coordinate transform on the ref so the live
+                // overlay renderer can re-use the same axis mapping. This
+                // also triggers an immediate overlay redraw using any
+                // already-buffered state, so the user doesn't have to wait
+                // for the next telemetry tick after hitting Reload.
+                if (ref) {
+                    ref.transform = {
+                        xmin, xmax, ymin, ymax,
+                        m, plotW, plotH,
+                        dpr,
+                        xToPx, yToPx,
+                    };
+                    drawStateOverlay(ref);
+                }
+            });
+        }
+
+        function niceTicks(lo, hi, targetCount) {
+            const span = hi - lo;
+            if (!(span > 0)) return [lo];
+            const rawStep = span / Math.max(targetCount, 1);
+            const magnitude = Math.pow(10, Math.floor(Math.log10(rawStep)));
+            const normalised = rawStep / magnitude;
+            let step;
+            if      (normalised < 1.5) step = 1 * magnitude;
+            else if (normalised < 3)   step = 2 * magnitude;
+            else if (normalised < 7)   step = 5 * magnitude;
+            else                       step = 10 * magnitude;
+            const first = Math.ceil(lo / step) * step;
+            const ticks = [];
+            for (let v = first; v <= hi + 0.5 * step; v += step) {
+                ticks.push(+v.toFixed(10));
+            }
+            return ticks;
+        }
+
+        function formatTick(v) {
+            if (v === 0) return "0";
+            const abs = Math.abs(v);
+            if (abs >= 1000 || abs < 0.01) return v.toExponential(1);
+            if (abs >= 10) return v.toFixed(1);
+            return v.toFixed(2);
+        }
+
+        function fmt(v, digits = 4) {
+            const num = Number(v);
+            if (!Number.isFinite(num)) return "—";
+            const abs = Math.abs(num);
+            if (abs !== 0 && (abs < 1e-3 || abs > 1e5)) return num.toExponential(2);
+            return num.toFixed(digits);
+        }
+
+        function escapeHtml(s) {
+            return String(s ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        // ── Live-state overlay ────────────────────────────────────────
+        // Subscribes to the same `openflight_telemetry` BroadcastChannel
+        // used by telemetry_dashboard.html (see 1.1 exchange_aircraft_state
+        // _with_server.js). For every telemetry tick we push the raw
+        // response into a small ring buffer and then walk every registered
+        // plot, computing a (x, y) dot from the current state via
+        // stateToPoint() and drawing the full ring buffer with decreasing
+        // alpha so the viewer can see both the current state (bright) and
+        // the recent trajectory (fading).
+
+        const STATE_HISTORY_MAX = 40;
+        const stateHistory = [];   // oldest first, newest last
+        const plotRefs = [];       // [{plotCanvas, overlayCanvas, plot, transform}]
+
+        function pushState(state) {
+            stateHistory.push(state);
+            while (stateHistory.length > STATE_HISTORY_MAX) stateHistory.shift();
+        }
+
+        // Maps a telemetry `state` object to a (x, y) pair in whichever
+        // axes the given plot uses. Returns null when the plot's axes do
+        // not correspond to any single pair of live-state values.
+        //
+        // The match key is the pair (plot.xlabel, plot.ylabel), defined
+        // in 0.4_📊_aero_model_inspector.jl on the Julia side. Adding a
+        // new plot to the inspector automatically requires a matching
+        // case here if you want a live dot on it.
+        function stateToPoint(plot, state) {
+            if (!plot || !state) return null;
+            const xl = plot.xlabel || "";
+            const yl = plot.ylabel || "";
+
+            const toNum = (v) => {
+                const n = Number(v);
+                return Number.isFinite(n) ? n : null;
+            };
+
+            const alphaDeg = (Number(state.alpha_RAD) || 0) * 180.0 / Math.PI;
+            const betaDeg  = (Number(state.beta_RAD)  || 0) * 180.0 / Math.PI;
+
+            const maxAileronDeg  = Number(state.max_aileron_deflection_deg)  || 25;
+            const maxRudderDeg   = Number(state.max_rudder_deflection_deg)   || 25;
+
+            // Aileron deflection in degrees (sign: positive roll_demand →
+            // right-wing-down → positive δa, matching the plot axis).
+            const aileronDeg = (Number(state.roll_demand_attained) || 0) * maxAileronDeg;
+            // Elevator deflection in degrees, signed per the plot's
+            // convention "δe > 0 = TE down = nose-down command". The Julia
+            // side already applied the -pitch_demand negation.
+            const elevatorDeg = Number(state.elevator_deg_attained);
+            // Rudder deflection in degrees.
+            const rudderDeg = (Number(state.yaw_demand_attained) || 0) * maxRudderDeg;
+
+            // Longitudinal totals (sum of all four contributions) — used
+            // on the "Cm vs α" plot which shows the full blended curve.
+            const totalCm =
+                (Number(state.CM_pitch_from_aero_forces)    || 0) +
+                (Number(state.CM_pitch_from_control)        || 0) +
+                (Number(state.CM_pitch_from_aero_stiffness) || 0) +
+                (Number(state.CM_pitch_from_aero_damping)   || 0);
+
+            // Helper: static moment = stiffness + forces (r×F). This
+            // combination represents the "total static moment at the
+            // current flight condition" and works in both linear mode
+            // (where stiffness holds the total and forces is 0) and table
+            // mode (where stiffness = table − r×F_static and forces =
+            // r×F_dynamic, so their sum ≈ table total).
+            const cmRollStatic = (Number(state.CM_roll_from_aero_stiffness) || 0) +
+                                 (Number(state.CM_roll_from_aero_forces)    || 0);
+            const cmYawStatic  = (Number(state.CM_yaw_from_aero_stiffness)  || 0) +
+                                 (Number(state.CM_yaw_from_aero_forces)     || 0);
+            const cmPitchStatic = (Number(state.CM_pitch_from_aero_stiffness) || 0) +
+                                  (Number(state.CM_pitch_from_aero_forces)    || 0);
+
+            // α-axis plots
+            if (xl === "α (deg)") {
+                if (yl === "α_sat (deg)") return { x: alphaDeg, y: toNum(state.alpha_sat_deg) };
+                if (yl === "CL")          return { x: alphaDeg, y: toNum(state.CL) };
+                if (yl === "CD")          return { x: alphaDeg, y: toNum(state.CD) };
+                if (yl === "Cm")          return { x: alphaDeg, y: cmPitchStatic + (Number(state.CM_pitch_from_control) || 0) + (Number(state.CM_pitch_from_aero_damping) || 0) };
+                if (yl === "CL/CD") {
+                    const cl = Number(state.CL) || 0;
+                    const cd = Number(state.CD) || 0;
+                    return { x: alphaDeg, y: Math.abs(cd) > 1e-6 ? cl / cd : 0 };
+                }
+                // Table-mode derivative-vs-α plots (Cl_p_hat, Cm_q_hat,
+                // etc.) show structural properties, not instantaneous
+                // values — just mark the current α on them.  The y-value
+                // is null so the dot doesn't draw.
+            }
+
+            // β-axis plots
+            if (xl === "β (deg)") {
+                if (yl === "β_sat (deg)") return { x: betaDeg, y: toNum(state.beta_sat_deg) };
+                if (yl === "CY" || yl === "CS") return { x: betaDeg, y: toNum(state.CS) };
+                // Cl/Cn vs β: use the static (stiffness + forces) moment
+                // so the dot tracks the plotted curve's physical meaning
+                // in both linear and table modes.
+                if (yl === "Cl") return { x: betaDeg, y: cmRollStatic };
+                if (yl === "Cn") return { x: betaDeg, y: cmYawStatic };
+            }
+
+            // Control-surface effectiveness plots (linear mode: ΔCl/ΔCm/ΔCn
+            // vs deflection in degrees).
+            if (xl === "δa (deg)" && yl === "ΔCl") return { x: aileronDeg, y: toNum(state.CM_roll_from_control) };
+            if (xl === "δe (deg)" && yl === "ΔCm") return { x: elevatorDeg, y: toNum(state.CM_pitch_from_control) };
+            if (xl === "δr (deg)" && yl === "ΔCn") return { x: rudderDeg, y: toNum(state.CM_yaw_from_control) };
+
+            // Damping plots (linear mode: ΔCl/ΔCm/ΔCn vs body rate in
+            // rad/s).
+            if (xl === "p (rad/s)" && yl === "ΔCl") return { x: toNum(state.p_roll_rate),  y: toNum(state.CM_roll_from_aero_damping) };
+            if (xl === "q (rad/s)" && yl === "ΔCm") return { x: toNum(state.q_pitch_rate), y: toNum(state.CM_pitch_from_aero_damping) };
+            if (xl === "r (rad/s)" && yl === "ΔCn") return { x: toNum(state.r_yaw_rate),   y: toNum(state.CM_yaw_from_aero_damping) };
+
+            // Cross-damping plots (table mode). The sim telemetry groups all
+            // roll-rate contributions into CM_yaw_from_aero_damping and all
+            // yaw-rate contributions into CM_roll_from_aero_damping, so these
+            // dots show the TOTAL contribution at the current state — they'll
+            // be slightly offset from the pure Cn_p·p_hat / Cl_r·r_hat curve.
+            if (xl === "p (rad/s)" && yl === "ΔCn") return { x: toNum(state.p_roll_rate), y: toNum(state.CM_yaw_from_aero_damping) };
+            if (xl === "r (rad/s)" && yl === "ΔCl") return { x: toNum(state.r_yaw_rate),  y: toNum(state.CM_roll_from_aero_damping) };
+            // ΔCL vs q, ΔCY vs p, ΔCY vs r: the simulator does not telemeter
+            // lift/side-force contributions from body rates separately, so no
+            // live dot on those plots. The static curves still render fine.
+
+            // ── Table-mode derivative and control-effectiveness plots ──
+            // These show a coefficient (e.g. Cl_p_hat, Cm_δe /deg) as a
+            // function of α. We can extract the instantaneous derivative
+            // from the telemetry decomposition by dividing the moment
+            // contribution by the non-dimensional rate or deflection that
+            // produced it. The dot only appears when the denominator is
+            // large enough to give a meaningful ratio (|denom| > threshold).
+            const TAS  = Number(state.TAS) || 70;
+            const bref = Number(state.reference_span) || 9;
+            const cref = Number(state.wing_mean_aerodynamic_chord) || 1.8;
+            const twoV = 2.0 * TAS + 1e-3;
+            const p = Number(state.p_roll_rate)  || 0;
+            const q = Number(state.q_pitch_rate) || 0;
+            const r = Number(state.r_yaw_rate)   || 0;
+            const p_hat = p * bref / twoV;
+            const q_hat = q * cref / twoV;
+            const r_hat = r * bref / twoV;
+            const DMIN = 1e-4;
+
+            // Damping derivative vs α  (table mode: ylabel like "Cl_p_hat")
+            if (yl === "Cl_p_hat" && Math.abs(p_hat) > DMIN)
+                return { x: alphaDeg, y: (Number(state.CM_roll_from_aero_damping) || 0) / p_hat };
+            if (yl === "Cm_q_hat" && Math.abs(q_hat) > DMIN)
+                return { x: alphaDeg, y: (Number(state.CM_pitch_from_aero_damping) || 0) / q_hat };
+            if (yl === "Cn_r_hat" && Math.abs(r_hat) > DMIN)
+                return { x: alphaDeg, y: (Number(state.CM_yaw_from_aero_damping) || 0) / r_hat };
+            if (yl === "Cn_p_hat" && Math.abs(p_hat) > DMIN)
+                return { x: alphaDeg, y: (Number(state.CM_yaw_from_aero_damping) || 0) / p_hat };
+            if (yl === "Cl_r_hat" && Math.abs(r_hat) > DMIN)
+                return { x: alphaDeg, y: (Number(state.CM_roll_from_aero_damping) || 0) / r_hat };
+
+            // Control effectiveness vs α  (table mode: ylabel like "Cl_δa /deg")
+            if (yl === "Cl_δa /deg" && Math.abs(aileronDeg) > 0.5)
+                return { x: alphaDeg, y: (Number(state.CM_roll_from_control) || 0) / aileronDeg };
+            if (yl === "Cm_δe /deg" && Math.abs(elevatorDeg) > 0.5)
+                return { x: alphaDeg, y: (Number(state.CM_pitch_from_control) || 0) / elevatorDeg };
+            if (yl === "Cn_δr /deg" && Math.abs(rudderDeg) > 0.5)
+                return { x: alphaDeg, y: (Number(state.CM_yaw_from_control) || 0) / rudderDeg };
+            if (yl === "Cn_δa /deg" && Math.abs(aileronDeg) > 0.5)
+                return { x: alphaDeg, y: (Number(state.CM_yaw_from_control) || 0) / aileronDeg };
+            if (yl === "Cl_δr /deg" && Math.abs(rudderDeg) > 0.5)
+                return { x: alphaDeg, y: (Number(state.CM_roll_from_control) || 0) / rudderDeg };
+
+            return null;
+        }
+
+        function drawStateOverlay(ref) {
+            if (!ref || !ref.overlayCanvas || !ref.transform) return;
+            const { overlayCanvas, plot, transform } = ref;
+            const ctx = overlayCanvas.getContext("2d");
+            // Reset any prior transform before clearing, then re-apply
+            // the DPR scale used by the plot canvas so dot coordinates
+            // computed from xToPx / yToPx (in CSS pixels) land on the
+            // right physical pixels.
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
+            ctx.scale(transform.dpr, transform.dpr);
+
+            // Clip to the plot area so dots that fall outside the axes
+            // (e.g. stall region on a ±30° α plot) are cleanly cut at the
+            // frame instead of spilling into the margin/legend area.
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(transform.m.l, transform.m.t, transform.plotW, transform.plotH);
+            ctx.clip();
+
+            const n = stateHistory.length;
+            for (let i = 0; i < n; i++) {
+                const point = stateToPoint(plot, stateHistory[i]);
+                if (!point) continue;
+                const { x, y } = point;
+                if (!Number.isFinite(x) || !Number.isFinite(y)) continue;
+
+                const xp = transform.xToPx(x);
+                const yp = transform.yToPx(y);
+
+                // age = 0 for the newest sample, 1 for the oldest.
+                const age = (n - 1 - i) / Math.max(n - 1, 1);
+                // 1.5-power fade: brightest sample gets full alpha, old
+                // samples drop off faster than linear so the trail stays
+                // legible without overwhelming the plot.
+                const alpha = Math.pow(1.0 - age, 1.5);
+                const isCurrent = (i === n - 1);
+                const radius = isCurrent ? 5.5 : 3.0;
+
+                ctx.beginPath();
+                ctx.arc(xp, yp, radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(220, 40, 40, ${alpha.toFixed(3)})`;
+                ctx.fill();
+                if (isCurrent) {
+                    ctx.strokeStyle = "rgba(90, 12, 12, 0.95)";
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
+            }
+
+            ctx.restore();
+        }
+
+        function redrawAllOverlays() {
+            for (const ref of plotRefs) drawStateOverlay(ref);
+        }
+
+        if (typeof BroadcastChannel !== "undefined") {
+            const telemetryChannel = new BroadcastChannel("openflight_telemetry");
+            telemetryChannel.onmessage = (event) => {
+                const payload = event && event.data ? event.data : null;
+                if (!payload || payload.type !== "telemetry" || !payload.data) return;
+                pushState(payload.data);
+                redrawAllOverlays();
+            };
+        } else {
+            console.warn("BroadcastChannel not supported — live-state overlay disabled.");
+        }
+
+        // Re-draw on window resize so plots always fit their panel.
+        let resizeTimer = null;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(fetchAndRender, 150);
+        });
+
+        fetchAndRender();
+    </script>
+</body>
+
+</html>

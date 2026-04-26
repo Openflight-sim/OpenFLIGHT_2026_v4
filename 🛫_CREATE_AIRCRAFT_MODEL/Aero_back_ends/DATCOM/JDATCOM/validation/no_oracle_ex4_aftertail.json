@@ -1,0 +1,87 @@
+{
+    "summary": {
+        "comparable_blocks": 2,
+        "failed_blocks": 2,
+        "total_blocks": 2,
+        "skipped_blocks": 0,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 2,
+                    "total_blocks": 2,
+                    "skipped_blocks": 0,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.1416,
+                                "mean_rel": 1.788835978835979,
+                                "max_abs": 0.396,
+                                "max_rel": 3.807692307692308
+                            },
+                            "cl": {
+                                "mean_abs": 0.3764,
+                                "mean_rel": 0.5463298908881062,
+                                "max_abs": 0.923,
+                                "max_rel": 1.132515337423313
+                            },
+                            "cm": {
+                                "mean_abs": 0.38966,
+                                "mean_rel": 19.057103432282002,
+                                "max_abs": 0.8,
+                                "max_rel": 62.5
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.142,
+                                "mean_rel": 0.7188998779803073,
+                                "max_abs": 0.36,
+                                "max_rel": 0.8859649122807016
+                            },
+                            "cl": {
+                                "mean_abs": 0.1592,
+                                "mean_rel": 0.30998260260658783,
+                                "max_abs": 0.277,
+                                "max_rel": 0.46601941747572817
+                            },
+                            "cm": {
+                                "mean_abs": 0.13327999999999998,
+                                "mean_rel": 0.4559186388416199,
+                                "max_abs": 0.20929999999999999,
+                                "max_rel": 0.7679033649698015
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2,
+                        "case_index": 2,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex4.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T22:28:00.807"
+}

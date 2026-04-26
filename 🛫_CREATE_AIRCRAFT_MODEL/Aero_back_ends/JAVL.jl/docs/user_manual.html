@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAVL.jl User Manual</title>
+<style>
+/* ── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+header {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #303f9f 100%);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+header .subtitle {
+    font-size: 1.15rem;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+header .version-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.25rem 1rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* ── Layout ───────────────────────────────────────────────── */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+main {
+    background: #fff;
+    max-width: 960px;
+    margin: -1.5rem auto 3rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 2.5rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Table of Contents ────────────────────────────────────── */
+.toc {
+    background: #f0f2f8;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+    border-left: 4px solid #1a237e;
+}
+
+.toc h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a237e;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+    padding-left: 0;
+}
+
+.toc ol li {
+    counter-increment: toc-counter;
+    margin: 0.35rem 0;
+}
+
+.toc ol li::before {
+    content: counter(toc-counter) ".";
+    font-weight: 600;
+    color: #1a237e;
+    margin-right: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.toc a {
+    color: #34495e;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.15s;
+}
+
+.toc a:hover {
+    color: #1a237e;
+    text-decoration: underline;
+}
+
+/* ── Section Headers ──────────────────────────────────────── */
+h2.section-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #1a237e;
+    border-bottom: 3px solid #1a237e;
+    padding-bottom: 0.5rem;
+    margin: 2.5rem 0 1.25rem;
+}
+
+h2.section-title:first-of-type {
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #283593;
+    margin: 1.75rem 0 0.75rem;
+}
+
+h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #37474f;
+    margin: 1.25rem 0 0.5rem;
+}
+
+/* ── Paragraphs & Lists ──────────────────────────────────── */
+p {
+    margin: 0.75rem 0;
+}
+
+ul, ol {
+    margin: 0.5rem 0 1rem 1.5rem;
+}
+
+li {
+    margin: 0.3rem 0;
+}
+
+/* ── Code ─────────────────────────────────────────────────── */
+code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.88em;
+    background: #eef0f5;
+    border-radius: 3px;
+    padding: 0.15em 0.4em;
+    color: #c7254e;
+}
+
+pre {
+    background: #1e2330;
+    color: #e8eaf0;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1rem 0 1.25rem;
+    line-height: 1.55;
+    font-size: 0.88rem;
+    border: 1px solid #2a2f42;
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+}
+
+/* Syntax highlighting classes */
+pre .kw { color: #c792ea; }      /* keywords */
+pre .fn { color: #82aaff; }      /* functions */
+pre .st { color: #c3e88d; }      /* strings */
+pre .cm { color: #637777; font-style: italic; }  /* comments */
+pre .nu { color: #f78c6c; }      /* numbers */
+pre .op { color: #89ddff; }      /* operators */
+pre .ty { color: #ffcb6b; }      /* types */
+pre .pp { color: #f07178; }      /* preprocessor / macros */
+pre .va { color: #e8eaf0; }      /* variables */
+
+/* ── Tables ───────────────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.92rem;
+}
+
+th {
+    background: #1a237e;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e8eaed;
+    vertical-align: top;
+}
+
+tr:nth-child(even) td {
+    background: #f8f9fc;
+}
+
+tr:hover td {
+    background: #eef0f5;
+}
+
+td code {
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+/* ── Info boxes ───────────────────────────────────────────── */
+.note {
+    background: #e3f2fd;
+    border-left: 4px solid #1565c0;
+    border-radius: 4px;
+    padding: 0.85rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.93rem;
+}
+
+.note strong {
+    color: #1565c0;
+}
+
+.warning {
+    background: #fff3e0;
+    border-left: 4px solid #e65100;
+    border-radius: 4px;
+    padding: 0.85rem 1.25rem;
+    margin: 1rem 0;
+    font-size: 0.93rem;
+}
+
+.warning strong {
+    color: #e65100;
+}
+
+/* ── Keyword reference boxes ──────────────────────────────── */
+.keyword-block {
+    border: 1px solid #dde1e8;
+    border-radius: 6px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.keyword-block .kw-header {
+    background: #e8eaf6;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #283593;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.95rem;
+}
+
+.keyword-block .kw-body {
+    padding: 0.75rem 1rem;
+    font-size: 0.93rem;
+}
+
+/* ── File tree ────────────────────────────────────────────── */
+.file-tree {
+    background: #f5f6fa;
+    border: 1px solid #dde1e8;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    margin: 1rem 0;
+}
+
+.file-tree .dir { color: #1a237e; font-weight: 600; }
+.file-tree .desc { color: #78909c; font-style: italic; }
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    color: #78909c;
+    font-size: 0.85rem;
+    border-top: 1px solid #e8eaed;
+    max-width: 960px;
+    margin: 0 auto 2rem;
+}
+
+/* ── Print ────────────────────────────────────────────────── */
+@media print {
+    header {
+        background: #1a237e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    main {
+        box-shadow: none;
+        margin: 0 auto;
+    }
+    pre {
+        background: #f5f5f5 !important;
+        color: #333 !important;
+        border: 1px solid #ccc;
+    }
+    pre .kw, pre .fn, pre .st, pre .cm, pre .nu, pre .op, pre .ty, pre .pp {
+        color: #333 !important;
+    }
+    pre .cm { color: #777 !important; }
+    .toc { break-inside: avoid; }
+    h2.section-title { break-after: avoid; }
+    table { font-size: 0.85rem; }
+    th { background: #e0e0e0 !important; color: #333 !important; }
+    body { background: #fff; }
+    a { color: inherit !important; text-decoration: none !important; }
+}
+
+@media (max-width: 768px) {
+    main { padding: 1.5rem 1.25rem; margin: -1rem 0.5rem 2rem; }
+    header { padding: 2rem 1rem 1.5rem; }
+    header h1 { font-size: 1.8rem; }
+    pre { font-size: 0.82rem; padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- HEADER                                                      -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<header>
+    <h1>JAVL.jl User Manual</h1>
+    <p class="subtitle">
+        A pure Julia reimplementation of the AVL (Athena Vortex Lattice) 3.52 aerodynamic solver
+        for computing aerodynamic characteristics of arbitrary wing configurations.
+    </p>
+    <span class="version-badge">Version 0.1 &mdash; February 2026</span>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- MAIN CONTENT                                                -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<main>
+
+<!-- ── Table of Contents ──────────────────────────────────── -->
+<nav class="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#quickstart">Quick Start</a></li>
+        <li><a href="#input-format">Input File Format (.avl)</a></li>
+        <li><a href="#api-reference">Core API Reference</a></li>
+        <li><a href="#constraints">Constraint System</a></li>
+        <li><a href="#architecture">Module Architecture</a></li>
+        <li><a href="#validation">Running the Validation Suite</a></li>
+        <li><a href="#differences">Differences from Fortran AVL</a></li>
+    </ol>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 1. INTRODUCTION                                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="introduction">1. Introduction</h2>
+
+<p>
+    <strong>JAVL.jl</strong> is a pure Julia implementation of Mark Drela's
+    <strong>AVL (Athena Vortex Lattice) 3.52</strong> aerodynamic solver. It implements
+    the Vortex Lattice Method (VLM) for computing aerodynamic characteristics
+    of arbitrary wing/body configurations in subsonic, inviscid, incompressible
+    (with Prandtl-Glauert correction) flow.
+</p>
+
+<p>The solver computes:</p>
+<ul>
+    <li>Total force and moment coefficients (CL, CD, CY, Cl, Cm, Cn)</li>
+    <li>Stability and control derivatives</li>
+    <li>Trefftz-plane induced drag and span efficiency</li>
+    <li>Strip-wise loading distributions (c*cl, local Cl, induced angles)</li>
+    <li>Hinge moments for control surfaces</li>
+    <li>Nodal forces for FEM coupling</li>
+</ul>
+
+<p>
+    JAVL.jl reads the same <code>.avl</code> input files as the original Fortran code, making
+    it a drop-in replacement for AVL's computational core. It has been validated against
+    Fortran AVL 3.52 across <strong>55 test cases</strong>, with CL agreement within 1% on
+    47 of 54 solvable cases (the remaining discrepancies are due to BODY elements not yet
+    fully implemented).
+</p>
+
+<p>
+    JAVL.jl is released under the <strong>MIT License</strong> (open source).
+</p>
+
+<div class="note">
+    <strong>Note:</strong> JAVL.jl aims for numerical equivalence with Fortran AVL 3.52.
+    The same algorithms are used: horseshoe vortex kernel, cubic spline interpolation,
+    Kutta-Joukowski force integration, and Trefftz-plane drag computation.
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 2. INSTALLATION                                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="installation">2. Installation</h2>
+
+<p>
+    JAVL.jl has <strong>no external package dependencies</strong> beyond the Julia standard library
+    (<code>LinearAlgebra</code> and <code>Printf</code>). Any Julia 1.6+ installation is sufficient.
+</p>
+
+<h3>Obtaining the source</h3>
+<pre><code><span class="cm"># Clone the repository</span>
+git clone https://github.com/your-org/JAVL.jl.git</code></pre>
+
+<h3>Loading into Julia</h3>
+<pre><code><span class="cm"># From the Julia REPL or a script:</span>
+<span class="fn">push!</span>(LOAD_PATH, <span class="st">"path/to/JAVL.jl/src"</span>)
+<span class="fn">include</span>(<span class="st">"path/to/JAVL.jl/src/AVL.jl"</span>)
+<span class="kw">using</span> .AVL</code></pre>
+
+<p>
+    Alternatively, you can activate the project environment if a <code>Project.toml</code> is present:
+</p>
+
+<pre><code><span class="cm"># From the Julia REPL:</span>
+<span class="kw">using</span> Pkg
+Pkg.<span class="fn">activate</span>(<span class="st">"path/to/JAVL.jl"</span>)
+<span class="fn">include</span>(<span class="st">"path/to/JAVL.jl/src/AVL.jl"</span>)
+<span class="kw">using</span> .AVL</code></pre>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 3. QUICK START                                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="quickstart">3. Quick Start</h2>
+
+<h3>3.1 Using the high-level driver</h3>
+<p>
+    The simplest way to run JAVL.jl is through the <code>solve_case</code> driver function.
+    It reads an AVL input file, builds the vortex lattice, and solves for a given angle of attack
+    or target CL in a single call.
+</p>
+
+<pre><code><span class="fn">include</span>(<span class="st">"src/AVL.jl"</span>)
+<span class="kw">using</span> .AVL
+
+<span class="cm"># Solve at alpha = 5 degrees</span>
+sol = AVL.<span class="fn">solve_case</span>(<span class="st">"validation/cases/vanilla.avl"</span>; alpha=<span class="nu">5.0</span>)
+
+<span class="cm"># Or trim to a target CL</span>
+sol = AVL.<span class="fn">solve_case</span>(<span class="st">"validation/cases/vanilla.avl"</span>; cl_target=<span class="nu">0.6</span>)
+
+<span class="cm"># Access results</span>
+println(<span class="st">"CL  = "</span>, sol.cl)
+println(<span class="st">"CD  = "</span>, sol.cd)
+println(<span class="st">"Cm  = "</span>, sol.cmy)
+println(<span class="st">"CDi = "</span>, sol.cdi)
+println(<span class="st">"e   = "</span>, sol.spanef)</code></pre>
+
+<h3>3.2 Step-by-step workflow</h3>
+<p>
+    For more control over the solver pipeline (e.g., solving multiple run cases with the
+    same AIC factorization, or extracting intermediate data), use the individual functions:
+</p>
+
+<pre><code><span class="fn">include</span>(<span class="st">"src/AVL.jl"</span>)
+<span class="kw">using</span> .AVL
+
+<span class="cm"># 1. Load configuration from .avl file</span>
+config = AVL.<span class="fn">read_avl</span>(<span class="st">"validation/cases/vanilla.avl"</span>)
+
+<span class="cm"># 2. Build vortex lattice</span>
+vl = AVL.<span class="fn">build_lattice</span>(config)
+<span class="fn">println</span>(<span class="st">"Surfaces: </span>$(vl.nsurf)<span class="st">, Strips: </span>$(vl.nstrip)<span class="st">, Vortices: </span>$(vl.nvor)")
+
+<span class="cm"># 3. (Optional) Set up body source model if bodies present</span>
+src_u_kw = <span class="kw">nothing</span>
+wcsrd_u  = <span class="kw">nothing</span>
+<span class="kw">if</span> !<span class="fn">isempty</span>(config.bodies)
+    _src_u, _dbl_u, _wcsrd_u, _wvsrd_u = AVL.<span class="fn">setup_body!</span>(vl, config)
+    src_u_kw = <span class="fn">size</span>(_src_u, <span class="nu">1</span>) > <span class="nu">0</span> ? _src_u : <span class="kw">nothing</span>
+    wcsrd_u  = <span class="fn">size</span>(_wcsrd_u, <span class="nu">2</span>) > <span class="nu">0</span> ? _wcsrd_u : <span class="kw">nothing</span>
+<span class="kw">end</span>
+
+<span class="cm"># 4. Build and LU-factorize AIC matrix</span>
+aic = AVL.<span class="fn">setup_aic</span>(vl, config)
+
+<span class="cm"># 5. Solve for unit-freestream circulations</span>
+gam_u0, gam_u_d = AVL.<span class="fn">solve_unit_rhs</span>(vl, config, aic; wcsrd_u=wcsrd_u)
+
+<span class="cm"># 6. Set up operating point</span>
+sol = AVL.<span class="fn">AVLSolution</span>(vl.nvor, vl.ncontrol, vl.nstrip)
+rc  = AVL.<span class="fn">RunCase</span>(vl.ncontrol)
+rc.icon[AVL.IVALFA]   = AVL.ICALFA
+rc.conval[AVL.ICALFA] = <span class="fn">deg2rad</span>(<span class="nu">5.0</span>)  <span class="cm"># alpha = 5 degrees</span>
+
+<span class="cm"># 7. Execute case (Newton iteration for trim)</span>
+AVL.<span class="fn">exec_case!</span>(sol, vl, config, aic, gam_u0, gam_u_d, rc;
+               src_u=src_u_kw)
+
+<span class="cm"># 8. Print results</span>
+<span class="fn">println</span>(<span class="st">"CL  = "</span>, sol.cl)
+<span class="fn">println</span>(<span class="st">"CD  = "</span>, sol.cd)
+<span class="fn">println</span>(<span class="st">"Cm  = "</span>, sol.cmy)
+<span class="fn">println</span>(<span class="st">"CDi = "</span>, sol.cdi)
+<span class="fn">println</span>(<span class="st">"e   = "</span>, sol.spanef)</code></pre>
+
+<h3>3.3 Extracting nodal forces for FEM coupling</h3>
+<pre><code><span class="cm"># After solving...</span>
+forces = AVL.<span class="fn">get_nodal_forces</span>(sol, vl, config; qinf=<span class="nu">0.5</span>*<span class="nu">1.225</span>*<span class="nu">50.0</span>^<span class="nu">2</span>)
+
+<span class="cm"># Each element is (x, y, z, Fx, Fy, Fz)</span>
+<span class="kw">for</span> (x, y, z, fx, fy, fz) <span class="kw">in</span> forces
+    @<span class="fn">printf</span>(<span class="st">"  (%.4f, %.4f, %.4f)  F=(%.4f, %.4f, %.4f) N\n"</span>,
+            x, y, z, fx, fy, fz)
+<span class="kw">end</span></code></pre>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 4. INPUT FILE FORMAT                                       -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="input-format">4. Input File Format (.avl)</h2>
+
+<p>
+    JAVL.jl reads the same <code>.avl</code> geometry files as Fortran AVL 3.52.
+    Lines beginning with <code>!</code> or <code>#</code> are treated as comments.
+    The file is read top-to-bottom; keywords trigger parsing of subsequent data lines.
+</p>
+
+<h3>4.1 Header</h3>
+<p>The first non-comment lines define the global configuration:</p>
+
+<pre><code>Plane Vanilla                <span class="cm">! Title string (free-form)</span>
+<span class="nu">0.0</span>                          <span class="cm">! Mach number</span>
+<span class="nu">0     0     0.0</span>              <span class="cm">! iYsym  iZsym  Zsym</span>
+<span class="nu">9.0   0.9   10.0</span>             <span class="cm">! Sref   Cref   Bref</span>
+<span class="nu">0.50  0.0   0.0</span>              <span class="cm">! Xref   Yref   Zref</span>
+<span class="nu">0.010</span>                        <span class="cm">! CDo  (optional baseline profile drag)</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>Mach</code></td><td>Freestream Mach number (Prandtl-Glauert correction applied when &gt; 0)</td></tr>
+        <tr><td><code>iYsym</code></td><td>Y-symmetry flag: 1 = symmetric, -1 = antisymmetric, 0 = none</td></tr>
+        <tr><td><code>iZsym</code></td><td>Z-symmetry flag: 1 = symmetric, -1 = antisymmetric, 0 = none</td></tr>
+        <tr><td><code>Zsym</code></td><td>Z-coordinate of the ground plane (used with iZsym)</td></tr>
+        <tr><td><code>Sref</code></td><td>Reference area for force coefficient normalization</td></tr>
+        <tr><td><code>Cref</code></td><td>Reference chord for moment coefficient normalization</td></tr>
+        <tr><td><code>Bref</code></td><td>Reference span for moment coefficient normalization</td></tr>
+        <tr><td><code>Xref, Yref, Zref</code></td><td>Moment reference point (center of gravity)</td></tr>
+        <tr><td><code>CDo</code></td><td>Baseline profile drag coefficient (optional, defaults to 0)</td></tr>
+    </tbody>
+</table>
+
+<h3>4.2 SURFACE definition</h3>
+<p>Each lifting surface begins with the <code>SURFACE</code> keyword:</p>
+
+<pre><code><span class="pp">SURFACE</span>
+Wing                         <span class="cm">! Surface name</span>
+<span class="nu">8   1.0   12   1.0</span>           <span class="cm">! Nchord  Cspace  [Nspan  Sspace]</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>Parameter</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>Nchord</code></td><td>Number of chordwise horseshoe vortex panels</td></tr>
+        <tr><td><code>Cspace</code></td><td>Chordwise spacing parameter (1.0 = cosine, 0.0 = uniform, -1.0 = sine, etc.)</td></tr>
+        <tr><td><code>Nspan</code></td><td>Number of spanwise strips (optional; overrides section-level values)</td></tr>
+        <tr><td><code>Sspace</code></td><td>Spanwise spacing parameter (optional)</td></tr>
+    </tbody>
+</table>
+
+<h4>Surface keywords (placed between SURFACE header and first SECTION)</h4>
+
+<div class="keyword-block">
+    <div class="kw-header">YDUPLICATE</div>
+    <div class="kw-body">
+        Followed by one value: <code>Ydupl</code>. Mirrors the entire surface about <code>Y = Ydupl</code>.
+        This creates a second surface with all Y-coordinates reflected. Typically <code>0.0</code> for
+        left/right symmetry.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">SCALE</div>
+    <div class="kw-body">
+        Followed by three values: <code>Xscale Yscale Zscale</code>. Scales all section
+        coordinates by these factors before lattice construction.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">TRANSLATE</div>
+    <div class="kw-body">
+        Followed by three values: <code>dX dY dZ</code>. Translates all section leading-edge
+        positions by these offsets.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">ANGLE</div>
+    <div class="kw-body">
+        Followed by one value: <code>Ainc</code> (degrees). Adds a global incidence angle to
+        all sections in this surface.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">NOWAKE</div>
+    <div class="kw-body">
+        No data line. Suppresses wake shedding from this surface. Useful for
+        modeling fins or struts that should not generate a wake.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">NOALBE</div>
+    <div class="kw-body">
+        No data line. Removes the freestream alpha/beta influence on this surface.
+        The surface is only affected by rotation rates and control deflections.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">NOLOAD</div>
+    <div class="kw-body">
+        No data line. Excludes this surface from total force/moment summation.
+        Forces are still computed but not added to the global totals.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">COMPONENT</div>
+    <div class="kw-body">
+        Followed by one integer: <code>Ncomp</code>. Assigns this surface to component group
+        <code>Ncomp</code>. Surfaces in the same component use a tighter vortex core radius
+        among themselves.
+    </div>
+</div>
+
+<h3>4.3 SECTION definition</h3>
+<p>
+    Each section within a surface defines a spanwise station. At least two sections are required
+    per surface to define the spanwise extent.
+</p>
+
+<pre><code><span class="pp">SECTION</span>
+<span class="cm">!Xle    Yle    Zle     Chord   Ainc  Nspan  Sspace</span>
+<span class="nu">0.0     0.0    0.0     1.0     2.0   0      0</span></code></pre>
+
+<table>
+    <thead>
+        <tr><th>Parameter</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>Xle, Yle, Zle</code></td><td>Leading-edge position of this section</td></tr>
+        <tr><td><code>Chord</code></td><td>Chord length at this section</td></tr>
+        <tr><td><code>Ainc</code></td><td>Local incidence angle (degrees), added to surface ANGLE</td></tr>
+        <tr><td><code>Nspan</code></td><td>Spanwise panels between this section and the next (0 = use surface default)</td></tr>
+        <tr><td><code>Sspace</code></td><td>Spanwise spacing for this interval (0 = use surface default)</td></tr>
+    </tbody>
+</table>
+
+<h4>Section keywords (placed after the SECTION data line)</h4>
+
+<div class="keyword-block">
+    <div class="kw-header">AFIL &nbsp;or&nbsp; AFILE</div>
+    <div class="kw-body">
+        Followed by a filename on the next line. Loads an airfoil coordinate file (Selig or
+        Lednicer format) and extracts camber and thickness distributions. The camber slope
+        is precomputed at uniform chordwise stations for use in the boundary condition.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">NACA</div>
+    <div class="kw-body">
+        Followed by a 4-digit or 5-digit NACA designation (e.g., <code>4412</code>). Generates
+        camber analytically from the NACA formula. Only 4-digit series is fully supported.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">CONTROL</div>
+    <div class="kw-body">
+        Defines a control surface at this section. Format:
+        <pre><code><span class="pp">CONTROL</span>
+<span class="cm">!Cname   Cgain  Xhinge  HingeVec        SgnDup</span>
+flap     <span class="nu">1.0</span>    <span class="nu">0.75</span>    <span class="nu">0.0 0.0 0.0</span>     <span class="nu">1.0</span></code></pre>
+        <ul>
+            <li><code>Cname</code> &mdash; control surface name (matched across sections)</li>
+            <li><code>Cgain</code> &mdash; gain factor (sign reversal for differential deflection)</li>
+            <li><code>Xhinge</code> &mdash; hinge location as x/c (positive = trailing edge, negative = leading edge)</li>
+            <li><code>HingeVec</code> &mdash; hinge axis direction (0 0 0 = use default streamwise axis)</li>
+            <li><code>SgnDup</code> &mdash; sign of deflection for the YDUPLICATE'd copy (+1 or -1)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">CLAF</div>
+    <div class="kw-body">
+        Followed by one value: the section lift-curve-slope factor. Default is <code>1.0</code>,
+        meaning the theoretical 2*pi*alpha is used. Reduce for thick airfoils or set to
+        match experimental CL_alpha/CL_alpha_theory.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">CDCL</div>
+    <div class="kw-body">
+        Defines a piecewise-parabolic viscous drag polar for this section. Format:
+        <pre><code><span class="pp">CDCL</span>
+<span class="cm">!CL1   CD1   CL2   CD2   CL3   CD3</span>
+<span class="nu">-0.5</span>  <span class="nu">0.020</span>  <span class="nu">0.1</span>  <span class="nu">0.012</span>  <span class="nu">1.2</span>  <span class="nu">0.025</span></code></pre>
+        Provides three (CL, CD) breakpoints that define two parabolic arcs for viscous drag
+        estimation.
+    </div>
+</div>
+
+<div class="keyword-block">
+    <div class="kw-header">DESIGN</div>
+    <div class="kw-body">
+        Defines a design variable sensitivity at this section. Format:
+        <pre><code><span class="pp">DESIGN</span>
+<span class="cm">!Dname   Dgain</span>
+twist    <span class="nu">1.0</span></code></pre>
+        Design variables perturb the camber line for optimization studies.
+    </div>
+</div>
+
+<h3>4.4 BODY definition</h3>
+<p>
+    Bodies are modeled using source and doublet line singularities along the body axis.
+</p>
+
+<pre><code><span class="pp">BODY</span>
+Fuselage                     <span class="cm">! Body name</span>
+<span class="nu">20   1.0</span>                     <span class="cm">! Nbody  Bspace</span></code></pre>
+
+<div class="keyword-block">
+    <div class="kw-header">BFIL</div>
+    <div class="kw-body">
+        Followed by a filename. Loads a body profile file containing rows of
+        <code>X  R</code> (axial position, radius). The body is assumed axisymmetric.
+    </div>
+</div>
+
+<p>
+    Body definitions also accept <code>YDUPLICATE</code>, <code>TRANSLATE</code>, and <code>SCALE</code> keywords
+    with the same semantics as surfaces.
+</p>
+
+<div class="warning">
+    <strong>Note:</strong> Body elements are implemented but not yet fully validated. Cases with
+    significant body influence (e.g., bd, bd2, bdc) may show 10-15% discrepancies
+    compared to Fortran AVL.
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 5. API REFERENCE                                           -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="api-reference">5. Core API Reference</h2>
+
+<h3>5.1 Data Types</h3>
+
+<table>
+    <thead>
+        <tr><th>Type</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>AVLConfig</code></td><td>Complete configuration parsed from an <code>.avl</code> file. Contains reference quantities, surface definitions, body definitions, and global parameters.</td></tr>
+        <tr><td><code>VortexLattice</code></td><td>Discretized vortex lattice geometry built from <code>AVLConfig</code>. Contains all horseshoe vortex elements, strips, and body nodes.</td></tr>
+        <tr><td><code>AVLSolution</code></td><td>Mutable struct holding all solution results: force coefficients, stability derivatives, circulation distribution, per-strip loads, and operating-point parameters.</td></tr>
+        <tr><td><code>RunCase</code></td><td>Operating-point specification defining the variable-to-constraint mapping and parameter values (alpha, beta, Mach, CG, etc.).</td></tr>
+        <tr><td><code>AICData</code></td><td>Cached aerodynamic influence coefficient matrix with its LU factorization. Reusable across multiple run cases at the same Mach number.</td></tr>
+        <tr><td><code>VortexElement</code></td><td>Immutable struct for a single horseshoe vortex panel: bound leg endpoints, control point, normal vectors, camber slopes, and parent indices.</td></tr>
+        <tr><td><code>Strip</code></td><td>Mutable struct for a spanwise station: leading-edge geometry, chord, width, incidence, viscous polar, and per-strip result fields.</td></tr>
+    </tbody>
+</table>
+
+<h3>5.2 Functions</h3>
+
+<h4>High-level drivers</h4>
+<table>
+    <thead>
+        <tr><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>solve_case(avl_file; alpha, beta, mach, cl_target, verbose)</code></td>
+            <td>All-in-one solver. Reads an <code>.avl</code> file and returns an <code>AVLSolution</code>.
+                Set <code>alpha</code> for a fixed angle of attack, or <code>cl_target</code> to trim alpha for a target CL.</td>
+        </tr>
+        <tr>
+            <td><code>solve_case(config, rc; verbose)</code></td>
+            <td>Lower-level solver taking a pre-built <code>AVLConfig</code> and <code>RunCase</code>.</td>
+        </tr>
+        <tr>
+            <td><code>solve_multiple(avl_file, run_file; verbose)</code></td>
+            <td>Solve all run cases defined in a <code>.run</code> file. Returns <code>Vector{AVLSolution}</code>.</td>
+        </tr>
+        <tr>
+            <td><code>get_lattice(avl_file)</code></td>
+            <td>Read config and build lattice without solving. Returns <code>(AVLConfig, VortexLattice)</code>. Useful for geometry inspection.</td>
+        </tr>
+        <tr>
+            <td><code>get_nodal_forces(sol, vl, config; qinf)</code></td>
+            <td>Extract dimensional nodal forces for FEM coupling. Returns a vector of <code>(x, y, z, Fx, Fy, Fz)</code> tuples.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Pipeline functions</h4>
+<table>
+    <thead>
+        <tr><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>read_avl(filepath)</code></td>
+            <td>Parse an <code>.avl</code> geometry file. Returns <code>AVLConfig</code>.</td>
+        </tr>
+        <tr>
+            <td><code>build_lattice(config)</code></td>
+            <td>Build the vortex lattice from surface/section definitions. Returns <code>VortexLattice</code>.</td>
+        </tr>
+        <tr>
+            <td><code>setup_body!(vl, config)</code></td>
+            <td>Build body source/doublet model. Returns <code>(src_u, dbl_u, wcsrd_u, wvsrd_u)</code> matrices for body-wing interaction.</td>
+        </tr>
+        <tr>
+            <td><code>setup_aic(vl, config)</code></td>
+            <td>Assemble and LU-factorize the AIC matrix. Returns <code>AICData</code>. This is the O(N^3) step.</td>
+        </tr>
+        <tr>
+            <td><code>solve_unit_rhs(vl, config, aic; wcsrd_u)</code></td>
+            <td>Solve for unit-freestream circulations. Returns <code>(gam_u0, gam_u_d)</code> where
+                <code>gam_u0[i,iu]</code> is circulation for unit component <code>iu</code> (u,v,w,p,q,r),
+                and <code>gam_u_d</code> holds control-deflection sensitivities.</td>
+        </tr>
+        <tr>
+            <td><code>exec_case!(sol, vl, config, aic, gam_u0, gam_u_d, rc; src_u, wvsrd_u)</code></td>
+            <td>Run the Newton trim iteration. Updates <code>sol</code> in-place with all forces, moments, and derivatives.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Post-processing functions</h4>
+<table>
+    <thead>
+        <tr><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>trefftz_drag!(sol, vl, config)</code></td>
+            <td>Compute Trefftz-plane induced drag, far-field CL, and span efficiency. Called automatically by <code>exec_case!</code>.</td>
+        </tr>
+        <tr>
+            <td><code>compute_forces!(sol, vl, config, aic, gam_u0, gam_u_d)</code></td>
+            <td>Compute near-field forces via Kutta-Joukowski integration. Called automatically by <code>exec_case!</code>.</td>
+        </tr>
+        <tr>
+            <td><code>body_forces!(sol, vl, config, src, src_u)</code></td>
+            <td>Compute body axial forces. Called automatically when bodies are present.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>Output functions</h4>
+<table>
+    <thead>
+        <tr><th>Function</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>print_total_forces(io, sol, vl, config)</code></td>
+            <td>Print total force and moment summary (equivalent to AVL's FT command).</td>
+        </tr>
+        <tr>
+            <td><code>print_strip_forces(io, sol, vl, config)</code></td>
+            <td>Print per-strip force distribution (equivalent to AVL's FS command).</td>
+        </tr>
+        <tr>
+            <td><code>print_stability_derivatives(io, sol, vl, config)</code></td>
+            <td>Print stability derivative matrix (equivalent to AVL's ST command).</td>
+        </tr>
+        <tr>
+            <td><code>write_forces_file(filename, sol, vl, config)</code></td>
+            <td>Write total forces to a text file.</td>
+        </tr>
+        <tr>
+            <td><code>write_strip_file(filename, sol, vl, config)</code></td>
+            <td>Write strip loading distribution to a text file.</td>
+        </tr>
+        <tr>
+            <td><code>write_element_file(filename, sol, vl)</code></td>
+            <td>Write per-element data (positions, DCP) to a text file.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>5.3 Solution Fields (AVLSolution)</h3>
+
+<h4>Total force and moment coefficients</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.cl</code></td><td>Lift coefficient (stability axes)</td></tr>
+        <tr><td><code>sol.cd</code></td><td>Total drag coefficient (stability axes)</td></tr>
+        <tr><td><code>sol.cy</code></td><td>Side-force coefficient (stability axes)</td></tr>
+        <tr><td><code>sol.cfx</code></td><td>X-force coefficient (body axes)</td></tr>
+        <tr><td><code>sol.cfy</code></td><td>Y-force coefficient (body axes)</td></tr>
+        <tr><td><code>sol.cfz</code></td><td>Z-force coefficient (body axes)</td></tr>
+        <tr><td><code>sol.cmx</code></td><td>Rolling moment coefficient (body axes, about Xref)</td></tr>
+        <tr><td><code>sol.cmy</code></td><td>Pitching moment coefficient (body axes, about Yref)</td></tr>
+        <tr><td><code>sol.cmz</code></td><td>Yawing moment coefficient (body axes, about Zref)</td></tr>
+        <tr><td><code>sol.cmx_s</code></td><td>Rolling moment coefficient (stability axes)</td></tr>
+        <tr><td><code>sol.cmz_s</code></td><td>Yawing moment coefficient (stability axes)</td></tr>
+        <tr><td><code>sol.cdi</code></td><td>Near-field induced drag coefficient</td></tr>
+        <tr><td><code>sol.cdv</code></td><td>Viscous (profile) drag coefficient (from CDCL polars)</td></tr>
+    </tbody>
+</table>
+
+<h4>Trefftz-plane (far-field) results</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.clff</code></td><td>Far-field lift coefficient</td></tr>
+        <tr><td><code>sol.cdff</code></td><td>Far-field (Trefftz) induced drag coefficient</td></tr>
+        <tr><td><code>sol.cyff</code></td><td>Far-field side-force coefficient</td></tr>
+        <tr><td><code>sol.spanef</code></td><td>Span efficiency factor (Oswald efficiency, e)</td></tr>
+    </tbody>
+</table>
+
+<h4>Operating-point parameters</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.alpha</code></td><td>Angle of attack (radians)</td></tr>
+        <tr><td><code>sol.beta</code></td><td>Sideslip angle (radians)</td></tr>
+        <tr><td><code>sol.vinf</code></td><td>Freestream velocity unit vector <code>NTuple{3,Float64}</code></td></tr>
+        <tr><td><code>sol.wrot</code></td><td>Rotation rate vector (p, q, r) in body axes</td></tr>
+        <tr><td><code>sol.mach</code></td><td>Mach number</td></tr>
+        <tr><td><code>sol.delcon</code></td><td>Control deflections (radians), length = ncontrol</td></tr>
+        <tr><td><code>sol.converged</code></td><td>Boolean: whether Newton iteration converged</td></tr>
+        <tr><td><code>sol.iterations</code></td><td>Number of Newton iterations performed</td></tr>
+    </tbody>
+</table>
+
+<h4>Per-element data</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.gam</code></td><td>Circulation per vortex element (length = nvor)</td></tr>
+        <tr><td><code>sol.dcp</code></td><td>Delta-Cp per vortex element (length = nvor)</td></tr>
+        <tr><td><code>sol.wv</code></td><td>Induced velocity at vortex midpoints (3 x nvor matrix)</td></tr>
+    </tbody>
+</table>
+
+<h4>Per-strip data</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.strip_cl</code></td><td>Strip lift coefficient (length = nstrip)</td></tr>
+        <tr><td><code>sol.strip_cnc</code></td><td>Strip span loading c*Cn (length = nstrip)</td></tr>
+        <tr><td><code>sol.strip_cd</code></td><td>Strip induced drag coefficient (length = nstrip)</td></tr>
+        <tr><td><code>sol.strip_dwwake</code></td><td>Strip wake downwash (length = nstrip)</td></tr>
+    </tbody>
+</table>
+
+<h4>Stability derivatives</h4>
+<table>
+    <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>sol.cl_u</code></td><td>d(CL)/d(u,v,w,p,q,r) &mdash; 6-element vector of unit-freestream sensitivities</td></tr>
+        <tr><td><code>sol.cd_u</code></td><td>d(CD)/d(u,v,w,p,q,r)</td></tr>
+        <tr><td><code>sol.cy_u</code></td><td>d(CY)/d(u,v,w,p,q,r)</td></tr>
+        <tr><td><code>sol.cmx_u</code></td><td>d(Cl)/d(u,v,w,p,q,r) &mdash; rolling moment derivative</td></tr>
+        <tr><td><code>sol.cmy_u</code></td><td>d(Cm)/d(u,v,w,p,q,r) &mdash; pitching moment derivative</td></tr>
+        <tr><td><code>sol.cmz_u</code></td><td>d(Cn)/d(u,v,w,p,q,r) &mdash; yawing moment derivative</td></tr>
+        <tr><td><code>sol.cl_d</code></td><td>d(CL)/d(control deflection) &mdash; per-control vector</td></tr>
+        <tr><td><code>sol.cmy_d</code></td><td>d(Cm)/d(control deflection) &mdash; per-control vector</td></tr>
+        <tr><td><code>sol.chinge</code></td><td>Hinge moment coefficients per control surface</td></tr>
+        <tr><td><code>sol.chinge_d</code></td><td>Hinge moment sensitivity matrix (ncontrol x ncontrol)</td></tr>
+    </tbody>
+</table>
+
+<div class="note">
+    <strong>Note:</strong> The unit-freestream derivatives (<code>*_u</code> arrays) are indexed
+    1=u, 2=v, 3=w, 4=p, 5=q, 6=r. To obtain conventional angle derivatives (d/d_alpha, d/d_beta),
+    use the chain rule via <code>vinfab(alpha, beta)</code> as demonstrated in
+    <code>print_stability_derivatives</code>.
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 6. CONSTRAINT SYSTEM                                       -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="constraints">6. Constraint System</h2>
+
+<p>
+    The constraint system maps <strong>operating variables</strong> to <strong>constraint targets</strong>.
+    This is how JAVL.jl handles trim problems: you specify which variable is free and what
+    condition it must satisfy.
+</p>
+
+<h3>6.1 Variables and Constraints</h3>
+
+<p>
+    The <code>RunCase</code> struct contains an <code>icon</code> vector that maps each variable
+    to its constraint. The mapping is: <code>rc.icon[iv] = ic</code>, meaning "variable <code>iv</code>
+    is constrained by condition <code>ic</code>".
+</p>
+
+<h4>Variable indices (what can vary)</h4>
+<table>
+    <thead>
+        <tr><th>Constant</th><th>Index</th><th>Variable</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>IVALFA</code></td><td>1</td><td>Angle of attack (alpha)</td></tr>
+        <tr><td><code>IVBETA</code></td><td>2</td><td>Sideslip angle (beta)</td></tr>
+        <tr><td><code>IVROTX</code></td><td>3</td><td>Roll rate (p)</td></tr>
+        <tr><td><code>IVROTY</code></td><td>4</td><td>Pitch rate (q)</td></tr>
+        <tr><td><code>IVROTZ</code></td><td>5</td><td>Yaw rate (r)</td></tr>
+    </tbody>
+</table>
+<p>
+    Control surface deflections occupy indices <code>IVTOT+1</code> through <code>IVTOT+ncontrol</code>.
+</p>
+
+<h4>Constraint indices (what condition to satisfy)</h4>
+<table>
+    <thead>
+        <tr><th>Constant</th><th>Index</th><th>Constraint</th></tr>
+    </thead>
+    <tbody>
+        <tr><td><code>ICALFA</code></td><td>1</td><td>Set alpha to a specified value</td></tr>
+        <tr><td><code>ICBETA</code></td><td>2</td><td>Set beta to a specified value</td></tr>
+        <tr><td><code>ICROTX</code></td><td>3</td><td>Set roll rate to a specified value</td></tr>
+        <tr><td><code>ICROTY</code></td><td>4</td><td>Set pitch rate to a specified value</td></tr>
+        <tr><td><code>ICROTZ</code></td><td>5</td><td>Set yaw rate to a specified value</td></tr>
+        <tr><td><code>ICCL</code></td><td>6</td><td>Achieve target CL</td></tr>
+        <tr><td><code>ICCY</code></td><td>7</td><td>Achieve target CY</td></tr>
+        <tr><td><code>ICMOMX</code></td><td>8</td><td>Achieve target rolling moment (Cl = 0 for trim)</td></tr>
+        <tr><td><code>ICMOMY</code></td><td>9</td><td>Achieve target pitching moment (Cm = 0 for trim)</td></tr>
+        <tr><td><code>ICMOMZ</code></td><td>10</td><td>Achieve target yawing moment (Cn = 0 for trim)</td></tr>
+    </tbody>
+</table>
+<p>
+    Control surface constraints occupy indices <code>ICTOT+1</code> through <code>ICTOT+ncontrol</code>,
+    mapping each control to its deflection value.
+</p>
+
+<h3>6.2 Common Constraint Examples</h3>
+
+<h4>Fixed alpha (default)</h4>
+<pre><code>rc.icon[AVL.IVALFA]   = AVL.ICALFA      <span class="cm"># alpha is set directly</span>
+rc.conval[AVL.ICALFA] = <span class="fn">deg2rad</span>(<span class="nu">5.0</span>)   <span class="cm"># alpha = 5 degrees</span></code></pre>
+
+<h4>Trim alpha to achieve CL = 0.5</h4>
+<pre><code>rc.icon[AVL.IVALFA] = AVL.ICCL   <span class="cm"># alpha is free, driven by CL target</span>
+rc.conval[AVL.ICCL] = <span class="nu">0.5</span>        <span class="cm"># target CL = 0.5</span></code></pre>
+
+<h4>Trim elevator to achieve Cm = 0 (pitch trim)</h4>
+<pre><code><span class="cm"># Assuming 'elevator' is control #1</span>
+rc.icon[AVL.IVALFA]         = AVL.ICALFA
+rc.conval[AVL.ICALFA]       = <span class="fn">deg2rad</span>(<span class="nu">5.0</span>)    <span class="cm"># fixed alpha</span>
+rc.icon[AVL.IVTOT + <span class="nu">1</span>]      = AVL.ICMOMY     <span class="cm"># elevator free, constrained by Cm</span>
+rc.conval[AVL.ICMOMY]       = <span class="nu">0.0</span>             <span class="cm"># target Cm = 0</span></code></pre>
+
+<h4>Trim alpha and elevator simultaneously</h4>
+<pre><code>rc.icon[AVL.IVALFA]         = AVL.ICCL       <span class="cm"># alpha -> CL = 0.5</span>
+rc.conval[AVL.ICCL]         = <span class="nu">0.5</span>
+rc.icon[AVL.IVTOT + <span class="nu">1</span>]      = AVL.ICMOMY     <span class="cm"># elevator -> Cm = 0</span>
+rc.conval[AVL.ICMOMY]       = <span class="nu">0.0</span></code></pre>
+
+<div class="note">
+    <strong>Note:</strong> The Newton iteration solves the coupled system simultaneously.
+    Convergence typically requires 3-5 iterations. The default tolerance is
+    <code>2e-5</code> with a maximum of 20 iterations.
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 7. MODULE ARCHITECTURE                                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="architecture">7. Module Architecture</h2>
+
+<p>
+    JAVL.jl is organized as a single Julia module (<code>AVL</code>) composed of source files that
+    mirror the structure of the original Fortran codebase. All files are included from
+    <code>AVL.jl</code>, the top-level module file.
+</p>
+
+<div class="file-tree">
+<span class="dir">src/</span>
+    <span class="dir">AVL.jl</span>          <span class="desc">-- Main module file; includes all sub-files and exports</span>
+    types.jl        <span class="desc">-- Data structures: AVLConfig, VortexLattice, AVLSolution, RunCase, etc.</span>
+    math_utils.jl   <span class="desc">-- Vector math helpers: cross3, normalize3, dot3, etc.</span>
+    splines.jl      <span class="desc">-- Cubic spline and Akima interpolation (matching AVL's spline.f)</span>
+    airfoil.jl      <span class="desc">-- Airfoil file parsing, camber/thickness extraction, NORMIT normalization</span>
+    spacing.jl      <span class="desc">-- Panel spacing functions: SPACER (spanwise), CSPACER (chordwise)</span>
+    input.jl        <span class="desc">-- .avl file parser (matching ainput.f)</span>
+    mass.jl         <span class="desc">-- Mass file parser (.mass)</span>
+    geometry.jl     <span class="desc">-- Vortex lattice construction from surface/section definitions</span>
+    body.jl         <span class="desc">-- Body source/doublet line model (SRDSET, VSRD, BDFORC)</span>
+    aic.jl          <span class="desc">-- AIC matrix assembly, horseshoe vortex velocity kernel</span>
+    solver.jl       <span class="desc">-- AIC factorization, unit-solution computation</span>
+    aero.jl         <span class="desc">-- Near-field force and moment calculations (Kutta-Joukowski)</span>
+    trefftz.jl      <span class="desc">-- Trefftz-plane induced drag integration</span>
+    trim.jl         <span class="desc">-- Newton trim iteration, constraint system</span>
+    output.jl       <span class="desc">-- Output formatting: print_total_forces, print_strip_forces, etc.</span>
+    driver.jl       <span class="desc">-- High-level driver functions: solve_case, solve_multiple, get_nodal_forces</span>
+</div>
+
+<h3>7.1 Key Design Decisions</h3>
+<ul>
+    <li><strong>Julia structs</strong> replace Fortran COMMON blocks. All state is encapsulated in typed structures, making the data flow explicit.</li>
+    <li><strong><code>NTuple{3,Float64}</code></strong> is used for 3-vectors (positions, directions, velocities). Being immutable, they are stack-allocated and avoid heap pressure.</li>
+    <li><strong>Mutable structs</strong> are used for <code>AVLSolution</code>, <code>Strip</code>, and <code>AVLConfig</code> where in-place updates are needed.</li>
+    <li><strong>AICData</strong> caches the LU factorization so multiple run cases can share the expensive O(N^3) matrix factorization.</li>
+    <li><strong>No external dependencies</strong> &mdash; only <code>LinearAlgebra</code> and <code>Printf</code> from the standard library.</li>
+</ul>
+
+<h3>7.2 Computation Pipeline</h3>
+<p>The solver follows this pipeline, matching the original Fortran flow:</p>
+<ol>
+    <li><strong>Parse</strong> &mdash; <code>read_avl</code> reads the <code>.avl</code> file into <code>AVLConfig</code></li>
+    <li><strong>Build lattice</strong> &mdash; <code>build_lattice</code> creates vortex elements and strips via <code>SPACER</code>/<code>CSPACER</code> spacing</li>
+    <li><strong>Build bodies</strong> &mdash; <code>setup_body!</code> creates source/doublet nodes (if bodies present)</li>
+    <li><strong>AIC assembly</strong> &mdash; <code>setup_aic</code> assembles the influence matrix from horseshoe vortex velocities and LU-factorizes it</li>
+    <li><strong>Unit solutions</strong> &mdash; <code>solve_unit_rhs</code> back-substitutes for each unit freestream component</li>
+    <li><strong>Trim iteration</strong> &mdash; <code>exec_case!</code> runs Newton iteration: superpose unit solutions, compute forces, check constraints, update variables</li>
+    <li><strong>Post-process</strong> &mdash; <code>compute_forces!</code> and <code>trefftz_drag!</code> fill in all force/moment/derivative fields</li>
+</ol>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 8. VALIDATION                                              -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="validation">8. Running the Validation Suite</h2>
+
+<p>
+    JAVL.jl includes a comprehensive validation suite that compares its output against
+    reference data from Fortran AVL 3.52.
+</p>
+
+<h3>8.1 Running the tests</h3>
+<pre><code><span class="cm"># From the JAVL.jl root directory:</span>
+julia test/test_all_cases.jl</code></pre>
+
+<h3>8.2 What it does</h3>
+<ol>
+    <li>Reads all <code>.avl</code> files from the <code>validation/cases/</code> directory (55 cases)</li>
+    <li>Solves each case at alpha = 5 degrees using <code>solve_case</code></li>
+    <li>Compares CL, CDff, and span efficiency against <code>test/avl_reference.csv</code></li>
+    <li>Prints a comparison table with absolute and percentage errors</li>
+    <li>Reports summary statistics: mean error, max error, number within 1%/5% thresholds</li>
+</ol>
+
+<h3>8.3 Expected results</h3>
+<table>
+    <thead>
+        <tr><th>Metric</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Cases solved</td><td>54 of 55 (1 empty lattice: supraf)</td></tr>
+        <tr><td>CL within 1%</td><td>47 of 54 cases</td></tr>
+        <tr><td>CL within 5%</td><td>49 of 54 cases</td></tr>
+        <tr><td>Remaining outliers</td><td>Body-influenced cases (bd, bd2, bdc: 12-15%) and al/allegro (-13.5%)</td></tr>
+    </tbody>
+</table>
+
+<h3>8.4 Running individual tests</h3>
+<pre><code><span class="cm"># Basic smoke test</span>
+julia test/test_basic.jl
+
+<span class="cm"># Diagnostic output (verbose per-strip data)</span>
+julia test/test_diagnostic.jl
+
+<span class="cm"># Surface force breakdown</span>
+julia test/test_surface_forces.jl</code></pre>
+
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- 9. DIFFERENCES FROM FORTRAN AVL                            -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<h2 class="section-title" id="differences">9. Differences from Fortran AVL</h2>
+
+<h3>9.1 What is the same</h3>
+<ul>
+    <li>Horseshoe vortex kernel with Leishman R^4 core model</li>
+    <li>Cubic Akima spline interpolation for airfoil camber</li>
+    <li>SPACER/CSPACER panel spacing algorithms</li>
+    <li>Spanwise fudging for multi-section surfaces</li>
+    <li>Trefftz-plane drag integration</li>
+    <li>Kutta-Joukowski near-field force computation</li>
+    <li>Newton iteration for trim with the same constraint system</li>
+    <li>Prandtl-Glauert compressibility correction</li>
+    <li>Same <code>.avl</code> input file format</li>
+</ul>
+
+<h3>9.2 What is different</h3>
+
+<table>
+    <thead>
+        <tr><th>Aspect</th><th>Fortran AVL</th><th>JAVL.jl</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Language</td>
+            <td>Fortran 77/90</td>
+            <td>Pure Julia &mdash; no compilation step, no Fortran dependencies</td>
+        </tr>
+        <tr>
+            <td>Data architecture</td>
+            <td>COMMON blocks with global arrays</td>
+            <td>Typed structs with explicit ownership</td>
+        </tr>
+        <tr>
+            <td>3-vectors</td>
+            <td>Separate X, Y, Z arrays</td>
+            <td>Immutable <code>NTuple{3,Float64}</code> (stack-allocated)</td>
+        </tr>
+        <tr>
+            <td>Linear algebra</td>
+            <td>Hand-coded LU decomposition</td>
+            <td>Julia's <code>LinearAlgebra.lu()</code> (LAPACK)</td>
+        </tr>
+        <tr>
+            <td>Interactive UI</td>
+            <td>Full terminal-based menu system</td>
+            <td>Programmatic API only (no interactive menus)</td>
+        </tr>
+        <tr>
+            <td>Plotting</td>
+            <td>Built-in PostScript/X11 geometry viewer</td>
+            <td>Not included (use Julia plotting packages)</td>
+        </tr>
+        <tr>
+            <td>BODY model</td>
+            <td>Fully validated</td>
+            <td>Implemented but with remaining discrepancies (10-15% on body cases)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>9.3 Fortran flags not yet toggleable</h3>
+<p>
+    Two Fortran compile-time flags default to <code>FALSE</code> and are not yet exposed
+    as user-configurable options in JAVL.jl:
+</p>
+<ul>
+    <li><strong><code>LTRFORCE</code></strong> &mdash; When TRUE, includes trailing-leg on-surface forces in the near-field force computation. Currently always FALSE in JAVL.jl (matching the AVL default).</li>
+    <li><strong><code>LNFLD_WV</code></strong> &mdash; When TRUE, includes body-source induced velocity in the near-field force computation. Currently always FALSE in JAVL.jl.</li>
+</ul>
+
+</main>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                      -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<footer>
+    JAVL.jl User Manual &mdash; Version 0.1 &mdash; February 2026<br>
+    Based on AVL 3.52 by Mark Drela and Harold Youngren (MIT)
+</footer>
+
+</body>
+</html>

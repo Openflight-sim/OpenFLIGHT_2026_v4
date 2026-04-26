@@ -1,0 +1,237 @@
+{
+    "summary": {
+        "comparable_blocks": 6,
+        "failed_blocks": 6,
+        "total_blocks": 12,
+        "skipped_blocks": 6,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 6,
+                    "total_blocks": 12,
+                    "skipped_blocks": 6,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00024787520618675625,
+                                "mean_rel": 0.028586113261708523,
+                                "max_abs": 0.0004185548052365179,
+                                "max_rel": 0.04650608947072422
+                            },
+                            "cl": {
+                                "mean_abs": 8.51742224961102e-5,
+                                "mean_rel": 0.00425871112480551,
+                                "max_abs": 0.00029101351422976957,
+                                "max_rel": 0.014550675711488478
+                            },
+                            "cm": {
+                                "mean_abs": 2.016455891324564e-5,
+                                "mean_rel": 0.0014202806664362368,
+                                "max_abs": 3.3583430456906455e-5,
+                                "max_rel": 0.0025832192474855437
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00036340115945638404,
+                                "mean_rel": 0.045628031022924356,
+                                "max_abs": 0.0006014119577352275,
+                                "max_rel": 0.07178826484995295
+                            },
+                            "cl": {
+                                "mean_abs": 0.00019647376462689995,
+                                "mean_rel": 0.009823688231344996,
+                                "max_abs": 0.00036986226329787254,
+                                "max_rel": 0.018493113164893625
+                            },
+                            "cm": {
+                                "mean_abs": 6.783072865023427e-5,
+                                "mean_rel": 0.0017922049324503432,
+                                "max_abs": 0.00024624932659045307,
+                                "max_rel": 0.0032316184591922974
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 2,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0005700648826050266,
+                                "mean_rel": 0.04759033811823655,
+                                "max_abs": 0.0008151786176599403,
+                                "max_rel": 0.07410714705999458
+                            },
+                            "cl": {
+                                "mean_abs": 0.0001507191669300103,
+                                "mean_rel": 0.0067907069781434305,
+                                "max_abs": 0.0004521191634699641,
+                                "max_rel": 0.017389198594998618
+                            },
+                            "cm": {
+                                "mean_abs": 6.951619540828194e-5,
+                                "mean_rel": 0.004195746632561002,
+                                "max_abs": 9.22310432399237e-5,
+                                "max_rel": 0.00724416790361445
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 3,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00026413604047223406,
+                                "mean_rel": 0.0210313453498424,
+                                "max_abs": 0.0005249257122370982,
+                                "max_rel": 0.043743809353091516
+                            },
+                            "cl": {
+                                "mean_abs": 0.0002584290089001351,
+                                "mean_rel": 0.011926985952439543,
+                                "max_abs": 0.00047152159373357524,
+                                "max_rel": 0.023576079686678762
+                            },
+                            "cm": {
+                                "mean_abs": 4.087914304135368e-5,
+                                "mean_rel": 0.001360550102222678,
+                                "max_abs": 0.00015544761141443597,
+                                "max_rel": 0.003000919139274826
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 4,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 4,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00036451873121880223,
+                                "mean_rel": 0.03774334219500452,
+                                "max_abs": 0.0006999361060192125,
+                                "max_rel": 0.07777067844657917
+                            },
+                            "cl": {
+                                "mean_abs": 0.00018792990686589885,
+                                "mean_rel": 0.009340672154186587,
+                                "max_abs": 0.00045977829731058467,
+                                "max_rel": 0.022988914865529234
+                            },
+                            "cm": {
+                                "mean_abs": 0.00010625046367049629,
+                                "mean_rel": 0.005365053350812434,
+                                "max_abs": 0.00035079086459694625,
+                                "max_rel": 0.010109246818355799
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 5,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 5,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00030293517403039177,
+                                "mean_rel": 0.03535426721782927,
+                                "max_abs": 0.0004986994985506088,
+                                "max_rel": 0.0623374373188261
+                            },
+                            "cl": {
+                                "mean_abs": 0.0002801565777238848,
+                                "mean_rel": 0.013639350849792052,
+                                "max_abs": 0.0004989155874083962,
+                                "max_rel": 0.024945779370419807
+                            },
+                            "cm": {
+                                "mean_abs": 6.0855121401840504e-5,
+                                "mean_rel": 0.0013957782129527827,
+                                "max_abs": 0.00015672276633221793,
+                                "max_rel": 0.0020163074218687667
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 6,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 6,
+                        "reason": "no finite legacy reference points"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "JDATCOM/validation/cases/holdout_suite.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T22:04:16.417"
+}

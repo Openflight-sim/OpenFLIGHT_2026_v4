@@ -1,0 +1,540 @@
+{
+    "num_cases": 4,
+    "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex1.inp",
+    "cases": [
+        {
+            "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+            "results": [
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": 0.023,
+                            "cl": -0.021,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": -0.0205
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": -0.014,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": -0.0137
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": -0.007,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0068
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": 0.007,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.0068
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0.014,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.0137
+                        },
+                        {
+                            "cd": 0.025,
+                            "cl": 0.027,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.0273
+                        },
+                        {
+                            "cd": 0.029,
+                            "cl": 0.041,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.041
+                        },
+                        {
+                            "cd": 0.036,
+                            "cl": 0.055,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.0546
+                        },
+                        {
+                            "cd": 0.044,
+                            "cl": 0.069,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0683
+                        },
+                        {
+                            "cd": 0.054,
+                            "cl": 0.082,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 0.082
+                        }
+                    ],
+                    "reynolds": 4280000,
+                    "source": "reference_oracle",
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+            "results": [
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": 0.022,
+                            "cl": -0.012,
+                            "regime": "subsonic",
+                            "alpha": -6,
+                            "cm": -0.0237
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": -0.007,
+                            "regime": "subsonic",
+                            "alpha": -4,
+                            "cm": -0.0156
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": -0.001,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.0074
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": 0.005,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0.0007
+                        },
+                        {
+                            "cd": 0.021,
+                            "cl": 0.011,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.0088
+                        },
+                        {
+                            "cd": 0.022,
+                            "cl": 0.016,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.0169
+                        },
+                        {
+                            "cd": 0.026,
+                            "cl": 0.027,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.0326
+                        },
+                        {
+                            "cd": 0.031,
+                            "cl": 0.036,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.0476
+                        },
+                        {
+                            "cd": 0.037,
+                            "cl": 0.045,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.0616
+                        },
+                        {
+                            "cd": 0.048,
+                            "cl": 0.061,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.0772
+                        },
+                        {
+                            "cd": 0.07,
+                            "cl": 0.093,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 0.0968
+                        }
+                    ],
+                    "reynolds": 4280000,
+                    "source": "reference_oracle",
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+            "results": [
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": null,
+                            "cl": null,
+                            "regime": "transonic",
+                            "alpha": -6,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": -4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": -2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 0,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 2,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 4,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 8,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 12,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 16,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 20,
+                            "cm": null
+                        },
+                        {
+                            "cd": null,
+                            "cl": 0,
+                            "regime": "transonic",
+                            "alpha": 24,
+                            "cm": null
+                        }
+                    ],
+                    "reynolds": 6400000,
+                    "source": "reference_oracle",
+                    "mach": 0.9
+                },
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": 0.041,
+                            "cl": -0.034,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": -0.026
+                        },
+                        {
+                            "cd": 0.039,
+                            "cl": -0.021,
+                            "regime": "supersonic",
+                            "alpha": -4,
+                            "cm": -0.017
+                        },
+                        {
+                            "cd": 0.038,
+                            "cl": -0.01,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.0083
+                        },
+                        {
+                            "cd": 0.037,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.038,
+                            "cl": 0.01,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.0083
+                        },
+                        {
+                            "cd": 0.039,
+                            "cl": 0.021,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.017
+                        },
+                        {
+                            "cd": 0.044,
+                            "cl": 0.049,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.0353
+                        },
+                        {
+                            "cd": 0.054,
+                            "cl": 0.084,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 0.0546
+                        },
+                        {
+                            "cd": 0.071,
+                            "cl": 0.124,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 0.0748
+                        },
+                        {
+                            "cd": 0.098,
+                            "cl": 0.172,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 0.0962
+                        },
+                        {
+                            "cd": 0.136,
+                            "cl": 0.23,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 0.1193
+                        }
+                    ],
+                    "reynolds": 9960000,
+                    "source": "reference_oracle",
+                    "mach": 1.4
+                },
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": 0.027,
+                            "cl": -0.039,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": -0.0223
+                        },
+                        {
+                            "cd": 0.024,
+                            "cl": -0.024,
+                            "regime": "supersonic",
+                            "alpha": -4,
+                            "cm": -0.0145
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": -0.011,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.0071
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.023,
+                            "cl": 0.011,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.0071
+                        },
+                        {
+                            "cd": 0.024,
+                            "cl": 0.024,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.0145
+                        },
+                        {
+                            "cd": 0.03,
+                            "cl": 0.056,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.0304
+                        },
+                        {
+                            "cd": 0.043,
+                            "cl": 0.097,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 0.0484
+                        },
+                        {
+                            "cd": 0.066,
+                            "cl": 0.154,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 0.0696
+                        },
+                        {
+                            "cd": 0.101,
+                            "cl": 0.218,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 0.0924
+                        },
+                        {
+                            "cd": 0.144,
+                            "cl": 0.276,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 0.1139
+                        }
+                    ],
+                    "reynolds": 17000000,
+                    "source": "reference_oracle",
+                    "mach": 2.5
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+            "results": [
+                {
+                    "altitude": null,
+                    "points": [
+                        {
+                            "cd": 0.016,
+                            "cl": -0.02,
+                            "regime": "supersonic",
+                            "alpha": -6,
+                            "cm": -0.0202
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": -0.012,
+                            "regime": "supersonic",
+                            "alpha": -4,
+                            "cm": -0.0135
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": -0.005,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.0067
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.013,
+                            "cl": 0.005,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.0067
+                        },
+                        {
+                            "cd": 0.014,
+                            "cl": 0.012,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 0.0135
+                        },
+                        {
+                            "cd": 0.019,
+                            "cl": 0.03,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 0.0268
+                        },
+                        {
+                            "cd": 0.027,
+                            "cl": 0.052,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 0.04
+                        },
+                        {
+                            "cd": 0.041,
+                            "cl": 0.078,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 0.0534
+                        },
+                        {
+                            "cd": 0.06,
+                            "cl": 0.107,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 0.0672
+                        },
+                        {
+                            "cd": 0.086,
+                            "cl": 0.138,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 0.0814
+                        }
+                    ],
+                    "reynolds": 17860000,
+                    "source": "reference_oracle",
+                    "mach": 2.5
+                }
+            ],
+            "has_surfaces": false
+        }
+    ]
+}

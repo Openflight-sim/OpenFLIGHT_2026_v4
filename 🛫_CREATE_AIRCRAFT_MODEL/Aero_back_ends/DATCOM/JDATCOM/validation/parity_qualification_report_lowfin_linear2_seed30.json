@@ -1,0 +1,420 @@
+{
+    "combined": {
+        "comparable_blocks": 206,
+        "failed_blocks": 107,
+        "total_blocks": 430,
+        "skipped_blocks": 224,
+        "pass_rate": 0.2302325581395349,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 99,
+        "use_oracle": false,
+        "inputs": 35,
+        "comparable_pass_rate": 0.48058252427184467
+    },
+    "overall_pass": false,
+    "settings": {
+        "base_inputs": [
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex1.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex2.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex3.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex4.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\generated_suite.inp"
+        ],
+        "generated_inputs": [
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260301.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260302.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260303.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260304.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260305.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260306.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260307.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260308.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260309.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260310.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260311.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260312.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260313.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260314.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260315.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260316.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260317.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260318.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260319.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260320.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260321.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260322.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260323.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260324.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260325.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260326.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260327.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260328.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260329.inp",
+            "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260330.inp"
+        ],
+        "seeds": [
+            20260301,
+            20260302,
+            20260303,
+            20260304,
+            20260305,
+            20260306,
+            20260307,
+            20260308,
+            20260309,
+            20260310,
+            20260311,
+            20260312,
+            20260313,
+            20260314,
+            20260315,
+            20260316,
+            20260317,
+            20260318,
+            20260319,
+            20260320,
+            20260321,
+            20260322,
+            20260323,
+            20260324,
+            20260325,
+            20260326,
+            20260327,
+            20260328,
+            20260329,
+            20260330
+        ],
+        "spec_path": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\parity_feature_spec.json",
+        "min_comparable": 20,
+        "rel_tol": 0.005
+    },
+    "gates": [
+        {
+            "id": "numeric_parity",
+            "target": 0,
+            "pass": false,
+            "value": 107,
+            "description": "No failed comparable block at target tolerance."
+        },
+        {
+            "id": "comparable_volume",
+            "target": 20,
+            "pass": true,
+            "value": 206,
+            "description": "Comparable block count is above minimum threshold."
+        },
+        {
+            "id": "body_only_cases",
+            "target": "> 0",
+            "pass": true,
+            "value": 191,
+            "description": "At least one body-only case is present in qualification inputs."
+        },
+        {
+            "id": "wing_only_cases",
+            "target": "> 0",
+            "pass": true,
+            "value": 190,
+            "description": "At least one wing-only case is present in qualification inputs."
+        },
+        {
+            "id": "full_config_cases",
+            "target": "> 0",
+            "pass": true,
+            "value": 192,
+            "description": "At least one body+wing+horizontal+vertical configuration is present."
+        },
+        {
+            "id": "canard_cases",
+            "target": "> 0",
+            "pass": true,
+            "value": 64,
+            "description": "At least one forward horizontal-surface (canard) case is present."
+        },
+        {
+            "id": "wing_type_1",
+            "target": "> 0",
+            "pass": true,
+            "value": 443,
+            "description": "At least one TYPE=1 wing case is present."
+        },
+        {
+            "id": "wing_type_2",
+            "target": "> 0",
+            "pass": true,
+            "value": 1,
+            "description": "At least one TYPE=2 wing case is present."
+        },
+        {
+            "id": "wing_type_3",
+            "target": "> 0",
+            "pass": true,
+            "value": 2,
+            "description": "At least one TYPE=3 wing case is present."
+        },
+        {
+            "id": "expr_cases",
+            "target": "> 0",
+            "pass": true,
+            "value": 5,
+            "description": "At least one case with EXPR inputs is present."
+        },
+        {
+            "id": "subsonic_regime",
+            "target": "> 0",
+            "pass": true,
+            "value": 825,
+            "description": "At least one subsonic Mach point (<0.9) is present."
+        },
+        {
+            "id": "transonic_regime",
+            "target": "> 0",
+            "pass": true,
+            "value": 437,
+            "description": "At least one transonic Mach point (0.9-1.2) is present."
+        },
+        {
+            "id": "supersonic_regime",
+            "target": "> 0",
+            "pass": true,
+            "value": 893,
+            "description": "At least one supersonic Mach point (1.2-5.0) is present."
+        },
+        {
+            "id": "hypersonic_flag",
+            "target": "> 0",
+            "pass": true,
+            "value": 1,
+            "description": "At least one case explicitly sets HYPERS true."
+        }
+    ],
+    "coverage": {
+        "wing_type_2": 1,
+        "hypersonic_regime": 0,
+        "canard_cases": 64,
+        "body_only_cases": 191,
+        "wing_only_cases": 190,
+        "wing_type_1": 443,
+        "expr_cases": 5,
+        "full_config_cases": 192,
+        "supersonic_regime": 893,
+        "cases_total": 637,
+        "hypersonic_cases": 1,
+        "subsonic_regime": 825,
+        "wing_type_3": 2,
+        "transonic_regime": 437,
+        "mach_points_total": 2155,
+        "inputs": 35
+    },
+    "skipped_reason_histogram": {
+        "legacy component buildup block not selected for full-configuration parity": 31,
+        "insufficient finite legacy reference points for parity (need >= 4)": 193
+    },
+    "worst_failures": [
+        {
+            "case_id": "AUTO BODY CASE 2",
+            "worst_rel": 0.020408163265306176,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.020408163265306176,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260326.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 6",
+            "worst_rel": 0.020100502512562866,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.020100502512562866,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260320.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 2",
+            "worst_rel": 0.01923076923076934,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01923076923076934,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260321.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.016759776536312943,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.016759776536312943,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260312.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 6",
+            "worst_rel": 0.01673640167364021,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01673640167364021,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260301.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 4",
+            "worst_rel": 0.016483516483516574,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.016483516483516574,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260324.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 5",
+            "worst_rel": 0.016129032258064606,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.016129032258064606,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260309.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 5",
+            "worst_rel": 0.01466992665036666,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01466992665036666,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260318.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 6",
+            "worst_rel": 0.014450867052023135,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.014450867052023135,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260319.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.013888888888888902,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.013888888888888902,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260306.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 4",
+            "worst_rel": 0.013513513513513549,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.013513513513513549,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260301.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 5",
+            "worst_rel": 0.01242236024844713,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01242236024844713,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260327.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 4",
+            "worst_rel": 0.01221995926680237,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01221995926680237,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260327.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.01160092807424595,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01160092807424595,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260318.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.01136363636363635,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01136363636363635,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260328.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.011019283746556408,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.011019283746556408,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260330.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 6",
+            "worst_rel": 0.01030927835051558,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01030927835051558,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260304.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 6",
+            "worst_rel": 0.010135135135135191,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.010135135135135191,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260327.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 3",
+            "worst_rel": 0.01010101010101004,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.01010101010101004,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260326.inp"
+        },
+        {
+            "case_id": "AUTO BODY CASE 2",
+            "worst_rel": 0.010000000000000113,
+            "mach": 0.4,
+            "max_rel_cd": 0,
+            "max_rel_cl": 0,
+            "max_rel_cm": 0.010000000000000113,
+            "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\JDATCOM\\validation\\cases\\qualification\\generated_seed_20260306.inp"
+        }
+    ],
+    "generated_at": "2026-02-26T23:14:22.215",
+    "baseline": {
+        "comparable_blocks": 26,
+        "failed_blocks": 2,
+        "total_blocks": 70,
+        "skipped_blocks": 44,
+        "pass_rate": 0.34285714285714286,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 24,
+        "use_oracle": false,
+        "inputs": 5,
+        "comparable_pass_rate": 0.9230769230769231
+    },
+    "generated": {
+        "comparable_blocks": 180,
+        "failed_blocks": 105,
+        "total_blocks": 360,
+        "skipped_blocks": 180,
+        "pass_rate": 0.20833333333333334,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 75,
+        "use_oracle": false,
+        "inputs": 30,
+        "comparable_pass_rate": 0.4166666666666667
+    }
+}

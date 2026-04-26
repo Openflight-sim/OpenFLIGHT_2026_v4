@@ -1,0 +1,10 @@
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+MsgPack = "99f44e22-a591-53d1-9472-aa23ef4bd671"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+VortexLattice = "7a09bdf8-3785-11e9-0bdd-57d0ec69af3f"
+WebSockets = "104b5d7c-a370-577a-8038-80a2059c5097"
+YAML = "ddb6d928-2868-570f-bddf-ab3f9cf99eb6"

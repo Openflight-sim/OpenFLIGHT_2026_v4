@@ -1,0 +1,1107 @@
+{
+    "summary": {
+        "comparable_blocks": 26,
+        "failed_blocks": 0,
+        "total_blocks": 70,
+        "skipped_blocks": 44,
+        "pass_rate": 0.37142857142857144,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 26,
+        "use_oracle": false,
+        "inputs": 5,
+        "comparable_pass_rate": 1
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 0,
+                    "total_blocks": 6,
+                    "skipped_blocks": 1,
+                    "pass_rate": 0.8333333333333334,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 5
+                },
+                "blocks": [
+                    {
+                        "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 9.090909090909036e-5,
+                                "mean_rel": 0.0019299886153437418,
+                                "max_abs": 0.0002999999999999947,
+                                "max_rel": 0.004878048780487775
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 9.090909090909098e-5,
+                                "mean_rel": 0.00166584860518304,
+                                "max_abs": 0.0003000000000000086,
+                                "max_rel": 0.004219409282700543
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 1.4,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 2.5,
+                        "case_index": 4,
+                        "npoints": 11
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex1.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 0,
+                    "total_blocks": 12,
+                    "skipped_blocks": 5,
+                    "pass_rate": 0.5833333333333334,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 7
+                },
+                "blocks": [
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 1,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 1.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "STRAIGHT TAPERED EXPOSED WING SOLUTION, EXAMPLE PROBLEM 2,CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 2.5,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED CRANKED WING SOLUTION, EXAMPLE PROBLEM 2, CASE 2",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 2,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "EXPOSED DOUBLE DELTA WING SOLUTION, EXAMPLE PROBLEM 2, CASE 3",
+                        "status": "skipped",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex2.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 0,
+                    "total_blocks": 38,
+                    "skipped_blocks": 32,
+                    "pass_rate": 0.15789473684210525,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 6
+                },
+                "blocks": [
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 1.5,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 1.5,
+                        "case_index": 2,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+                        "status": "skipped",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "reason": "legacy component buildup block not selected for full-configuration parity"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 3,
+                        "npoints": 9
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 1.5,
+                        "case_index": 3,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex3.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 0,
+                    "total_blocks": 2,
+                    "skipped_blocks": 0,
+                    "pass_rate": 1,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 2
+                },
+                "blocks": [
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 5
+                    },
+                    {
+                        "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 2,
+                        "case_index": 2,
+                        "npoints": 5
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex4.inp"
+        },
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 0,
+                    "total_blocks": 12,
+                    "skipped_blocks": 6,
+                    "pass_rate": 0.5,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 6
+                },
+                "blocks": [
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 2,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 3,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 4,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 4,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 5,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 5,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            }
+                        },
+                        "status": "pass",
+                        "mach": 0.4,
+                        "case_index": 6,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 6,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "JDATCOM/validation/cases/generated_suite.inp"
+        }
+    ],
+    "generated_at": "2026-02-26T21:51:33.878"
+}

@@ -1,0 +1,175 @@
+{
+    "summary": {
+        "comparable_blocks": 5,
+        "failed_blocks": 5,
+        "total_blocks": 6,
+        "skipped_blocks": 1,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 5,
+                    "total_blocks": 6,
+                    "skipped_blocks": 1,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "APPROXIMATE AXISYMMETRIC BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0005560893691210287,
+                                "mean_rel": 0.019734623947536546,
+                                "max_abs": 0.0009330068844547769,
+                                "max_rel": 0.03217265118809575
+                            },
+                            "cl": {
+                                "mean_abs": 0.00024254001545760432,
+                                "mean_rel": 0.00838228935136338,
+                                "max_abs": 0.00046564786397308017,
+                                "max_rel": 0.01908400485810439
+                            },
+                            "cm": {
+                                "mean_abs": 0.0001054983938907861,
+                                "mean_rel": 0.003041652580701745,
+                                "max_abs": 0.0002515466937466071,
+                                "max_rel": 0.0054295557812217635
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 1,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.00230801237379115,
+                                "mean_rel": 0.05297716577668496,
+                                "max_abs": 0.015118780809467665,
+                                "max_rel": 0.2159825829923952
+                            },
+                            "cl": {
+                                "mean_abs": 0.006041984304897466,
+                                "mean_rel": 0.20472346656032972,
+                                "max_abs": 0.010603056408080763,
+                                "max_rel": 0.42996179489899045
+                            },
+                            "cm": {
+                                "mean_abs": 0.00482177433338194,
+                                "mean_rel": 0.1298956665530904,
+                                "max_abs": 0.014548453306253387,
+                                "max_rel": 0.1945704442187783
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.6,
+                        "case_index": 2,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "status": "skipped",
+                        "mach": 0.9,
+                        "case_index": 3,
+                        "reason": "no finite legacy reference points"
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0003105852078343737,
+                                "mean_rel": 0.00664758816742092,
+                                "max_abs": 0.00042838591240888096,
+                                "max_rel": 0.011273313484444237
+                            },
+                            "cl": {
+                                "mean_abs": 0.0002990347734647652,
+                                "mean_rel": 0.007686395183352598,
+                                "max_abs": 0.0004918283709468563,
+                                "max_rel": 0.01582211909194756
+                            },
+                            "cm": {
+                                "mean_abs": 1.2273888138382742e-5,
+                                "mean_rel": 0.00039486437678253305,
+                                "max_abs": 3.787397585494623e-5,
+                                "max_rel": 0.0011352023639348355
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 1.4,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "ASYMMETRIC (CAMBERED) BODY SOLUTION, EXAMPLE PROBLEM 1, CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0002519116187953106,
+                                "mean_rel": 0.00787536101788119,
+                                "max_abs": 0.0003961660804140295,
+                                "max_rel": 0.01650692001725123
+                            },
+                            "cl": {
+                                "mean_abs": 0.00014378040503042452,
+                                "mean_rel": 0.0036844543407334065,
+                                "max_abs": 0.000494487461092992,
+                                "max_rel": 0.008830133233803428
+                            },
+                            "cm": {
+                                "mean_abs": 2.7824213463376552e-5,
+                                "mean_rel": 0.0014588190798037505,
+                                "max_abs": 4.8845969441423456e-5,
+                                "max_rel": 0.004884596944142346
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 3,
+                        "npoints": 11
+                    },
+                    {
+                        "case_id": "HYPERSONIC BODY SOLUTION,  EXAMPLE PROBLEM 1, CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.002757569571527421,
+                                "mean_rel": 0.15100281487284672,
+                                "max_abs": 0.0033152909156794787,
+                                "max_rel": 0.23829782798085794
+                            },
+                            "cl": {
+                                "mean_abs": 0.0011462244852125593,
+                                "mean_rel": 0.03242374466820234,
+                                "max_abs": 0.0023170906757220833,
+                                "max_rel": 0.06471608338607884
+                            },
+                            "cm": {
+                                "mean_abs": 0.0006450053161598869,
+                                "mean_rel": 0.015904294139499956,
+                                "max_abs": 0.0015176286390389954,
+                                "max_rel": 0.028710617203033147
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 2.5,
+                        "case_index": 4,
+                        "npoints": 11
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "tests/fixtures/ex1.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T22:00:56.370"
+}

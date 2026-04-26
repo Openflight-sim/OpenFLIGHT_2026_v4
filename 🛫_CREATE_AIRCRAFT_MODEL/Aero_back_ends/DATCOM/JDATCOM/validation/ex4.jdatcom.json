@@ -1,0 +1,100 @@
+{
+    "num_cases": 2,
+    "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex4.inp",
+    "cases": [
+        {
+            "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 1",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.012933306460533808,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.016917514334379973,
+                            "cl": 0.15658765015092832,
+                            "regime": "subsonic",
+                            "alpha": 5,
+                            "cm": 0.2088283058750496
+                        },
+                        {
+                            "cd": 0.028870137955918466,
+                            "cl": 0.31317530030185664,
+                            "regime": "subsonic",
+                            "alpha": 10,
+                            "cm": 0.4176566117500992
+                        },
+                        {
+                            "cd": 0.04879117732514928,
+                            "cl": 0.46976295045278493,
+                            "regime": "subsonic",
+                            "alpha": 15,
+                            "cm": 0.6264849176251488
+                        },
+                        {
+                            "cd": 0.07668063244207243,
+                            "cl": 0.6263506006037133,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 0.8353132235001984
+                        }
+                    ],
+                    "reynolds": 3100000,
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": true
+        },
+        {
+            "case_id": "BODY PLUS WING PLUS CANARD, EXAMPLE PROBLEM 4, CASE 2",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.02820581038476369,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 4.3091053586700946e7,
+                            "cl": 23272.944158751518,
+                            "regime": "supersonic",
+                            "alpha": 5,
+                            "cm": 49354.1746598794
+                        },
+                        {
+                            "cd": 1.7236421426218638e8,
+                            "cl": 46545.888317503035,
+                            "regime": "supersonic",
+                            "alpha": 10,
+                            "cm": 98708.3493197588
+                        },
+                        {
+                            "cd": 3.8781948205466205e8,
+                            "cl": 69818.83247625455,
+                            "regime": "supersonic",
+                            "alpha": 15,
+                            "cm": 148062.52397963818
+                        },
+                        {
+                            "cd": 6.894568569641281e8,
+                            "cl": 93091.77663500607,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 197416.6986395176
+                        }
+                    ],
+                    "reynolds": 6560000,
+                    "mach": 2
+                }
+            ],
+            "has_surfaces": true
+        }
+    ]
+}

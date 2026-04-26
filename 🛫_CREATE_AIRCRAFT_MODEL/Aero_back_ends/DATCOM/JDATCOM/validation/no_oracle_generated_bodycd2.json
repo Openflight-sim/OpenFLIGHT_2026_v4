@@ -1,0 +1,237 @@
+{
+    "summary": {
+        "comparable_blocks": 6,
+        "failed_blocks": 6,
+        "total_blocks": 12,
+        "skipped_blocks": 6,
+        "pass_rate": 0,
+        "target_rel_tolerance": 0.005,
+        "passed_blocks": 0,
+        "use_oracle": false,
+        "inputs": 1,
+        "comparable_pass_rate": 0
+    },
+    "entries": [
+        {
+            "comparison": {
+                "summary": {
+                    "failed_blocks": 6,
+                    "total_blocks": 12,
+                    "skipped_blocks": 6,
+                    "pass_rate": 0,
+                    "rel_tolerance": 0.005,
+                    "passed_blocks": 0
+                },
+                "blocks": [
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0012857142857142852,
+                                "mean_rel": 0.12210884353741491,
+                                "max_abs": 0.002,
+                                "max_rel": 0.2
+                            },
+                            "cl": {
+                                "mean_abs": 0.0005714285714285715,
+                                "mean_rel": 0.028571428571428574,
+                                "max_abs": 0.0010000000000000009,
+                                "max_rel": 0.050000000000000044
+                            },
+                            "cm": {
+                                "mean_abs": 0.0005857142857142851,
+                                "mean_rel": 0.03478113766595289,
+                                "max_abs": 0.0015999999999999973,
+                                "max_rel": 0.053921568627450824
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 1,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 1",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 1,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0012857142857142854,
+                                "mean_rel": 0.10193774479488761,
+                                "max_abs": 0.002,
+                                "max_rel": 0.18181818181818182
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0.00014285714285714398,
+                                "mean_rel": 0.003786079824835608,
+                                "max_abs": 0.00020000000000000573,
+                                "max_rel": 0.005479452054794678
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 2,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 2",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 2,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0012857142857142863,
+                                "mean_rel": 0.1138528138528139,
+                                "max_abs": 0.002,
+                                "max_rel": 0.2
+                            },
+                            "cl": {
+                                "mean_abs": 0.0007142857142857142,
+                                "mean_rel": 0.035714285714285705,
+                                "max_abs": 0.0019999999999999983,
+                                "max_rel": 0.09999999999999991
+                            },
+                            "cm": {
+                                "mean_abs": 0.0008285714285714283,
+                                "mean_rel": 0.04201595550792959,
+                                "max_abs": 0.0020999999999999977,
+                                "max_rel": 0.05660377358490571
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 3,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 3",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 3,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.001571428571428571,
+                                "mean_rel": 0.20001030715316423,
+                                "max_abs": 0.002,
+                                "max_rel": 0.2857142857142856
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0.00018571428571428558,
+                                "mean_rel": 0.007548248025472672,
+                                "max_abs": 0.0005999999999999964,
+                                "max_rel": 0.012048192771084265
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 4,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 4",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 4,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0014285714285714281,
+                                "mean_rel": 0.16309523809523802,
+                                "max_abs": 0.002,
+                                "max_rel": 0.25
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 5.7142857142856796e-5,
+                                "mean_rel": 0.0025175041803489656,
+                                "max_abs": 0.00010000000000000286,
+                                "max_rel": 0.006172839506172803
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 5,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 5",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 5,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "errors": {
+                            "cd": {
+                                "mean_abs": 0.0014285714285714288,
+                                "mean_rel": 0.1472892187177902,
+                                "max_abs": 0.002,
+                                "max_rel": 0.22222222222222224
+                            },
+                            "cl": {
+                                "mean_abs": 0,
+                                "mean_rel": 0,
+                                "max_abs": 0,
+                                "max_rel": 0
+                            },
+                            "cm": {
+                                "mean_abs": 0.0001999999999999998,
+                                "mean_rel": 0.008432349437693127,
+                                "max_abs": 0.0005000000000000004,
+                                "max_rel": 0.010810810810810745
+                            }
+                        },
+                        "status": "fail",
+                        "mach": 0.4,
+                        "case_index": 6,
+                        "npoints": 7
+                    },
+                    {
+                        "case_id": "AUTO BODY CASE 6",
+                        "status": "skipped",
+                        "mach": 0.8,
+                        "case_index": 6,
+                        "reason": "insufficient finite legacy reference points for parity (need >= 4)"
+                    }
+                ]
+            },
+            "status": "ok",
+            "input": "JDATCOM/validation/cases/generated_suite.inp"
+        }
+    ],
+    "generated_at": "2026-02-25T23:13:09.671"
+}

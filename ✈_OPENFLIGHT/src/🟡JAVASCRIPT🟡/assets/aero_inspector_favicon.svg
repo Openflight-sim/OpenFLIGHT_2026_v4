@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="4" fill="#f4f7fb" stroke="#c4cdda" stroke-width="1"/>
+  <!-- grid lines -->
+  <line x1="6" y1="6" x2="6" y2="26" stroke="#dbe3ec" stroke-width="0.5"/>
+  <line x1="16" y1="6" x2="16" y2="26" stroke="#c4cdda" stroke-width="0.5"/>
+  <line x1="26" y1="6" x2="26" y2="26" stroke="#dbe3ec" stroke-width="0.5"/>
+  <line x1="6" y1="16" x2="26" y2="16" stroke="#c4cdda" stroke-width="0.5"/>
+  <!-- blue curve (CL-like, rising then flat) -->
+  <path d="M6 20 Q10 19 14 12 Q18 8 22 8 L26 9" fill="none" stroke="#1f6feb" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- green curve (Cm-like, positive then crossing zero then negative) -->
+  <path d="M6 13 Q10 10 14 15 Q18 20 22 22 L26 24" fill="none" stroke="#0a6b2b" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- red curve (post-stall hump) -->
+  <path d="M6 18 Q10 22 14 14 Q16 12 18 14 Q22 18 26 20" fill="none" stroke="#c13636" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- current-state dot (bright) -->
+  <circle cx="17" cy="15" r="3" fill="#dc2828" stroke="#5a0c0c" stroke-width="1"/>
+  <!-- fading trail dots -->
+  <circle cx="14" cy="14" r="1.8" fill="#dc2828" opacity="0.55"/>
+  <circle cx="11.5" cy="15.5" r="1.4" fill="#dc2828" opacity="0.3"/>
+  <circle cx="9.5" cy="17" r="1.1" fill="#dc2828" opacity="0.15"/>
+  <!-- axis frame -->
+  <rect x="5" y="5" width="22" height="22" rx="1" fill="none" stroke="#8b98a6" stroke-width="0.8"/>
+</svg>

@@ -1,0 +1,407 @@
+{
+    "num_cases": 5,
+    "input": "F:\\WORK\\CAPAS\\DATCOM\\python-datcom-master\\tests\\fixtures\\ex3.inp",
+    "cases": [
+        {
+            "case_id": "CONFIGURATION BUILDUP, EXAMPLE PROBLEM 3, CASE 1",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.013694586538228479,
+                            "cl": -0.11959637819715051,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.10104584508262901
+                        },
+                        {
+                            "cd": 0.012329555974230254,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.013694586538228479,
+                            "cl": 0.11959637819715051,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.10104584508262901
+                        },
+                        {
+                            "cd": 0.017789678230223156,
+                            "cl": 0.23919275639430101,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.20209169016525802
+                        },
+                        {
+                            "cd": 0.03417004499820185,
+                            "cl": 0.47838551278860203,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.40418338033051604
+                        },
+                        {
+                            "cd": 0.06147065627816636,
+                            "cl": 0.7175782691829031,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.6062750704957741
+                        },
+                        {
+                            "cd": 0.09969151207011664,
+                            "cl": 0.9567710255772041,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 0.8083667606610321
+                        },
+                        {
+                            "cd": 0.14883261237405268,
+                            "cl": 1.195963781971505,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 1.0104584508262902
+                        },
+                        {
+                            "cd": 0.20889395718997467,
+                            "cl": 1.4351565383658063,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 1.2125501409915482
+                        }
+                    ],
+                    "reynolds": 4260000,
+                    "mach": 0.6
+                },
+                {
+                    "points": [
+                        {
+                            "cd": 0.013887638983563998,
+                            "cl": -0.15946183759620072,
+                            "regime": "subsonic",
+                            "alpha": -2,
+                            "cm": -0.13472779344350538
+                        },
+                        {
+                            "cd": 0.011460917980900487,
+                            "cl": 0,
+                            "regime": "subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.013887638983563998,
+                            "cl": 0.15946183759620072,
+                            "regime": "subsonic",
+                            "alpha": 2,
+                            "cm": 0.13472779344350538
+                        },
+                        {
+                            "cd": 0.021167801991554536,
+                            "cl": 0.31892367519240145,
+                            "regime": "subsonic",
+                            "alpha": 4,
+                            "cm": 0.26945558688701077
+                        },
+                        {
+                            "cd": 0.05028845402351668,
+                            "cl": 0.6378473503848029,
+                            "regime": "subsonic",
+                            "alpha": 8,
+                            "cm": 0.5389111737740215
+                        },
+                        {
+                            "cd": 0.09882287407678693,
+                            "cl": 0.9567710255772044,
+                            "regime": "subsonic",
+                            "alpha": 12,
+                            "cm": 0.8083667606610324
+                        },
+                        {
+                            "cd": 0.16677106215136525,
+                            "cl": 1.2756947007696058,
+                            "regime": "subsonic",
+                            "alpha": 16,
+                            "cm": 1.077822347548043
+                        },
+                        {
+                            "cd": 0.25413301824725165,
+                            "cl": 1.5946183759620072,
+                            "regime": "subsonic",
+                            "alpha": 20,
+                            "cm": 1.3472779344350538
+                        },
+                        {
+                            "cd": 0.36090874236444626,
+                            "cl": 1.9135420511544088,
+                            "regime": "subsonic",
+                            "alpha": 24,
+                            "cm": 1.6167335213220648
+                        }
+                    ],
+                    "reynolds": 6400000,
+                    "mach": 0.8
+                },
+                {
+                    "points": [
+                        {
+                            "cd": 0.024877004998635294,
+                            "cl": -0.2725481436338987,
+                            "regime": "supersonic",
+                            "alpha": -2,
+                            "cm": -0.6962908778968215
+                        },
+                        {
+                            "cd": 0.019568706956899724,
+                            "cl": 0,
+                            "regime": "supersonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.024877004998635294,
+                            "cl": 0.2725481436338987,
+                            "regime": "supersonic",
+                            "alpha": 2,
+                            "cm": 0.6962908778968215
+                        },
+                        {
+                            "cd": 0.040801899123842016,
+                            "cl": 0.5450962872677974,
+                            "regime": "supersonic",
+                            "alpha": 4,
+                            "cm": 1.392581755793643
+                        },
+                        {
+                            "cd": 0.1045014756246689,
+                            "cl": 1.0901925745355947,
+                            "regime": "supersonic",
+                            "alpha": 8,
+                            "cm": 2.785163511587286
+                        },
+                        {
+                            "cd": 0.21066743645938033,
+                            "cl": 1.635288861803392,
+                            "regime": "supersonic",
+                            "alpha": 12,
+                            "cm": 4.177745267380929
+                        },
+                        {
+                            "cd": 0.3592997816279764,
+                            "cl": 2.1803851490711894,
+                            "regime": "supersonic",
+                            "alpha": 16,
+                            "cm": 5.570327023174572
+                        },
+                        {
+                            "cd": 0.5503985111304569,
+                            "cl": 2.7254814363389865,
+                            "regime": "supersonic",
+                            "alpha": 20,
+                            "cm": 6.962908778968215
+                        },
+                        {
+                            "cd": 0.7839636249668221,
+                            "cl": 3.270577723606784,
+                            "regime": "supersonic",
+                            "alpha": 24,
+                            "cm": 8.355490534761858
+                        }
+                    ],
+                    "reynolds": 9960000,
+                    "mach": 1.5
+                }
+            ],
+            "has_surfaces": true
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 2",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ],
+                    "reynolds": null,
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 3",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ],
+                    "reynolds": null,
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 4",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ],
+                    "reynolds": 2280000,
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        },
+        {
+            "case_id": "INCLUDES BODY AND WING-BODY EXPERIMENTAL DATA, EX.PROB. 3, CASE 5",
+            "results": [
+                {
+                    "points": [
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": -2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 0,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 2,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 4,
+                            "cm": 0
+                        },
+                        {
+                            "cd": 0.02,
+                            "cl": 0,
+                            "regime": "body_alone_subsonic",
+                            "alpha": 8,
+                            "cm": 0
+                        }
+                    ],
+                    "reynolds": 2280000,
+                    "mach": 0.6
+                }
+            ],
+            "has_surfaces": false
+        }
+    ]
+}

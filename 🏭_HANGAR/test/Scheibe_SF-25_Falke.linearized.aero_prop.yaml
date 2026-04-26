@@ -1,0 +1,172 @@
+schema_version: "3.0"
+model_name: "Scheibe SF-25 Falke"
+
+meta:
+  aircraft_id: SCHEIBE_SF-25_FALKE
+  created_utc: "2026-04-24T12:46:57Z"
+  author: AeroModel.jl
+  notes: Generated from unified framework
+
+conventions:
+  angles: deg
+  rates: rad_s
+  forces: N
+  moments: N_m
+  coeff_axes: stability
+  body_axes: x_forward_y_right_z_down
+  coefficient_order: [CX, CY, CZ, Cl, Cm, Cn]
+  nondim_rates: {p_hat: "p*b/(2V)", q_hat: "q*c/(2V)", r_hat: "r*b/(2V)"}
+
+reference:
+  mass_kg: 600
+  geometry: {S_ref_m2: 15.6, b_ref_m: 15.3, c_ref_m: 1.04}
+  cg_ref_m: {x: 2.267, y: 0, z: 0.2}
+  inertia:
+    principal_moments_kgm2: {Ixx_p: 11012, Iyy_p: 2799, Izz_p: 14146}
+    principal_axes_rotation_deg: {pitch: 0, roll: 0, yaw: 0}
+
+limits:
+  mach: [0.2, 0.2]
+  alpha_deg: [-180, 180]
+  beta_deg: [-180, 180]
+  controls_deg:
+    da: [-25, 25]
+    de: [-25, 20]
+    dr: [-25, 25]
+
+configurations:
+  - id: clean
+    flap_deg: 0
+    gear: up
+
+runtime_model:
+  CD0: 0.022
+  CL_0: 0.4121
+  CL_alpha: 5.500395
+  CL_max: 1.0085
+  CY_beta: -0.206265
+  Cl_beta: -0.189076
+  Cl_da_per_deg: 0.00622
+  Cl_p_hat: -0.8144
+  Cm0: 0.0049
+  Cm_alpha: -1.35218
+  Cm_de_per_deg: -0.01259
+  Cm_q_hat: -11.015
+  Cn_beta: 0.040107
+  Cn_dr_per_deg: 0.00032
+  Cn_r_hat: -0.0551
+  alpha_stall_negative: -15.13
+  alpha_stall_positive: 8.72
+  constants:
+    Oswald_factor: 0.634903
+    horizontal_tail_reference_area: 1.6
+    tail_reference_area: 2.8
+    vertical_tail_reference_area: 1.2
+    x_aero_reference_CoG: 2.267
+    x_horizontal_tail_aerodynamic_center: 5.957135
+    x_tail_aerodynamic_center: 5.957135
+    x_vertical_tail_aerodynamic_center: 5.763067
+    x_wing_aerodynamic_center: 2.318689
+    x_wing_body_neutral_point: 2.207925
+    x_wing_fuselage_aerodynamic_center: 2.207925
+    y_aero_reference_CoG: 0
+    y_horizontal_tail_aerodynamic_center: 0
+    y_tail_aerodynamic_center: 0
+    y_vertical_tail_aerodynamic_center: 0
+    y_wing_aerodynamic_center: 0
+    y_wing_body_neutral_point: 0
+    y_wing_fuselage_aerodynamic_center: 0
+    z_aero_reference_CoG: 0.2
+    z_horizontal_tail_aerodynamic_center: 0.5
+    z_tail_aerodynamic_center: 0.5
+    z_vertical_tail_aerodynamic_center: 0.2
+    z_wing_aerodynamic_center: 0.2
+    z_wing_body_neutral_point: 0.444537
+    z_wing_fuselage_aerodynamic_center: 0.444537
+  dynamic_stall_alpha_off_deg: 11.1
+  dynamic_stall_alpha_on_deg: 15.1
+  dynamic_stall_qhat_to_alpha_deg: 2
+  dynamic_stall_tau_alpha_s: 0.08
+  dynamic_stall_tau_sigma_fall_s: 0.35
+  dynamic_stall_tau_sigma_rise_s: 0.12
+  poststall_cd90: 1.914
+  poststall_cd_min: 0.0163
+  poststall_cl_scale: 1.1
+  poststall_sideforce_scale: 0.75
+  recommended_initial_velocity_m_s: 32.12
+  stall_speed_analysis_altitude_m_s: 24.71
+  stall_speed_sea_level_m_s: 24.71
+  tail_CD0: 0.0012
+  tail_CL_q: 1.482
+  tail_CS_r: 0.034
+  tail_k_induced: 0.2
+  tail_k_side: 0.1
+
+propulsion:
+  engine_count: 1
+  throttle_input_mode: single_lever
+  engines:
+    - id: "ENG1"
+      position_m: {x: 2.121, y: 0, z: 0}
+      orientation_deg: {pitch: 0, roll: 0, yaw: 0}
+      thrust_scale: 1
+      spool_up_1_s: 1.2
+      spool_down_1_s: 1
+  thrust_map_shared:
+    axis_order: [mach, altitude_m, throttle]
+    axes:
+      mach: [0.2]
+      altitude_m: [0, 5000, 10000]
+      throttle: [0, 0.5, 1]
+
+    # values[mach_index][altitude_index][throttle_index]
+    values:
+      - # Mach 0.2
+        - [0, 451, 902]
+        - [0, 274, 547]
+        - [0, 166, 332]
+  aero_propulsion_coupling:
+    delta_CX_from_total_CT: {dCX_dCT_abs_alpha_slope_per_deg: -0.0005, dCX_dCT_at_alpha0: -0.01, model: ct_total_times_affine_abs_alpha_deg}
+
+actuators:
+  surface_rate_limit_deg_s: {HTP_elevator: 60, VTP_rudder: 60, main_wing_aileron: 60}
+  position_limit_deg:
+    HTP_elevator: [-25, 20]
+    VTP_rudder: [-25, 25]
+    main_wing_aileron: [-25, 25]
+
+failures:
+  allow_engine_out: false
+  default_failed_engines: []
+  failure_ramp_time_s: 0.5
+
+quality:
+  missing_term_policy: zero
+  provenance: {linear_core: VortexLattice.jl, nonlinear_surfaces: JDATCOM, propulsion: input_definition}
+  confidence: {linear_core: high, nonlinear: medium, poststall: low}
+  validation:
+    errors: 0
+    issues:
+      - category: performance
+        detail: "Estimated clean stall speed: 24.7 m/s at sea level, 24.7 m/s at analysis altitude 0.0 m; use at least 32.1 m/s for simulator initial_velocity."
+        message: Recommended simulator launch speed
+        severity: info
+      - category: pitch_moment
+        detail: Trim α = 0.2° (no elevator)
+        message: Trim condition
+        severity: info
+      - category: damping
+        detail: "Cl_p_hat(α≈0) = -0.814, expected -0.8 to -0.2"
+        message: Roll damping (Cl_p) outside typical range
+        severity: warning
+      - category: damping
+        detail: "Max Cl_p_hat over |alpha| = 18-150 deg is 0.024; keep the autorotation lobe small unless a spin model is deliberately being tuned."
+        message: Roll damping becomes lightly destabilizing after stall
+        severity: warning
+      - category: control
+        detail: "Cn_dr = 0.00032/deg, typical 0.001–0.004"
+        message: Rudder very weak
+        severity: warning
+    passed: true
+    summary: 3 warning(s) — review recommended
+    warnings: 3
