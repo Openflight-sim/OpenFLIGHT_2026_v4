@@ -12,7 +12,7 @@ An open, hackable flight simulator with a **Julia** physics core and a **Babylon
 - **Two aero modelling modes** per aircraft:
   - `linear` — scalar stability & control derivatives.
   - `table` — full look-up tables (`α`, `β`, `Mach`, control deflections).
-- **2+ aircraft** included out of the box — PC-21, SF-28 and P28 
+- **2+ aircraft** included out of the box — PC-21, SF-28 and PA28 
 - **Auto pitch trim**: `off` / `initial` / `continuous` (electric-trim follow-up).
 - **Hot reload** of mission and aircraft YAMLs from the in-sim pause menu — no restart needed when iterating on aero data.
 - **Slew-rate-limited keyboard inputs** for spring-stick feel; auto-detected gamepad / joystick mapping (Xbox, PlayStation, generic flight sticks).
